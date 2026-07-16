@@ -8,35 +8,19 @@ class CConfig
 {
 public:
 
-   //==============================================================
-   // Sistema
-   //==============================================================
+   static int TIMER_INTERVAL() { return 1; }
 
-   static const int TIMER_INTERVAL = 1;
+   static int EMA_FAST() { return 20; }
+   static int EMA_SLOW() { return 50; }
+   static int EMA_LONG() { return 200; }
 
-   //==============================================================
-   // Médias Móveis
-   //==============================================================
+   static int RSI_PERIOD() { return 14; }
+   static int ATR_PERIOD() { return 14; }
+   static int ADX_PERIOD() { return 14; }
 
-   static const int EMA_FAST = 20;
-   static const int EMA_SLOW = 50;
-   static const int EMA_LONG = 200;
-
-   //==============================================================
-   // Indicadores
-   //==============================================================
-
-   static const int RSI_PERIOD = 14;
-   static const int ATR_PERIOD = 14;
-   static const int ADX_PERIOD = 14;
-
-   //==============================================================
-   // Dashboard
-   //==============================================================
-
-   static const bool SHOW_SPREAD = true;
-   static const bool SHOW_TIME   = true;
-   static const bool SHOW_TREND  = true;
+   static bool SHOW_SPREAD() { return true; }
+   static bool SHOW_TIME()   { return true; }
+   static bool SHOW_TREND()  { return true; }
 };
 
 #endif

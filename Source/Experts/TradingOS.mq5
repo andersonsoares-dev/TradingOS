@@ -7,11 +7,13 @@
 
 #include "../Include/Core/Config.mqh"
 #include "../Include/Core/Logger.mqh"
-#include "../Include/Models/MarketContext.mqh"
 #include "../Include/Indicators/TrendService.mqh"
+#include "../Include/Models/MarketContext.mqh"
+#include "../Include/UI/Dashboard.mqh"
 
 MarketContext Context;
 CTrendService Trend;
+CDashboard Dashboard;
 
 //+------------------------------------------------------------------+
 //| Expert initialization                                            |
@@ -43,30 +45,32 @@ void OnTimer()
 {
    Context.Symbol = _Symbol;
 
-   Context.Bid = SymbolInfoDouble(_Symbol,SYMBOL_BID);
-   Context.Ask = SymbolInfoDouble(_Symbol,SYMBOL_ASK);
-   Context.Spread = (int)SymbolInfoInteger(_Symbol,SYMBOL_SPREAD);
+   Context.Bid        = SymbolInfoDouble(_Symbol,SYMBOL_BID);
+   Context.Ask        = SymbolInfoDouble(_Symbol,SYMBOL_ASK);
+   Context.Spread     = (int)SymbolInfoInteger(_Symbol,SYMBOL_SPREAD);
    Context.LastUpdate = TimeCurrent();
 
    Context.TrendH4  = Trend.GetTrend(_Symbol,PERIOD_H4);
    Context.TrendH1  = Trend.GetTrend(_Symbol,PERIOD_H1);
    Context.TrendM15 = Trend.GetTrend(_Symbol,PERIOD_M15);
 
-   string painel;
+   Dashboard.Clear();
 
-   painel  = "TradingOS v1.0\n";
-   painel += "-------------------------\n\n";
+   Dashboard.Add("TradingOS v1.0");
+   Dashboard.Add("-------------------------");
+   Dashboard.Add("");
 
-   painel += "Ativo : " + Context.Symbol + "\n";
-   painel += "Bid   : " + DoubleToString(Context.Bid,_Digits) + "\n";
-   painel += "Ask   : " + DoubleToString(Context.Ask,_Digits) + "\n";
-   painel += "Spread: " + IntegerToString(Context.Spread) + "\n\n";
+   Dashboard.Add("Symbol : " + Context.Symbol);
+   Dashboard.Add("Bid    : " + DoubleToString(Context.Bid,_Digits));
+   Dashboard.Add("Ask    : " + DoubleToString(Context.Ask,_Digits));
+   Dashboard.Add("Spread : " + IntegerToString(Context.Spread));
+   Dashboard.Add("");
 
-   painel += "Trend H4 : " + Trend.ToString(Context.TrendH4) + "\n";
-   painel += "Trend H1 : " + Trend.ToString(Context.TrendH1) + "\n";
-   painel += "Trend M15: " + Trend.ToString(Context.TrendM15);
+   Dashboard.Add("Trend H4  : " + Trend.ToString(Context.TrendH4));
+   Dashboard.Add("Trend H1  : " + Trend.ToString(Context.TrendH1));
+   Dashboard.Add("Trend M15 : " + Trend.ToString(Context.TrendM15));
 
-   Comment(painel);
+   Dashboard.Show();
 }
 
 //+------------------------------------------------------------------+
