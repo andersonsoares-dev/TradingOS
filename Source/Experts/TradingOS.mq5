@@ -7,20 +7,24 @@
 
 #include "../Include/Core/Config.mqh"
 #include "../Include/Core/Logger.mqh"
+
+#include "../Include/Services/MarketService.mqh"
+
 #include "../Include/Models/MarketContext.mqh"
-#include "../Include/Indicators/TrendService.mqh"
+#include "../Include/UI/Dashboard.mqh"
 
 MarketContext Context;
-CTrendService Trend;
+CMarketService Market;
+CDashboard Dashboard;
 
-//+------------------------------------------------------------------+
-//| Expert initialization                                            |
 //+------------------------------------------------------------------+
 int OnInit()
 {
-   EventSetTimer(CConfig::TIMER_INTERVAL);
+   EventSetTimer(CConfig::TIMER_INTERVAL());
 
    Context.Clear();
+
+   Dashboard.Create();
 
    CLogger::Info("TradingOS iniciado.");
 
@@ -28,45 +32,21 @@ int OnInit()
 }
 
 //+------------------------------------------------------------------+
-//| Expert deinitialization                                          |
-//+------------------------------------------------------------------+
 void OnDeinit(const int reason)
 {
    EventKillTimer();
-   Comment("");
+
+   Dashboard.Destroy();
 }
 
 //+------------------------------------------------------------------+
-//| Timer                                                            |
-//+------------------------------------------------------------------+
 void OnTimer()
 {
-   Context.Symbol = _Symbol;
+   Market.Update(Context);
 
-   Context.Bid = SymbolInfoDouble(_Symbol,SYMBOL_BID);
-   Context.Ask = SymbolInfoDouble(_Symbol,SYMBOL_ASK);
-   Context.Spread = (int)SymbolInfoInteger(_Symbol,SYMBOL_SPREAD);
-   Context.LastUpdate = TimeCurrent();
+   Dashboard.Update(Context);
 
-   Context.TrendH4  = Trend.GetTrend(_Symbol,PERIOD_H4);
-   Context.TrendH1  = Trend.GetTrend(_Symbol,PERIOD_H1);
-   Context.TrendM15 = Trend.GetTrend(_Symbol,PERIOD_M15);
-
-   string painel;
-
-   painel  = "TradingOS v1.0\n";
-   painel += "-------------------------\n\n";
-
-   painel += "Ativo : " + Context.Symbol + "\n";
-   painel += "Bid   : " + DoubleToString(Context.Bid,_Digits) + "\n";
-   painel += "Ask   : " + DoubleToString(Context.Ask,_Digits) + "\n";
-   painel += "Spread: " + IntegerToString(Context.Spread) + "\n\n";
-
-   painel += "Trend H4 : " + Trend.ToString(Context.TrendH4) + "\n";
-   painel += "Trend H1 : " + Trend.ToString(Context.TrendH1) + "\n";
-   painel += "Trend M15: " + Trend.ToString(Context.TrendM15);
-
-   Comment(painel);
+   Dashboard.Show();
 }
 
 //+------------------------------------------------------------------+
