@@ -4,7 +4,7 @@
 #ifndef __MARKET_CONTEXT_MQH__
 #define __MARKET_CONTEXT_MQH__
 
-#include "../Indicators/TrendService.mqh"
+#include <TradingOS/Indicators/TrendService.mqh>
 
 struct MarketContext
 {

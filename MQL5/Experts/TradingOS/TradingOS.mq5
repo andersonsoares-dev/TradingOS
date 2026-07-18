@@ -5,14 +5,13 @@
 #property version   "1.00"
 #property strict
 
-#include "../Include/Core/Config.mqh"
-#include "../Include/Core/Logger.mqh"
+#include <TradingOS/Core/Config.mqh>
+#include <TradingOS/Core/Logger.mqh>
 
-#include "../Include/Services/MarketService.mqh"
+#include <TradingOS/Services/MarketService.mqh>
 
-#include "../Include/Models/MarketContext.mqh"
-#include "../Include/UI/Dashboard.mqh"
-
+#include <TradingOS/Models/MarketContext.mqh>
+#include <TradingOS/UI/Dashboard.mqh>
 MarketContext Context;
 CMarketService Market;
 CDashboard Dashboard;
@@ -20,7 +19,7 @@ CDashboard Dashboard;
 //+------------------------------------------------------------------+
 int OnInit()
 {
-   EventSetTimer(CConfig::TIMER_INTERVAL());
+   EventSetTimer(CConfig::TimerInterval());
 
    Context.Clear();
 
