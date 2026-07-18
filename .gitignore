@@ -1,0 +1,23 @@
+# ==========================
+# TradingOS - Git Ignore
+# ==========================
+
+# MetaTrader build artifacts
+*.ex5
+*.log
+*.tmp
+
+# MetaTrader generated folders
+MQL5/Files/
+MQL5/logs/
+MQL5/Profiles/
+
+# MetaTrader generated files
+MQL5/experts.dat
+
+# Visual Studio Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
