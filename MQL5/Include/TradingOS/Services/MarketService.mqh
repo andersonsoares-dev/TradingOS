@@ -7,6 +7,7 @@
 #include <TradingOS/Models/MarketContext.mqh>
 #include <TradingOS/Indicators/TrendService.mqh>
 #include <TradingOS/Indicators/ATRService.mqh>
+#include <TradingOS/Indicators/RSIService.mqh>
 
 class CMarketService
 {
@@ -14,6 +15,7 @@ private:
 
    CTrendService Trend;
    CATRService   ATR;
+   CRSIService   RSI;
 
 public:
 
@@ -46,6 +48,15 @@ public:
 
       context.AtrM15 =
          ATR.GetValue(_Symbol, PERIOD_M15);
+
+      context.RsiH4 =
+         RSI.GetValue(_Symbol, PERIOD_H4);
+
+      context.RsiH1 =
+         RSI.GetValue(_Symbol, PERIOD_H1);
+
+      context.RsiM15 =
+         RSI.GetValue(_Symbol, PERIOD_M15);
 
       return true;
    }
