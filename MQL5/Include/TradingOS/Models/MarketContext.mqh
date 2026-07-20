@@ -20,6 +20,10 @@ struct MarketContext
    ENUM_TREND TrendH1;
    ENUM_TREND TrendM15;
 
+   double AtrH4;
+   double AtrH1;
+   double AtrM15;
+
    void Clear()
    {
       Symbol = "";
@@ -33,6 +37,10 @@ struct MarketContext
       TrendH4 = TREND_SIDE;
       TrendH1 = TREND_SIDE;
       TrendM15 = TREND_SIDE;
+
+      AtrH4 = 0.0;
+      AtrH1 = 0.0;
+      AtrM15 = 0.0;
    }
 };
 

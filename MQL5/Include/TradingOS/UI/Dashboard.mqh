@@ -38,6 +38,9 @@ public:
       Add("Symbol : " + context.Symbol);
       Add("Bid    : " + DoubleToString(context.Bid,_Digits));
       Add("Ask    : " + DoubleToString(context.Ask,_Digits));
+      Add("ATR H4 : " + DoubleToString(context.AtrH4,_Digits));
+      Add("ATR H1 : " + DoubleToString(context.AtrH1,_Digits));
+      Add("ATR M15: " + DoubleToString(context.AtrM15,_Digits));
 
       Show();
    }
