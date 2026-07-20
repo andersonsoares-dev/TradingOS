@@ -28,6 +28,10 @@ struct MarketContext
    double RsiH1;
    double RsiM15;
 
+   double AdxH4;
+   double AdxH1;
+   double AdxM15;
+
    void Clear()
    {
       Symbol = "";
@@ -49,6 +53,10 @@ struct MarketContext
       RsiH4 = 0.0;
       RsiH1 = 0.0;
       RsiM15 = 0.0;
+
+      AdxH4 = 0.0;
+      AdxH1 = 0.0;
+      AdxM15 = 0.0;
    }
 };
 

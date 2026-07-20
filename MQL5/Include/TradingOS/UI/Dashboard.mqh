@@ -44,6 +44,9 @@ public:
       Add("RSI H4 : " + DoubleToString(context.RsiH4,_Digits));
       Add("RSI H1 : " + DoubleToString(context.RsiH1,_Digits));
       Add("RSI M15: " + DoubleToString(context.RsiM15,_Digits));
+      Add("ADX H4 : " + DoubleToString(context.AdxH4,_Digits));
+      Add("ADX H1 : " + DoubleToString(context.AdxH1,_Digits));
+      Add("ADX M15: " + DoubleToString(context.AdxM15,_Digits));
 
       Show();
    }
