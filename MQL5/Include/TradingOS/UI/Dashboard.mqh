@@ -48,6 +48,19 @@ public:
       Add("ADX H1 : " + DoubleToString(context.AdxH1,_Digits));
       Add("ADX M15: " + DoubleToString(context.AdxM15,_Digits));
 
+      string sessionLabel = "Closed";
+
+      switch(context.CurrentSession)
+      {
+         case SESSION_ASIAN:                    sessionLabel = "Asia";     break;
+         case SESSION_LONDON:                   sessionLabel = "London";   break;
+         case SESSION_NEWYORK:                  sessionLabel = "New York"; break;
+         case SESSION_LONDON_NEWYORK_OVERLAP:   sessionLabel = "Overlap";  break;
+         default:                               sessionLabel = "Closed";   break;
+      }
+
+      Add("Session: " + sessionLabel);
+
       Show();
    }
 
