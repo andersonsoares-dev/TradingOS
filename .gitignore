@@ -21,3 +21,16 @@ MQL5/experts.dat
 # Windows
 Thumbs.db
 Desktop.ini
+
+# ==========================
+# Experimental architecture (post-V1, not adopted)
+# ==========================
+# IAnalyzer / TrendAnalyzer prototype, started on sprint-2.1-trend-analyzer.
+# Never wired into the official pipeline. Architecture frozen by the
+# Sprint 0.5 decision (see Docs/BACKLOG.md): TrendService/MarketService/
+# MarketContext/Dashboard remain official until V1. Kept on disk for
+# possible reevaluation after V1 — intentionally not versioned, not removed.
+MQL5/Include/TradingOS/Analysis/
+MQL5/Include/TradingOS/Interfaces/
+MQL5/Include/TradingOS/Models/MarketAnalysis.mqh
+MQL5/Include/TradingOS/Models/MarketSnapshot.mqh
