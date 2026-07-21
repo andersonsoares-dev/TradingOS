@@ -163,6 +163,72 @@ Qualquer novo componente deverá ser registrado primeiro em SPEC-001.
 
 ---
 
+# Documentation Validation Pipeline
+
+Antes de criar QUALQUER documento novo o agente deverá obrigatoriamente executar a seguinte sequência.
+
+PASSO 1
+
+Ler:
+
+DOMAIN-002-Ubiquitous-Language
+
+Validar:
+
+• nenhum termo novo
+
+• nenhuma alteração semântica
+
+PASSO 2
+
+Ler:
+
+SPEC-001 Component Model
+
+Validar:
+
+• componente já existe?
+
+• categoria correta?
+
+• responsabilidade correta?
+
+É proibido criar componente novo sem atualizar previamente o SPEC-001.
+
+PASSO 3
+
+Ler:
+
+ARCH-001
+
+Validar:
+
+• dependências
+
+• bounded contexts
+
+• fluxo arquitetural
+
+PASSO 4
+
+Ler:
+
+TRACEABILITY
+
+Validar:
+
+• rastreabilidade
+
+• referências
+
+• dependências
+
+PASSO 5
+
+Somente após as quatro validações o novo documento poderá ser criado.
+
+---
+
 # Fluxo obrigatório
 
 Antes de implementar:

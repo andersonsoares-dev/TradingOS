@@ -82,3 +82,7 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Taxonomia arquitetural consolidada.
 - SPEC-001 passa a ser a única fonte oficial de nomenclatura.
 - Builders, Services, Policies e Providers padronizados.
+
+### 2026-07-21 — Documentation Governance Stabilization
+
+- Criação do processo oficial de validação documental.

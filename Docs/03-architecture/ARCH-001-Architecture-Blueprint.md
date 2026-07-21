@@ -1,7 +1,7 @@
 ---
 id: ARCH-001
 title: Architecture Blueprint
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -25,6 +25,22 @@ Definir a arquitetura oficial do TradingOS.
 Este documento estabelece os limites do domínio, as responsabilidades de cada camada, os Bounded Contexts e as dependências permitidas.
 
 Toda implementação futura deverá respeitar esta arquitetura.
+
+---
+
+# Canonical Architecture
+
+ARCH-001 é a única fonte oficial para:
+
+Camadas
+
+Fluxos
+
+Dependências
+
+Bounded Contexts
+
+Nenhum documento poderá alterar a arquitetura sem aprovação via ADR.
 
 ---
 

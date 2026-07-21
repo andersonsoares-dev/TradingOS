@@ -4,6 +4,28 @@ Matriz de rastreabilidade oficial, conforme .project-rules/DOCUMENT_CONTROL.md (
 
 Pipeline oficial: REQ → DOMAIN → ARCH → SPEC → SOURCE → TEST → VALIDATION
 
+# Validation Checklist
+
+Todo documento deverá validar obrigatoriamente:
+
+Vocabulary
+
+↓
+
+Components
+
+↓
+
+Architecture
+
+↓
+
+Traceability
+
+↓
+
+References
+
 ## Estado atual (V1 — arquitetura congelada, anterior ao protocolo de governança)
 
 Os componentes abaixo foram implementados **antes** da adoção deste protocolo (2026-07-21). Por decisão registrada, o protocolo vale a partir de agora, sem migração retroativa — portanto não existe rastreabilidade formal completa (REQ/DOMAIN/SPEC) para eles.

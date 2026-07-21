@@ -1,7 +1,7 @@
 ---
 id: SPEC-001
 title: Component Model
-version: 1.2.0
+version: 1.3.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -40,6 +40,26 @@ Este documento define:
 - services;
 - policies;
 - adapters.
+
+---
+
+# Canonical Repository
+
+SPEC-001 é a única fonte oficial para:
+
+Componentes
+
+Builders
+
+Services
+
+Policies
+
+Providers
+
+Adapters
+
+Nenhum outro documento poderá definir novos componentes.
 
 ---
 

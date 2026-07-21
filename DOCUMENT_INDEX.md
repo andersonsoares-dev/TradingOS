@@ -12,12 +12,12 @@
 | VISION-001 | Product Vision | Docs/00-governance/VISION-001-Product-Vision.md | 1.0.0 | Approved |
 | REQ-001 | Requirements Specification | Docs/01-requirements/REQ-001-Requirements-Specification.md | 1.0.0 | Approved |
 | DOMAIN-001 | Opportunity | Docs/02-domain/DOMAIN-001-Opportunity.md | 1.0.0 | Approved |
-| DOMAIN-002 | Ubiquitous Language | Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md | 1.1.0 | Approved |
+| DOMAIN-002 | Ubiquitous Language | Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md | 1.2.0 | Approved |
 | DOMAIN-003 | Evidence | Docs/02-domain/DOMAIN-003-Evidence.md | 1.0.0 | Approved |
 | DOMAIN-004 | Market Context | Docs/02-domain/DOMAIN-004-Market-Context.md | 1.0.0 | Approved |
 | DOMAIN-005 | Decision | Docs/02-domain/DOMAIN-005-Decision.md | 1.0.0 | Approved |
-| ARCH-001 | Architecture Blueprint | Docs/03-architecture/ARCH-001-Architecture-Blueprint.md | 1.0.0 | Approved |
-| SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.2.0 | Approved |
+| ARCH-001 | Architecture Blueprint | Docs/03-architecture/ARCH-001-Architecture-Blueprint.md | 1.1.0 | Approved |
+| SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.3.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
 | ADR-001 | Legacy Baseline | Docs/05-decisions/ADR-001-Legacy-Baseline.md | 1.0.0 | Accepted |

@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-002
 title: Ubiquitous Language
-version: 1.1.0
+version: 1.2.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -24,6 +24,22 @@ Definir o vocabulário oficial do domínio TradingOS.
 Todos os documentos, código-fonte, testes e ADRs deverão utilizar estes termos de forma consistente.
 
 Sinônimos deverão ser evitados.
+
+---
+
+# Canonical Vocabulary
+
+DOMAIN-002 é a única fonte oficial para:
+
+Entidades
+
+Value Objects
+
+Conceitos
+
+Terminologia
+
+Nenhum documento poderá alterar a semântica dos termos definidos aqui.
 
 ---
 
