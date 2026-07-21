@@ -248,6 +248,10 @@ Recomendação registrada (não uma decisão): Stop baseado em ATR + Stop Tempor
 
 A recomendação depende de aprovação via ADR próprio antes de influenciar `DOMAIN`, `SPEC` ou `Risk Service` (`SPEC-001`, status `Planned`). Nenhum documento da Baseline foi alterado por esta RFC.
 
+## BACKTEST-001 — Backtest Execution Protocol
+
+`Docs/06-validation/BACKTEST-001-Backtest-Execution-Protocol.md` define exclusivamente o procedimento operacional de execução de Backtests — não registra resultados, não aprova estratégias, não altera regras de negócio. Rastreado contra `VALIDATION-001`: usa o mesmo Universo de Teste, a mesma Hipótese de Risco (via `RFC-005`) e é consistente com o Protocolo de Teste de 7 etapas de `VALIDATION-001` (aqui detalhado em 10 etapas operacionais específicas do MT5, sem contradição — nível de abstração diferente, mesmo processo). Define Entradas, Ambiente, Saídas Obrigatórias, Controle de Qualidade, Critérios de Invalidação, convenção de Armazenamento e Definition of Done. Nenhum documento `DOMAIN`/`ARCH`/`SPEC`/`ADR` foi alterado.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
