@@ -68,3 +68,28 @@ A avaliação de migrar para o padrão `IAnalyzer` (proposta no Sprint 0) fica *
 - Reconciliação dos órfãos (`ATRService`, `PriceService`) — apenas documentados, não integrados nem removidos.
 - Sincronizar `README.md` com a árvore real de pastas.
 - Preencher `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md`.
+
+---
+
+## Technical Debt
+
+### Normalizar sessões para UTC/GMT
+
+**Descrição**: Atualmente o `SessionService` utiliza a hora do servidor do MetaTrader para identificar a sessão de mercado. Esta decisão foi intencional para a V1, visando simplicidade e estabilidade da arquitetura.
+
+**Objetivo**: Na V2 deverá ser avaliada a implementação de uma camada de normalização de tempo contemplando:
+- Server Time
+- UTC
+- Daylight Saving Time (DST)
+- Holiday Calendar
+- Trading Calendar
+
+Desacoplar a identificação das sessões do horário do servidor e permitir maior precisão em diferentes corretoras e fusos horários.
+
+**Status**: Postergado para V2.
+
+**Origem**: Sprint 5.1 – SessionService.
+
+**Prioridade**: Baixa.
+
+**Justificativa**: Não impacta a compilação nem o funcionamento da V1 e não bloqueia nenhuma sprint atual.
