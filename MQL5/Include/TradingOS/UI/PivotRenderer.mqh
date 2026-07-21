@@ -56,6 +56,12 @@ private:
       DrawLabel(prefix + "_Label", levelName, price, clr);
    }
 
+   void RemoveLevel(const string prefix)
+   {
+      ObjectDelete(0, prefix + "_Line");
+      ObjectDelete(0, prefix + "_Label");
+   }
+
 public:
 
    void Update(const MarketContext &context)
@@ -70,6 +76,22 @@ public:
 
       DrawLevel("TradingOS_Pivot_YH", "YH", context.PreviousDayHigh,    clrAqua);
       DrawLevel("TradingOS_Pivot_YL", "YL", context.PreviousDayLow,     clrMagenta);
+   }
+
+   // Remove todas as linhas e rotulos criados por este renderer. Deve ser
+   // chamado em OnDeinit() para nao deixar objetos orfaos no grafico apos
+   // a remocao do EA.
+   void Destroy()
+   {
+      RemoveLevel("TradingOS_Pivot_PP");
+      RemoveLevel("TradingOS_Pivot_R1");
+      RemoveLevel("TradingOS_Pivot_R2");
+      RemoveLevel("TradingOS_Pivot_R3");
+      RemoveLevel("TradingOS_Pivot_S1");
+      RemoveLevel("TradingOS_Pivot_S2");
+      RemoveLevel("TradingOS_Pivot_S3");
+      RemoveLevel("TradingOS_Pivot_YH");
+      RemoveLevel("TradingOS_Pivot_YL");
    }
 };
 

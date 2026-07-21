@@ -9,11 +9,52 @@
 
 // Camada de apresentacao. So le MarketContext/TradingSignal e formata
 // texto - nenhuma regra de negocio, nenhuma decisao operacional.
+// Renderiza via OBJ_LABEL (uma por linha), ancorados no canto superior
+// direito, para nao competir com o painel padrao do MetaTrader e manter
+// legibilidade independente da largura do grafico.
 class CDashboard
 {
 private:
 
-   string m_text;
+   int m_count;
+
+   string ObjName(int index)
+   {
+      return "TradingOS_Dash_" + IntegerToString(index);
+   }
+
+   void DrawLine(const string text)
+   {
+      string name = ObjName(m_count);
+
+      if(ObjectFind(0, name) < 0)
+      {
+         ObjectCreate(0, name, OBJ_LABEL, 0, 0, 0);
+         ObjectSetInteger(0, name, OBJPROP_CORNER,     CORNER_RIGHT_UPPER);
+         ObjectSetInteger(0, name, OBJPROP_ANCHOR,     ANCHOR_RIGHT_UPPER);
+         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  15);
+         ObjectSetInteger(0, name, OBJPROP_FONTSIZE,   9);
+         ObjectSetString(0,  name, OBJPROP_FONT,       "Consolas");
+         ObjectSetInteger(0, name, OBJPROP_COLOR,      clrWhite);
+         ObjectSetInteger(0, name, OBJPROP_SELECTABLE, false);
+         ObjectSetInteger(0, name, OBJPROP_HIDDEN,     true);
+      }
+
+      ObjectSetInteger(0, name, OBJPROP_YDISTANCE, 15 + m_count * 14);
+      ObjectSetString(0, name, OBJPROP_TEXT, text);
+
+      m_count++;
+   }
+
+   void HideUnused()
+   {
+      for(int i = m_count; i < 40; i++)
+      {
+         string name = ObjName(i);
+         if(ObjectFind(0, name) >= 0)
+            ObjectDelete(0, name);
+      }
+   }
 
    string TrendLabel(ENUM_TREND trend)
    {
@@ -80,32 +121,32 @@ private:
 
       string bar = "";
       for(int i = 0; i < 10; i++)
-         bar += (i < filled) ? "█" : "░";
+         bar += (i < filled) ? "#" : "-";
 
       return bar;
    }
 
    string Confirm(bool confirmed, const string label)
    {
-      return (confirmed ? "✔ " : "✘ ") + label;
+      return (confirmed ? "OK " : "X  ") + label;
    }
 
 public:
 
    bool Create()
    {
-      m_text = "";
+      m_count = 0;
       return(true);
    }
 
    void Clear()
    {
-      m_text = "";
+      m_count = 0;
    }
 
    void Add(const string text)
    {
-      m_text += text + "\n";
+      DrawLine(text);
    }
 
    void Update(const MarketContext &context, const TradingSignal &signal, bool eaHealthy)
@@ -144,18 +185,23 @@ public:
       Add("--- EA STATUS ---");
       Add("Status : " + (eaHealthy ? "READY" : "ERROR"));
 
-      Show();
+      HideUnused();
    }
 
    void Show()
    {
-      Comment(m_text);
+      ChartRedraw(0);
    }
 
    void Destroy()
    {
-      Comment("");
-      m_text = "";
+      for(int i = 0; i < 40; i++)
+      {
+         string name = ObjName(i);
+         if(ObjectFind(0, name) >= 0)
+            ObjectDelete(0, name);
+      }
+      m_count = 0;
    }
 };
 

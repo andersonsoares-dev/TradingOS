@@ -42,6 +42,8 @@ void OnDeinit(const int reason)
    EventKillTimer();
 
    Dashboard.Destroy();
+
+   PivotRenderer.Destroy();
 }
 
 //+------------------------------------------------------------------+
