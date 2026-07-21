@@ -136,3 +136,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Adicionada observação em `.project-rules/DOCUMENT_CONTROL.md` (v1.2.0): documentos de Governança, Domínio, Arquitetura e Especificações pertencentes à Baseline v1.0 encontram-se congelados; alterações somente via ADR, RFC aprovada, ou correção documental sem impacto arquitetural.
 - Adicionado `Docs/05-decisions/ADR-007-Architecture-Baseline-v1.0-Freeze.md` — formaliza o congelamento, delimita o escopo exato (Governança: ENG-000/CONST-001/VISION-001/DOCUMENT_CONTROL/CLAUDE.md/AGENTS.md; Domínio: DOMAIN-001 a 005; Arquitetura: ARCH-001; Especificações: SPEC-001 a 006) e esclarece que Requirements (REQ-001) não está incluído no congelamento.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ADR-007.
+
+### 2026-07-21 — Fase 2: Platform Foundation — INFRA-001 (Infrastructure Overview)
+
+- Adicionado `Docs/03-architecture/INFRA-001-Infrastructure-Overview.md` — primeira entrega da Fase 2, inaugurando a documentação da camada Infrastructure (responsabilidades, limites, dependências permitidas/proibidas, visão geral de componentes, matriz de dependências, princípios obrigatórios, diagrama Mermaid). Nenhum documento da Baseline v1.0 (DOMAIN/ARCH/SPEC/ADR) foi alterado, conforme ADR-007.
+- Dois itens do brief de origem (`Event Dispatcher`, `Scheduler`) não constam no Canonical Component Catalog (`SPEC-001`) — não foram incorporados como componentes aprovados. Adicionado `Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md`, classificado "Requires Architectural Decision".
+- `Broker Adapter`/`MT5 Adapter` (catalogados em SPEC-001 como Execution Components, não Infrastructure Providers) e `Logger` (citado no brief como "Logger Provider", nome não-canônico) foram referenciados em INFRA-001 usando os nomes e categorias já estabelecidos em SPEC-001, com observação explícita da divergência de nomenclatura do brief.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com INFRA-001 e RFC-002.
