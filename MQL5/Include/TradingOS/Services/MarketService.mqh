@@ -9,15 +9,17 @@
 #include <TradingOS/Indicators/ATRService.mqh>
 #include <TradingOS/Indicators/RSIService.mqh>
 #include <TradingOS/Indicators/ADXService.mqh>
+#include <TradingOS/Services/SessionService.mqh>
 
 class CMarketService
 {
 private:
 
-   CTrendService Trend;
-   CATRService   ATR;
-   CRSIService   RSI;
-   CADXService   ADX;
+   CTrendService   Trend;
+   CATRService     ATR;
+   CRSIService     RSI;
+   CADXService     ADX;
+   CSessionService Session;
 
 public:
 
@@ -68,6 +70,9 @@ public:
 
       context.AdxM15 =
          ADX.GetValue(_Symbol, PERIOD_M15);
+
+      context.CurrentSession =
+         Session.GetSession(TimeCurrent());
 
       return true;
    }

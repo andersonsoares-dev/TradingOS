@@ -5,6 +5,7 @@
 #define __MARKET_CONTEXT_MQH__
 
 #include <TradingOS/Indicators/TrendService.mqh>
+#include <TradingOS/Services/SessionService.mqh>
 
 struct MarketContext
 {
@@ -32,6 +33,8 @@ struct MarketContext
    double AdxH1;
    double AdxM15;
 
+   ENUM_MARKET_SESSION CurrentSession;
+
    void Clear()
    {
       Symbol = "";
@@ -57,6 +60,8 @@ struct MarketContext
       AdxH4 = 0.0;
       AdxH1 = 0.0;
       AdxM15 = 0.0;
+
+      CurrentSession = SESSION_CLOSED;
    }
 };
 
