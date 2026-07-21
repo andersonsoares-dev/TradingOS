@@ -22,6 +22,7 @@
 | INFRA-003 | Indicator Provider | Docs/03-architecture/INFRA-003-Indicator-Provider.md | 1.0.0 | Approved |
 | EXEC-001 | Order Manager | Docs/03-architecture/EXEC-001-Order-Manager.md | 1.0.0 | Approved |
 | EXEC-002 | Position Manager | Docs/03-architecture/EXEC-002-Position-Manager.md | 1.0.0 | Approved |
+| EXEC-003 | Risk Service (Pre-Order Risk Gate) | Docs/03-architecture/EXEC-003-Risk-Service.md | 1.0.0 | Approved |
 | SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.4.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
@@ -36,6 +37,7 @@
 | ADR-006 | Opportunity Lifecycle Alignment | Docs/05-decisions/ADR-006-Opportunity-Lifecycle-Alignment.md | 1.0.0 | Accepted |
 | ADR-007 | Architecture Baseline v1.0 Freeze | Docs/05-decisions/ADR-007-Architecture-Baseline-v1.0-Freeze.md | 1.0.0 | Accepted |
 | ADR-008 | Roadmap Restructuring — Parallel Tracks | Docs/05-decisions/ADR-008-Roadmap-Restructuring-Parallel-Tracks.md | 1.1.0 | Accepted |
+| ADR-009 | Baseline Lock v1.1 — Documentation Stabilization & Delivery Sequence | Docs/05-decisions/ADR-009-Baseline-Lock-v1.1.md | 1.0.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | VALIDATION-001 | Trading Strategy Validation Baseline | Docs/06-validation/VALIDATION-001-Trading-Strategy-Validation-Baseline.md | 2.0.0 | Approved |
@@ -46,6 +48,7 @@
 | RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 1.0.0 | Open |
 | RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
 | RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Open |
+| RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 1.0.0 | Open |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -97,6 +100,8 @@ knowledge/
 - `DATA-001-Validation-Data-Repository-Standard.md` padroniza a estrutura de artefatos de validação em `validation-runs/` (renomeado do `Validation/` do brief de origem, para evitar colisão de nome com `Docs/06-validation/`).
 - `EXEC-001-Order-Manager.md` detalha o Execution Component `Order Manager` (já catalogado em SPEC-001). Solicitado originalmente como `SPEC-006` (colisão de id com SPEC-006 já existente); reprefixado para `EXEC-00X` por consistência com o padrão `INFRA-00X` (documentos de componente único, não de categoria). Inaugura o prefixo `EXEC-00X` para Execution Components em `Docs/03-architecture/`.
 - `EXEC-002-Position-Manager.md` detalha o Execution Component `Position Manager` (já catalogado em SPEC-001). Solicitado originalmente como `SPEC-007`; segue o mesmo prefixo `EXEC-00X` já estabelecido por EXEC-001.
+- `ADR-009` (Baseline Lock v1.1) congela a estrutura documental do repositório: nenhuma nova reorganização, renumeração ou movimentação de documentos; `DOCUMENT_INDEX.md` como fonte de verdade para ids; família `EXEC-*` confirmada para Execution Components; sequência de entrega travada até a Primeira Execução (EXEC-001→002→003→004→005→Sprint 1). Observações registradas (não bloqueantes): "Signal Engine" do brief de origem corrigido para o nome canônico `Signal Builder`; `Risk Service` (EXEC-003) é Core Domain Service em SPEC-001, não Execution Component — `EXEC-003` é rótulo de sequência de roadmap, não reclassificação de Bounded Context.
+- `EXEC-003-Risk-Service.md` detalha um gate operacional pré-envio de ordem ("Pre-Order Risk Gate"). Divergência real encontrada: seu contrato (Entrada Signal Result/Account Information/Current Exposure, Saída Risk Approved/Rejected + Risk Evaluation Result) é incompatível com o contrato de `Risk Service` já definido em `SPEC-003` (Entrada Opportunity/Market Context, Saída Risk Profile). Registrada em `RFC-006`, não resolvida (SPEC-003 está congelado). `Account Provider` (dependência citada) também não consta em SPEC-001 — incluído na mesma RFC.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

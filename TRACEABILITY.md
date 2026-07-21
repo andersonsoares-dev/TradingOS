@@ -276,6 +276,22 @@ Especifica responsabilidades, entradas (originadas em `EXEC-001` — Order Accep
 
 Mesma dependência não satisfeita já registrada em `EXEC-001`: consumo por `Risk Service` depende da classificação de `Risk Profile`, ainda `Open` em `RFC-001`.
 
+## ADR-009 — Baseline Lock v1.1
+
+`Docs/05-decisions/ADR-009-Baseline-Lock-v1.1.md` congela a estrutura documental do repositório a partir deste ponto: nenhuma nova reorganização, renumeração ou movimentação de documentos entre pastas; `DOCUMENT_INDEX.md` reafirmado como fonte de verdade obrigatória antes de qualquer criação/numeração/renomeação; famílias documentais fechadas (Governança, Arquitetura, Especificações, Validação, Roadmap); família `EXEC-*` confirmada oficialmente para Execution Components, retroativa a `EXEC-001`/`EXEC-002`; `ADR-007` reafirmado sem alteração; prioridade do projeto redirecionada para a Primeira Execução; sequência de entrega travada (`EXEC-001`→`EXEC-002`→`EXEC-003`→`EXEC-004`→`EXEC-005`→Sprint 1→Primeira Execução).
+
+Duas observações registradas no próprio ADR (não bloqueantes, não exigem ação agora): "Signal Engine" do brief de origem corrigido para o nome canônico `Signal Builder` (`SPEC-001`) em `EXEC-004`; `Risk Service` (`EXEC-003`) é Core Domain Service em `SPEC-001`, não Execution Component — `EXEC-003` é apenas rótulo de posição na sequência de entrega, não reclassificação de Bounded Context. A futura especificação detalhada de `Risk Service` deverá deixar essa distinção explícita.
+
+Por instrução explícita do Product Owner, este ADR não será revisitado até a conclusão da Primeira Execução.
+
+## EXEC-003 — Risk Service (Pre-Order Risk Gate) e RFC-006
+
+`Docs/03-architecture/EXEC-003-Risk-Service.md` detalha um gate operacional de risco pré-envio de ordem, terceiro item da sequência travada em `ADR-009`. Especifica responsabilidades, entradas/saídas, Risk Evaluation Result, validações (todas parametrizáveis), máquina de estados, eventos, interface conceitual, dependências e casos de teste.
+
+**Divergência arquitetural real, identificada na Validação Prévia (não introduzida por este documento)**: `SPEC-003` (Domain Services, congelado) já define `Risk Service` com um contrato incompatível — Core Domain Service, Entrada `Opportunity`/`Market Context`, Saída `Risk Profile`. `EXEC-003` descreve um componente operacional diferente — gate pré-envio, Entrada `Signal Result`/`Account Information`/`Current Exposure`, Saída `Risk Approved`/`Rejected` + `Risk Evaluation Result`. Os dois contratos não descrevem o mesmo componente. Nenhum dos dois documentos (`SPEC-003`, congelado; `EXEC-003`, recém-criado) foi alterado para forçar compatibilidade — a divergência foi registrada em `RFC-006` (Risk Service Contract Divergence), com 3 alternativas de reconciliação apresentadas sem decisão (componentes distintos com nomes próprios; mesmo componente com dois modos, exigindo atualização de SPEC-003; ou o gate pertence na verdade a `Order Manager`).
+
+Adicionalmente, `Account Provider` (dependência citada em `EXEC-003`) não consta no Canonical Component Catalog (`SPEC-001`) — registrado na mesma `RFC-006`, pendente de catalogação formal antes de ser tratado como dependência aprovada por qualquer outro documento.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
