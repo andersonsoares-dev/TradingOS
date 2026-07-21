@@ -300,6 +300,14 @@ Adicionalmente, `Account Provider` (dependência citada em `EXEC-003`) não cons
 
 Nenhum documento (`ARCH-001`, `SPEC-002`, congelados; `EXEC-004`, recém-criado) foi alterado para forçar compatibilidade. Registrada em `RFC-007` (Signal Builder Pipeline Divergence), severidade alta, com 3 alternativas de reconciliação apresentadas sem decisão: (1) `EXEC-003`/`EXEC-004` são um MVP operacional intencional, mais curto que o fluxo de Core Domain, a ser explicitado como tal; (2) mal-entendido de terminologia — `EXEC-004` deveria consumir `Decision`, não `Market Context` diretamente; (3) o Core Domain é considerado redundante para a Release 1.0, o que revisitaria `ADR-002` e o investimento em `DOMAIN-001`/`DOMAIN-005`/`SPEC-003`. Recomendado resolver via ADR antes de qualquer implementação de `EXEC-003`/`EXEC-004`.
 
+## EXEC-005 — MT5 Adapter (fim da sequência travada, ADR-009)
+
+`Docs/03-architecture/EXEC-005-MT5-Adapter.md` detalha o quinto e último Execution Component da sequência travada em `ADR-009`. Especifica isolamento total da API MT5 (nenhum outro componente pode conhecer tipos da API MT5), 8 operações conceituais, tratamento de erro, eventos e dependências (exclusivamente a API MT5 — nenhuma dependência de negócio). Rastreado contra `ARCH-001`, `SPEC-001`, `EXEC-001`, `EXEC-002`.
+
+Nenhuma divergência arquitetural nova foi encontrada — primeira entrega da série `EXEC-00X` sem RFC associada. Registrada apenas uma observação de rastreabilidade (não uma inconsistência): `GetAccount()`/`Account Snapshot`, aqui definidos, podem ser a origem real do dado que `EXEC-003` (Risk Service) esperava de um "Account Provider" não catalogado (`RFC-006`) — relevante para quando essa RFC for resolvida, sem decidir nada agora.
+
+Com `EXEC-005`, a sequência travada `EXEC-001 → EXEC-002 → EXEC-003 → EXEC-004 → EXEC-005` (`ADR-009`) está completa. O próximo item da sequência é Sprint 1, que — por instrução do Product Owner — permanece condicionado à revisão pendente de `RFC-006` e `RFC-007` antes de avançar.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
