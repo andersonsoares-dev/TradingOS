@@ -4,7 +4,7 @@
 #ifndef __MARKET_CONTEXT_MQH__
 #define __MARKET_CONTEXT_MQH__
 
-#include "../Indicators/TrendService.mqh"
+#include <TradingOS/Indicators/TrendService.mqh>
 
 struct MarketContext
 {
@@ -20,6 +20,18 @@ struct MarketContext
    ENUM_TREND TrendH1;
    ENUM_TREND TrendM15;
 
+   double AtrH4;
+   double AtrH1;
+   double AtrM15;
+
+   double RsiH4;
+   double RsiH1;
+   double RsiM15;
+
+   double AdxH4;
+   double AdxH1;
+   double AdxM15;
+
    void Clear()
    {
       Symbol = "";
@@ -33,6 +45,18 @@ struct MarketContext
       TrendH4 = TREND_SIDE;
       TrendH1 = TREND_SIDE;
       TrendM15 = TREND_SIDE;
+
+      AtrH4 = 0.0;
+      AtrH1 = 0.0;
+      AtrM15 = 0.0;
+
+      RsiH4 = 0.0;
+      RsiH1 = 0.0;
+      RsiM15 = 0.0;
+
+      AdxH4 = 0.0;
+      AdxH1 = 0.0;
+      AdxM15 = 0.0;
    }
 };
 
