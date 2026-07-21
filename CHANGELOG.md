@@ -22,3 +22,8 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Evolução do domínio documentada (ADR-002).
 - Escopo estratégico alinhado (ADR-003).
 - Estratégia oficial de validação definida (ADR-004).
+
+### 2026-07-21 — Requirements
+
+- Adicionado `Docs/01-requirements/REQ-001-Requirements-Specification.md` — 12 requisitos funcionais (REQ-001 a REQ-012) e 8 requisitos não funcionais (NFR-001 a NFR-008).
+- `TRACEABILITY.md` atualizado com mapeamento de cada requisito contra a Legacy Baseline (V1).
