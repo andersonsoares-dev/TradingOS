@@ -190,6 +190,12 @@ RC-001 corrigiu exatamente os achados Críticos e Altos do AUDIT-001, sem criar 
 
 Achados Médios (#6-#10) e Baixos (#11-#14) do AUDIT-001 permanecem em aberto — fora do escopo do RC-001 por instrução explícita. Ver `Docs/06-validation/AUDIT-001-CLOSURE.md` para a matriz de severidade e estimativa de maturidade pós-RC-001.
 
+## ADR-007 — Architecture Baseline v1.0 Freeze
+
+`Docs/05-decisions/ADR-007-Architecture-Baseline-v1.0-Freeze.md` formaliza o congelamento da Baseline v1.0, já registrado como observação em `.project-rules/DOCUMENT_CONTROL.md` (v1.2.0). Escopo congelado: Governança (`ENG-000`, `CONST-001`, `VISION-001`, `DOCUMENT_CONTROL`, `CLAUDE.md`, `AGENTS.md`), Domínio (`DOMAIN-001` a `DOMAIN-005`), Arquitetura (`ARCH-001`) e Especificações (`SPEC-001` a `SPEC-006`). Alterações a esses documentos exigem, a partir de agora, um novo ADR, uma RFC aprovada, ou justificam-se apenas como correção documental sem impacto arquitetural.
+
+`Requirements` (`REQ-001`) foi explicitamente excluído deste congelamento — permanece livre para evoluir sem ADR/RFC prévia, desde que a mudança não toque o domínio ou a arquitetura já congelados.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

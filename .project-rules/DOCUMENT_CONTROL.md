@@ -1,6 +1,6 @@
 # DOCUMENT CONTROL PROTOCOL
 
-Version: 1.1.0
+Version: 1.2.0
 
 Status: Approved
 
@@ -303,3 +303,21 @@ O repositório Git é a memória permanente do projeto.
 As conversas são temporárias.
 
 Sempre que qualquer IA produzir conhecimento relevante, ele deverá ser persistido imediatamente no repositório.
+
+---
+
+# OBSERVAÇÃO — Architecture Baseline v1.0
+
+Os documentos de Governança, Domínio, Arquitetura e Especificações pertencentes à Baseline v1.0 encontram-se congelados.
+
+Alterações somente poderão ocorrer mediante:
+
+• ADR
+
+ou
+
+• RFC aprovada
+
+ou
+
+• correção documental sem impacto arquitetural.

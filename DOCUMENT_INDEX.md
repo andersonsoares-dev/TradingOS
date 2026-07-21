@@ -4,7 +4,7 @@
 
 | ID | Título | Caminho | Versão | Status |
 |---|---|---|---|---|
-| — | Document Control Protocol | .project-rules/DOCUMENT_CONTROL.md | 1.1.0 | Approved |
+| — | Document Control Protocol | .project-rules/DOCUMENT_CONTROL.md | 1.2.0 | Approved |
 | — | Claude AI Development Protocol | CLAUDE.md | — | Approved |
 | — | Universal AI Protocol | AGENTS.md | — | Approved |
 | ENG-000 | Engineering Handbook | Docs/00-governance/ENG-000-Engineering-Handbook.md | 1.0.0 | Approved |
@@ -29,6 +29,7 @@
 | ADR-004 | Validation Strategy | Docs/05-decisions/ADR-004-Validation-Strategy.md | 1.0.0 | Accepted |
 | ADR-005 | Ubiquitous Language Refinement | Docs/05-decisions/ADR-005-Ubiquitous-Language-Refinement.md | 1.0.0 | Accepted |
 | ADR-006 | Opportunity Lifecycle Alignment | Docs/05-decisions/ADR-006-Opportunity-Lifecycle-Alignment.md | 1.0.0 | Accepted |
+| ADR-007 | Architecture Baseline v1.0 Freeze | Docs/05-decisions/ADR-007-Architecture-Baseline-v1.0-Freeze.md | 1.0.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | RFC-001 | Risk Profile Classification | Docs/10-rfc/RFC-001-Risk-Profile-Classification.md | 1.0.0 | Open |
