@@ -18,6 +18,7 @@
 | DOMAIN-005 | Decision | Docs/02-domain/DOMAIN-005-Decision.md | 1.1.0 | Approved |
 | ARCH-001 | Architecture Blueprint | Docs/03-architecture/ARCH-001-Architecture-Blueprint.md | 1.2.0 | Approved |
 | INFRA-001 | Infrastructure Overview | Docs/03-architecture/INFRA-001-Infrastructure-Overview.md | 1.1.0 | Approved |
+| INFRA-002 | Data Provider | Docs/03-architecture/INFRA-002-Data-Provider.md | 1.0.0 | Approved |
 | SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.4.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
@@ -35,6 +36,7 @@
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | RFC-001 | Risk Profile Classification | Docs/10-rfc/RFC-001-Risk-Profile-Classification.md | 1.0.0 | Open |
 | RFC-002 | Infrastructure Candidate Components | Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md | 1.0.0 | Open |
+| RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 1.0.0 | Open |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -77,6 +79,7 @@ knowledge/
 - Ciclo de vida da Opportunity realinhado com os Bounded Contexts via ADR-006: Execution deixou de fazer parte do ciclo de vida da Opportunity (ver Docs/CHANGELOG.md — Architecture Stabilization / ADR-006).
 - Auditoria arquitetural completa realizada em `AUDIT-001` (Docs/06-validation), fechada por `RC-001` (ver `AUDIT-001-CLOSURE.md`): os 2 achados Críticos e os 3 Altos foram tratados; Risk Profile permanece como Architectural Gap rastreado em `RFC-001` (decisão pendente); Strategy Bounded Context confirmado como ativo (decisão A), categoria correspondente em SPEC-001 permanece como trabalho futuro.
 - Architecture Baseline v1.0 congelada por `ADR-007`. Fase 2 (Platform Foundation) iniciada com `INFRA-001-Infrastructure-Overview.md`. `Event Dispatcher` e `Scheduler` (citados no brief da Entrega 01) não constam no Canonical Component Catalog (SPEC-001) — registrados em `RFC-002`, pendentes de decisão arquitetural.
+- `INFRA-002-Data-Provider.md` (Entrega 02) detalha o Port Data Provider. `Replay Adapter`, `CSV Provider`/`CSV Adapter`, `Mock Provider`, `REST Adapter`, `FIX Adapter` e `WebSocket Adapter` não constam no Canonical Component Catalog (SPEC-001) — registrados em `RFC-003`, pendentes de decisão arquitetural.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

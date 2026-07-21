@@ -206,6 +206,14 @@ Dois itens do brief de origem — `Event Dispatcher` e `Scheduler` — não cons
 
 **v1.1.0**: adicionada a seção "Princípio de Evolução", declarando que a camada Infrastructure deve permanecer compatível com futura integração de `Learning Engine`, `Knowledge Repository`, `Performance Analyzer` e `Recommendation Engine` via Ports & Adapters/Dependency Inversion, sem dependências diretas. Nenhum desses quatro nomes consta em SPEC-001; diferente de `Event Dispatcher`/`Scheduler`, não foram tratados como RFC nesta entrega, por não serem apresentados como componentes da camada — apenas como possíveis destinos de integração futura.
 
+## INFRA-002 — Data Provider (Fase 2, Entrega 02)
+
+`Docs/03-architecture/INFRA-002-Data-Provider.md` detalha o Port `Data Provider` (catalogado em `SPEC-001`, contratado em `SPEC-002`): responsabilidades, portas públicas (contratos, sem implementação), dependências permitidas/proibidas, extensibilidade, qualidade, diagrama, casos de uso, Definition of Ready/Done. Rastreado contra `ARCH-001`, `SPEC-001`, `SPEC-002`, `INFRA-001`. Respeita o congelamento de `ADR-007` — nenhum documento da Baseline foi alterado.
+
+Correção de vocabulário aplicada diretamente (sem RFC, por ser conformidade com regra já existente, não uma nova decisão): a porta `GetMarketState()` do brief de origem foi renomeada para `GetMarketStatus()`, pois `DOMAIN-002` proíbe explicitamente o termo "Market State".
+
+Seis nomes citados no brief de origem (`Replay Adapter`, `CSV Provider`/`CSV Adapter`, `Mock Provider`, `REST Adapter`, `FIX Adapter`, `WebSocket Adapter`) não constam no Canonical Component Catalog (`SPEC-001`). Registrados em `RFC-003` (Data Provider Candidate Adapters), classificados "Requires Architectural Decision", e não incorporados como dependências aprovadas em INFRA-002. `MT5 Adapter` foi referenciado usando a categorização já existente em SPEC-001 (Execution Component), mesma observação já feita em INFRA-001.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
