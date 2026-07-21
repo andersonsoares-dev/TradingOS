@@ -352,6 +352,14 @@ Ajuste de terminologia aplicado (cosmético — diferente da divergência de pip
 
 Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `ROADMAP-001` a `ROADMAP-003`, `EXEC-001`, `EXEC-002`, `EXEC-005`. Fora de escopo: novas estratégias, novos indicadores, gestão de portfólio, multiativo, otimizações.
 
+## ROADMAP-005 — Sprint 5 (First Execution & End-to-End Validation)
+
+`Docs/09-roadmap/ROADMAP-005-First-Execution.md` define a validação ponta a ponta do pipeline completo, sem implementar componente novo — exercita `INFRA-002`/`INFRA-003`/`EXEC-001` a `EXEC-005` já implementados nas sprints anteriores.
+
+A mesma divergência de pipeline identificada em `ROADMAP-003` (`Opportunity`/`Decision` como estágios, incompatíveis com a Alternativa B de `RFC-007`) reapareceu no brief de origem deste documento, junto com "Execution Result" (deveria ser `Order Response`, per `EXEC-005`). Corrigida da mesma forma, sem abrir nova RFC — `RFC-007` já resolveu esta questão e não há evidência de implementação/teste (`ADR-009` §8) que justifique reabri-la.
+
+Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `ROADMAP-001` a `ROADMAP-004`, `INFRA-002`, `INFRA-003`, `EXEC-001` a `EXEC-005`, `DATA-001` (convenção de evidências reaproveitada). Marca o encerramento formal da Release 1.0 após sua conclusão.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

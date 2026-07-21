@@ -285,3 +285,11 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Ajuste cosmético de terminologia (não uma divergência de pipeline, diferente de ROADMAP-003): "Decision" (gatilho de Order Manager) e "Execution Result" (saída de MT5 Adapter) do brief de origem substituídos pelos termos exatos já especificados — `Signal Result`/`Risk Result` (entradas de EXEC-001) e `Order Response` (saída de EXEC-005).
 - Checklist técnico (Order Manager + MT5 Adapter + Position Manager), 7 validações, 8 cenários de teste, critérios de aceitação, 3 riscos técnicos de integração registrados (sem propor alteração arquitetural).
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-004.
+
+### 2026-07-21 — ROADMAP-005 (Sprint 5 — First Execution & End-to-End Validation)
+
+- Adicionado `Docs/09-roadmap/ROADMAP-005-First-Execution.md` — plano de validação ponta a ponta do pipeline completo (`Data Provider → Indicator Provider → Signal Builder → Risk Service → Order Manager → MT5 Adapter → Position Manager`), sem implementar nenhum componente novo.
+- **Mesma divergência de pipeline do `ROADMAP-003` reapareceu no brief de origem** (`Opportunity`/`Decision` como estágios, "Execution Result" como saída de MT5 Adapter) — corrigida da mesma forma, usando os nomes já aprovados em `RFC-007`/`EXEC-003`/`EXEC-004`/`EXEC-005`. Nenhuma RFC nova aberta.
+- 10 validações funcionais, 7 validações técnicas, 10 testes end-to-end, plano de evidências (reaproveitando a convenção de `DATA-001`), classificação de resultado (SUCCESS/PARTIAL SUCCESS/FAILED).
+- Documento marca, ao final, que a conclusão desta sprint encerra a Release 1.0.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-005.
