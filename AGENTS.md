@@ -97,45 +97,47 @@ Discussões exploratórias, brainstorms, análises comparativas e revisões arqu
 
 # Estrutura oficial
 
+Esta passa a ser a **única estrutura oficial** do projeto (ver Docs/CHANGELOG.md — Repository Structure Stabilization).
+
 docs/
 
-00-governance/
+├── 00-governance/
 
-01-domain/
+├── 01-requirements/
 
-02-architecture/
+├── 02-domain/
 
-03-specifications/
+├── 03-architecture/
 
-04-validation/
+├── 04-specifications/
 
-05-development/
+├── 05-decisions/
 
-06-research/
+├── 06-validation/
 
-07-knowledge/
+├── 07-testing/
 
-08-adr/
+├── 08-reference/
 
-09-rfc/
+├── 09-roadmap/
 
-10-roadmap/
+└── 10-rfc/
 
 knowledge/
 
-meeting-notes/
+├── meeting-notes/
 
-brainstorm/
+├── brainstorm/
 
-experiments/
+├── experiments/
 
-benchmarks/
+├── benchmarks/
 
-lessons-learned/
+├── lessons-learned/
 
-papers/
+├── papers/
 
-articles/
+└── articles/
 
 ---
 

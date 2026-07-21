@@ -37,3 +37,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `TRACEABILITY.md` atualizado com referência a DOMAIN-001.
 - Adicionado `Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md` — vocabulário oficial do domínio (Opportunity, Market Context, Evidence, Decision, Confidence, Risk Profile, Strategy, Signal, Indicator, Adapter, Domain Service, Infrastructure Service) e regras de linguagem proibindo sinônimos.
 - `TRACEABILITY.md` atualizado com nota sobre divergência de vocabulário entre DOMAIN-002 e a Legacy Baseline (coberta por ADR-001/ADR-002).
+
+### 2026-07-21 — Repository Structure Stabilization
+
+- Estrutura documental reorganizada.
+- ADRs movidos para `docs/05-decisions`.
+- Numeração de diretórios padronizada.
+- Estrutura oficial consolidada.

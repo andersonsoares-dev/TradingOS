@@ -13,11 +13,11 @@
 | REQ-001 | Requirements Specification | Docs/01-requirements/REQ-001-Requirements-Specification.md | 1.0.0 | Approved |
 | DOMAIN-001 | Opportunity | Docs/02-domain/DOMAIN-001-Opportunity.md | 1.0.0 | Approved |
 | DOMAIN-002 | Ubiquitous Language | Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md | 1.0.0 | Approved |
-| ADR-001 | Legacy Baseline | Docs/02-adr/ADR-001-Legacy-Baseline.md | 1.0.0 | Accepted |
-| ADR-002 | Domain Evolution | Docs/02-adr/ADR-002-Domain-Evolution.md | 1.0.0 | Accepted |
-| ADR-003 | Product Scope | Docs/02-adr/ADR-003-Product-Scope.md | 1.0.0 | Accepted |
-| ADR-004 | Validation Strategy | Docs/02-adr/ADR-004-Validation-Strategy.md | 1.0.0 | Accepted |
-| ADR-005 | Ubiquitous Language Refinement | Docs/02-adr/ADR-005-Ubiquitous-Language-Refinement.md | 1.0.0 | Accepted |
+| ADR-001 | Legacy Baseline | Docs/05-decisions/ADR-001-Legacy-Baseline.md | 1.0.0 | Accepted |
+| ADR-002 | Domain Evolution | Docs/05-decisions/ADR-002-Domain-Evolution.md | 1.0.0 | Accepted |
+| ADR-003 | Product Scope | Docs/05-decisions/ADR-003-Product-Scope.md | 1.0.0 | Accepted |
+| ADR-004 | Validation Strategy | Docs/05-decisions/ADR-004-Validation-Strategy.md | 1.0.0 | Accepted |
+| ADR-005 | Ubiquitous Language Refinement | Docs/05-decisions/ADR-005-Ubiquitous-Language-Refinement.md | 1.0.0 | Accepted |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -25,8 +25,36 @@
 | — | Traceability Matrix | TRACEABILITY.md | — | Living document |
 | — | README | README.md | — | Living document |
 
+## Document Structure
+
+Estrutura oficial e definitiva (ver AGENTS.md), sem colisões de numeração:
+
+```
+docs/
+├── 00-governance/       Governança e princípios fundamentais
+├── 01-requirements/      Requisitos oficiais
+├── 02-domain/            Modelo de domínio
+├── 03-architecture/      Arquitetura
+├── 04-specifications/    Especificações técnicas
+├── 05-decisions/         Architecture Decision Records (ADR)
+├── 06-validation/        Validação
+├── 07-testing/           Testes
+├── 08-reference/         Referências técnicas
+├── 09-roadmap/           Roadmap
+└── 10-rfc/               Propostas em discussão
+
+knowledge/
+├── meeting-notes/
+├── brainstorm/
+├── experiments/
+├── benchmarks/
+├── lessons-learned/
+├── papers/
+└── articles/
+```
+
 ## Pendências conhecidas
 
 - `DOMAIN-003`, `DOMAIN-004`, `DOMAIN-005` e `ARCH-001` (referenciados como `related` em VISION-001, REQ-001, DOMAIN-001 e DOMAIN-002) ainda não existem.
-- Numeração de pasta inconsistente: `Docs/01-requirements/` (REQ-001) vs. `01-domain/` previsto na estrutura oficial do AGENTS.md; `Docs/02-adr/` e `Docs/02-domain/` disputam o mesmo prefixo "02" entre si e com `02-architecture/` previsto na mesma estrutura.
+- `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.
