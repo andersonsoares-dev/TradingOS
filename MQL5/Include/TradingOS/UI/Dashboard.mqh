@@ -31,17 +31,20 @@ private:
       {
          ObjectCreate(0, name, OBJ_LABEL, 0, 0, 0);
          ObjectSetInteger(0, name, OBJPROP_CORNER,     CORNER_RIGHT_UPPER);
-         ObjectSetInteger(0, name, OBJPROP_ANCHOR,     ANCHOR_RIGHT_UPPER);
-         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  15);
-         ObjectSetInteger(0, name, OBJPROP_FONTSIZE,   9);
+         ObjectSetInteger(0, name, OBJPROP_ANCHOR,     ANCHOR_UPPER);
+         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  260);
+         ObjectSetInteger(0, name, OBJPROP_FONTSIZE,   8);
          ObjectSetString(0,  name, OBJPROP_FONT,       "Consolas");
          ObjectSetInteger(0, name, OBJPROP_COLOR,      clrWhite);
          ObjectSetInteger(0, name, OBJPROP_SELECTABLE, false);
          ObjectSetInteger(0, name, OBJPROP_HIDDEN,     true);
       }
 
-      ObjectSetInteger(0, name, OBJPROP_YDISTANCE, 15 + m_count * 14);
-      ObjectSetString(0, name, OBJPROP_TEXT, text);
+      ObjectSetInteger(0, name, OBJPROP_YDISTANCE, 15 + m_count * 17);
+
+      // String vazia nao e aceita pela API para OBJPROP_TEXT (mantem o
+      // texto padrao "Label"). Usar espaco para linhas em branco.
+      ObjectSetString(0, name, OBJPROP_TEXT, (text == "") ? " " : text);
 
       m_count++;
    }
@@ -121,14 +124,14 @@ private:
 
       string bar = "";
       for(int i = 0; i < 10; i++)
-         bar += (i < filled) ? "#" : "-";
+         bar += (i < filled) ? "█" : "░";
 
       return bar;
    }
 
    string Confirm(bool confirmed, const string label)
    {
-      return (confirmed ? "OK " : "X  ") + label;
+      return (confirmed ? "✔ " : "✘ ") + label;
    }
 
 public:
