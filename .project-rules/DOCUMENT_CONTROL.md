@@ -1,6 +1,6 @@
 # DOCUMENT CONTROL PROTOCOL
 
-Version: 1.0.0
+Version: 1.1.0
 
 Status: Approved
 
@@ -29,6 +29,82 @@ Nunca às conversas.
 Todo conhecimento deverá ser convertido em um artefato versionado dentro do repositório.
 
 O repositório é a única fonte oficial da verdade (Single Source of Truth).
+
+---
+
+# ORDEM DE PRECEDÊNCIA DOCUMENTAL
+
+DOCUMENT_CONTROL
+
+↓
+
+CONSTITUTION
+
+↓
+
+ADR
+
+↓
+
+DOMAIN
+
+↓
+
+ARCH
+
+↓
+
+SPEC
+
+↓
+
+ENGINEERING
+
+↓
+
+REFERENCE
+
+↓
+
+VALIDATION
+
+↓
+
+ROADMAP
+
+Em caso de conflito entre documentos, respeitar exatamente esta ordem.
+
+Esta hierarquia é idêntica em CLAUDE.md, AGENTS.md e neste documento (RC-001, fechamento de AUDIT-001 Finding #1).
+
+---
+
+# ESTRUTURA OFICIAL DO REPOSITÓRIO
+
+```
+docs/
+├── 00-governance/       Governança e princípios fundamentais
+├── 01-requirements/      Requisitos oficiais
+├── 02-domain/            Modelo de domínio
+├── 03-architecture/      Arquitetura
+├── 04-specifications/    Especificações técnicas
+├── 05-decisions/         Architecture Decision Records (ADR)
+├── 06-validation/        Validação
+├── 07-testing/           Testes
+├── 08-reference/         Referências técnicas
+├── 09-roadmap/           Roadmap
+└── 10-rfc/               Propostas em discussão
+
+knowledge/
+├── meeting-notes/
+├── brainstorm/
+├── experiments/
+├── benchmarks/
+├── lessons-learned/
+├── papers/
+└── articles/
+```
+
+Esta é a única árvore oficial do repositório (RC-001, fechamento de AUDIT-001 Finding #2). Idêntica à estrutura descrita em AGENTS.md e DOCUMENT_INDEX.md.
 
 ---
 
@@ -164,7 +240,11 @@ quando aplicável.
 
 Toda pesquisa deverá ser armazenada em:
 
-docs/research/
+knowledge/papers/
+
+ou
+
+knowledge/articles/
 
 ---
 
@@ -172,7 +252,7 @@ docs/research/
 
 Toda decisão arquitetural deverá ser armazenada em:
 
-docs/adr/
+05-decisions/
 
 ---
 
@@ -180,7 +260,7 @@ docs/adr/
 
 Toda ideia ainda não aprovada deverá ser armazenada em:
 
-docs/rfc/
+10-rfc/
 
 ---
 

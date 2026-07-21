@@ -174,6 +174,22 @@ Consolidação da nomenclatura arquitetural entre SPEC-001/002/003, eliminando 3
 
 `SPEC-001` passa a ser a fonte única de nomenclatura (ver regra "Canonical Naming" em `AGENTS.md`); `SPEC-002`/`SPEC-003` foram atualizados para reutilizar exatamente esses nomes.
 
+## AUDIT-001 — Architecture Baseline Audit (v1.0.0)
+
+`Docs/06-validation/AUDIT-001-Architecture-Baseline.md` audita os 36 documentos do repositório contra si mesmos (vocabulário, componentes, arquitetura, rastreabilidade), exclusivamente por leitura direta. Identificou 14 inconsistências reais (2 Críticas, 3 Altas, 5 Médias, 4 Baixas) — nenhuma delas invalida o modelo de domínio ou a arquitetura-alvo construídos ao longo deste changelog.
+
+## RC-001 — Release Candidate (fechamento de achados Críticos e Altos do AUDIT-001)
+
+RC-001 corrigiu exatamente os achados Críticos e Altos do AUDIT-001, sem criar novos conceitos de domínio, novos componentes, sem alterar arquitetura e sem modificar decisões de ADR:
+
+- Finding #1 (Crítico — CLAUDE.md/AGENTS.md com ordem de precedência divergente): resolvido — hierarquia unificada (DOCUMENT_CONTROL → CONSTITUTION → ADR → DOMAIN → ARCH → SPEC → ENGINEERING → REFERENCE → VALIDATION → ROADMAP) replicada identicamente em `CLAUDE.md`, `AGENTS.md` e `.project-rules/DOCUMENT_CONTROL.md` (v1.1.0).
+- Finding #2 (Crítico — DOCUMENT_CONTROL.md referenciando pastas inexistentes): resolvido — Regras 13/14/15 corrigidas para `knowledge/papers/`/`knowledge/articles/`, `05-decisions/`, `10-rfc/`; árvore oficial adicionada a `DOCUMENT_CONTROL.md`; `CLAUDE.md` (terceira variante divergente) corrigido para a mesma árvore de `AGENTS.md`/`DOCUMENT_INDEX.md`.
+- Finding #3 (Alto — Risk Profile sem DOMAIN próprio): não resolvido arquiteturalmente (proibido criar DOMAIN novo nesta etapa) — tratado via triagem formal: `AUDIT-001` marcado com status "Architectural Gap"; `RFC-001` criado, classificado "Requires Architectural Decision".
+- Finding #4 (Alto — Strategy Bounded Context sem componentes em SPEC-001): decisão registrada (Opção A — Strategy permanece, necessita futura especificação), baseada em REQ-011/ADR-003/ARCH-001/DOMAIN-002. `ARCH-001` não foi alterado (só a Opção B exigiria alteração). A categoria correspondente em SPEC-001 permanece como trabalho futuro, não bloqueante.
+- Finding #5 (Alto — ADR-004 não referenciado em CLAUDE.md/AGENTS.md): resolvido — seções "Testes" de ambos os documentos agora referenciam explicitamente o pipeline de validação do ADR-004. ADR-004 permanece inalterado.
+
+Achados Médios (#6-#10) e Baixos (#11-#14) do AUDIT-001 permanecem em aberto — fora do escopo do RC-001 por instrução explícita. Ver `Docs/06-validation/AUDIT-001-CLOSURE.md` para a matriz de severidade e estimativa de maturidade pós-RC-001.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

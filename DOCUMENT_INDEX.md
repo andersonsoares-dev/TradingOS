@@ -4,7 +4,7 @@
 
 | ID | Título | Caminho | Versão | Status |
 |---|---|---|---|---|
-| — | Document Control Protocol | .project-rules/DOCUMENT_CONTROL.md | 1.0.0 | Approved |
+| — | Document Control Protocol | .project-rules/DOCUMENT_CONTROL.md | 1.1.0 | Approved |
 | — | Claude AI Development Protocol | CLAUDE.md | — | Approved |
 | — | Universal AI Protocol | AGENTS.md | — | Approved |
 | ENG-000 | Engineering Handbook | Docs/00-governance/ENG-000-Engineering-Handbook.md | 1.0.0 | Approved |
@@ -29,6 +29,9 @@
 | ADR-004 | Validation Strategy | Docs/05-decisions/ADR-004-Validation-Strategy.md | 1.0.0 | Accepted |
 | ADR-005 | Ubiquitous Language Refinement | Docs/05-decisions/ADR-005-Ubiquitous-Language-Refinement.md | 1.0.0 | Accepted |
 | ADR-006 | Opportunity Lifecycle Alignment | Docs/05-decisions/ADR-006-Opportunity-Lifecycle-Alignment.md | 1.0.0 | Accepted |
+| AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
+| AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
+| RFC-001 | Risk Profile Classification | Docs/10-rfc/RFC-001-Risk-Profile-Classification.md | 1.0.0 | Open |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -69,6 +72,7 @@ knowledge/
 - Suíte de domínio (DOMAIN-001 a DOMAIN-005), arquitetura (ARCH-001) e seis especificações técnicas (SPEC-001 a SPEC-006) completas.
 - `SPEC-007` (referenciado como `related` em SPEC-006) ainda não existe.
 - Ciclo de vida da Opportunity realinhado com os Bounded Contexts via ADR-006: Execution deixou de fazer parte do ciclo de vida da Opportunity (ver Docs/CHANGELOG.md — Architecture Stabilization / ADR-006).
+- Auditoria arquitetural completa realizada em `AUDIT-001` (Docs/06-validation), fechada por `RC-001` (ver `AUDIT-001-CLOSURE.md`): os 2 achados Críticos e os 3 Altos foram tratados; Risk Profile permanece como Architectural Gap rastreado em `RFC-001` (decisão pendente); Strategy Bounded Context confirmado como ativo (decisão A), categoria correspondente em SPEC-001 permanece como trabalho futuro.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

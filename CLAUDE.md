@@ -22,21 +22,47 @@ Sempre consulte a documentação antes de implementar qualquer alteração.
 
 Sempre respeite esta ordem de precedência.
 
-1. .project-rules/DOCUMENT_CONTROL.md
+DOCUMENT_CONTROL
 
-2. docs/00-governance/CONST-001.md
+↓
 
-3. ADRs
+CONSTITUTION
 
-4. ARCH
+↓
 
-5. DOMAIN
+ADR
 
-6. SPEC
+↓
 
-7. Código
+DOMAIN
+
+↓
+
+ARCH
+
+↓
+
+SPEC
+
+↓
+
+ENGINEERING
+
+↓
+
+REFERENCE
+
+↓
+
+VALIDATION
+
+↓
+
+ROADMAP
 
 Caso exista conflito entre documentos, respeite essa ordem.
+
+Esta hierarquia é idêntica em CLAUDE.md, AGENTS.md e .project-rules/DOCUMENT_CONTROL.md (RC-001, fechamento de AUDIT-001 Finding #1).
 
 ---
 
@@ -102,29 +128,31 @@ Antes de qualquer implementação:
 
 Toda documentação deverá permanecer organizada em:
 
+```
 docs/
+├── 00-governance/       Governança e princípios fundamentais
+├── 01-requirements/      Requisitos oficiais
+├── 02-domain/            Modelo de domínio
+├── 03-architecture/      Arquitetura
+├── 04-specifications/    Especificações técnicas
+├── 05-decisions/         Architecture Decision Records (ADR)
+├── 06-validation/        Validação
+├── 07-testing/           Testes
+├── 08-reference/         Referências técnicas
+├── 09-roadmap/           Roadmap
+└── 10-rfc/               Propostas em discussão
 
-00-governance/
+knowledge/
+├── meeting-notes/
+├── brainstorm/
+├── experiments/
+├── benchmarks/
+├── lessons-learned/
+├── papers/
+└── articles/
+```
 
-01-domain/
-
-02-architecture/
-
-03-specifications/
-
-04-validation/
-
-05-development/
-
-06-research/
-
-07-knowledge/
-
-08-adr/
-
-09-rfc/
-
-10-roadmap/
+Esta é a única árvore oficial do repositório (RC-001, fechamento de AUDIT-001 Finding #2). Idêntica à estrutura descrita em AGENTS.md, DOCUMENT_INDEX.md e .project-rules/DOCUMENT_CONTROL.md.
 
 ---
 
@@ -169,9 +197,11 @@ Objetos de domínio deverão ser imutáveis.
 
 # Testes
 
-Toda funcionalidade nova deverá possuir testes.
+Toda funcionalidade nova deverá atingir o nível de validação apropriado definido em ADR-004: Static Analysis → Compilation → Strategy Tester → Historical Simulation → Walk Forward → Demo Validation → Production Validation.
 
-Nenhum código crítico sem testes.
+MQL5 não possui framework de testes unitários equivalente ao de outras linguagens. "Testes atualizados" (Definition of Done, ENG-000) significa atingir o nível de validação apropriado do ADR-004, não necessariamente teste unitário automatizado.
+
+Nenhum código crítico sem o nível de validação apropriado alcançado.
 
 ---
 

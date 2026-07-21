@@ -38,21 +38,47 @@ Sempre consultar os documentos oficiais.
 
 # Ordem de precedência
 
-1. .project-rules/DOCUMENT_CONTROL.md
+DOCUMENT_CONTROL
 
-2. docs/00-governance/CONST-001.md
+↓
 
-3. ADR
+CONSTITUTION
 
-4. DOMAIN
+↓
 
-5. ARCH
+ADR
 
-6. SPEC
+↓
 
-7. Código
+DOMAIN
+
+↓
+
+ARCH
+
+↓
+
+SPEC
+
+↓
+
+ENGINEERING
+
+↓
+
+REFERENCE
+
+↓
+
+VALIDATION
+
+↓
+
+ROADMAP
 
 Em caso de conflito seguir exatamente essa ordem.
+
+Esta hierarquia é idêntica em CLAUDE.md, AGENTS.md e .project-rules/DOCUMENT_CONTROL.md (RC-001, fechamento de AUDIT-001 Finding #1).
 
 ---
 
@@ -349,13 +375,11 @@ Toda integração deverá ocorrer através de Adapters.
 
 # Testes
 
-Toda funcionalidade nova deverá possuir:
+Toda funcionalidade nova deverá atingir o nível de validação apropriado definido em ADR-004: Static Analysis → Compilation → Strategy Tester → Historical Simulation → Walk Forward → Demo Validation → Production Validation.
 
-Testes Unitários
+MQL5 não possui framework de testes unitários equivalente ao de outras linguagens. "Testes atualizados" (Definition of Done, ENG-000) significa atingir o nível de validação apropriado do ADR-004, não necessariamente teste unitário automatizado.
 
-Testes de Integração
-
-quando aplicável.
+Testes Unitários e Testes de Integração continuam sendo incorporados como camada adicional sempre que tecnicamente viável — não como substitutos do pipeline de validação.
 
 ---
 
