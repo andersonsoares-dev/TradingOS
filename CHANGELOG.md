@@ -195,3 +195,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Adicionado `Docs/06-validation/BACKTEST-001-Backtest-Execution-Protocol.md` — procedimento operacional oficial para execução de Backtests: Entradas obrigatórias (commit/versão/ativo/timeframe/período/fonte/parâmetros/versão MT5), Ambiente (SO/versão MT5/build/Strategy Tester Mode/modelagem/timezone), Sequência Operacional de 10 etapas fixas, Saídas Obrigatórias (HTML/PDF/CSV/Journal/screenshot/config), Controle de Qualidade, Critérios de Invalidação, convenção de Armazenamento, Rastreabilidade (referencia VALIDATION-001, commit, versão da estratégia, execução), Definition of Done.
 - Documento não registra resultados nem aprova estratégias — apenas define o processo. Validado contra `VALIDATION-001` (mesmo Universo de Teste, mesma Hipótese de Risco via RFC-005, mesmo espírito do Protocolo de Teste de 7 etapas). Nenhum documento DOMAIN/ARCH/SPEC/ADR alterado.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com BACKTEST-001.
+
+### 2026-07-21 — DATA-001 (Validation Data & Evidence Repository Standard)
+
+- Adicionado `Docs/06-validation/DATA-001-Validation-Data-Repository-Standard.md` — padroniza estrutura de pastas (`Campaign-NNN/Test-NNN/{Config,Reports,Logs,Raw,Screenshots}`), convenção de nomes, metadados por execução (idênticos aos já exigidos por VALIDATION-001/BACKTEST-001, sem redefini-los), política de retenção e rastreabilidade dos artefatos de validação.
+- Pasta raiz proposta no brief de origem (`Validation/`) renomeada para `validation-runs/` — evita colisão de nome com `Docs/06-validation/` (que guarda os documentos `.md` de protocolo, não os artefatos brutos), mesma preocupação já registrada em `ADR-008`.
+- Recomendação registrada (não decisão): `Raw/` e `Screenshots/` não deveriam ser versionados diretamente no Git principal, dado o precedente de binários no histórico já apontado em `Docs/TECH_DEBT.md` (item 8) — avaliar armazenamento externo ou Git LFS antes do primeiro backtest real.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com DATA-001.

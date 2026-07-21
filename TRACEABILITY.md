@@ -252,6 +252,14 @@ A recomendação depende de aprovação via ADR próprio antes de influenciar `D
 
 `Docs/06-validation/BACKTEST-001-Backtest-Execution-Protocol.md` define exclusivamente o procedimento operacional de execução de Backtests — não registra resultados, não aprova estratégias, não altera regras de negócio. Rastreado contra `VALIDATION-001`: usa o mesmo Universo de Teste, a mesma Hipótese de Risco (via `RFC-005`) e é consistente com o Protocolo de Teste de 7 etapas de `VALIDATION-001` (aqui detalhado em 10 etapas operacionais específicas do MT5, sem contradição — nível de abstração diferente, mesmo processo). Define Entradas, Ambiente, Saídas Obrigatórias, Controle de Qualidade, Critérios de Invalidação, convenção de Armazenamento e Definition of Done. Nenhum documento `DOMAIN`/`ARCH`/`SPEC`/`ADR` foi alterado.
 
+## DATA-001 — Validation Data & Evidence Repository Standard
+
+`Docs/06-validation/DATA-001-Validation-Data-Repository-Standard.md` padroniza a organização física dos artefatos de validação (`validation-runs/Campaign-NNN/Test-NNN/{Config,Reports,Logs,Raw,Screenshots}`), convenção de nomes, metadados (reutiliza exatamente os campos já exigidos por `VALIDATION-001`/`BACKTEST-001`, sem redefini-los), retenção e rastreabilidade. Rastreado contra `VALIDATION-001`, `BACKTEST-001`.
+
+A pasta raiz proposta no brief de origem (`Validation/`) foi renomeada para `validation-runs/` para evitar colisão de nome com `Docs/06-validation/` (documentos `.md` de protocolo) — mesma preocupação de nomenclatura já registrada em `ADR-008` ao decidir não criar um segundo diretório `validation/`.
+
+Registrada recomendação (não decisão): `Raw/` e `Screenshots/` não deveriam ser versionados diretamente no Git principal, dado o precedente de binários no histórico já apontado em `Docs/TECH_DEBT.md` (item 8) — avaliar armazenamento externo ou Git LFS antes do primeiro backtest real.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
