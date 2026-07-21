@@ -15,6 +15,7 @@
 | DOMAIN-002 | Ubiquitous Language | Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md | 1.0.0 | Approved |
 | DOMAIN-003 | Evidence | Docs/02-domain/DOMAIN-003-Evidence.md | 1.0.0 | Approved |
 | DOMAIN-004 | Market Context | Docs/02-domain/DOMAIN-004-Market-Context.md | 1.0.0 | Approved |
+| DOMAIN-005 | Decision | Docs/02-domain/DOMAIN-005-Decision.md | 1.0.0 | Approved |
 | ADR-001 | Legacy Baseline | Docs/05-decisions/ADR-001-Legacy-Baseline.md | 1.0.0 | Accepted |
 | ADR-002 | Domain Evolution | Docs/05-decisions/ADR-002-Domain-Evolution.md | 1.0.0 | Accepted |
 | ADR-003 | Product Scope | Docs/05-decisions/ADR-003-Product-Scope.md | 1.0.0 | Accepted |
@@ -57,6 +58,6 @@ knowledge/
 
 ## Pendências conhecidas
 
-- `DOMAIN-005` e `ARCH-001` (referenciados como `related` em VISION-001, REQ-001, DOMAIN-001, DOMAIN-002, DOMAIN-003 e DOMAIN-004) ainda não existem.
+- `ARCH-001` e `SPEC-001` (referenciados como `related` em VISION-001, REQ-001, DOMAIN-001 a DOMAIN-005) ainda não existem. Suíte de domínio (DOMAIN-001 a DOMAIN-005) completa.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

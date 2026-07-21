@@ -65,6 +65,12 @@ Requisitos não atendidos (REQ-002, REQ-009, REQ-011, REQ-012) não são tratado
 
 `Docs/02-domain/DOMAIN-004-Market-Context.md` define o Aggregate Root `Market Context` (ContextId/Asset/Timeframe/Timestamp/Evidence Collection/Summary/Confidence), imutável após construção (BR-005), rastreado contra REQ-002 a REQ-005 e REQ-010. **Atenção a colisão de nome**: a V1 já possui um `struct MarketContext` (`MQL5/Include/TradingOS/Models/MarketContext.mqh`) — mesmo nome, estrutura diferente (mutável, campos públicos escritos diretamente pelo `MarketService`, sem coleção formal de `Evidence`). O próprio DOMAIN-004 reconhece isso na seção "Legacy Baseline". Nenhuma migração retroativa é exigida (ADR-001).
 
+## DOMAIN-005 — Decision (modelo-alvo)
+
+`Docs/02-domain/DOMAIN-005-Decision.md` define o objeto de domínio imutável `Decision` (DecisionId/OpportunityId/ContextId/Decision Type/Confidence/Rationale/Timestamp), rastreado contra REQ-005 a REQ-010. O próprio documento reconhece que, na Legacy Baseline, `TradingSignal`, `SignalBuilderService` e `ENUM_TRADING_SIGNAL` desempenham parcialmente esse papel — sem `DecisionId`/`OpportunityId`/`ContextId` formais, e sem separação entre Decision (conclusão do domínio) e Signal (representação de execução), distinção que o ADR-005 já formalizou no vocabulário. Nenhuma migração retroativa é exigida (ADR-001/ADR-002).
+
+Com DOMAIN-005, a suíte de domínio-alvo está completa: `DOMAIN-001` (Opportunity) → `DOMAIN-003` (Evidence) → `DOMAIN-004` (Market Context) → `DOMAIN-005` (Decision), com `DOMAIN-002` (Ubiquitous Language) definindo o vocabulário comum a todos.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
