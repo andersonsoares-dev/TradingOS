@@ -93,3 +93,22 @@ Desacoplar a identificação das sessões do horário do servidor e permitir mai
 **Prioridade**: Baixa.
 
 **Justificativa**: Não impacta a compilação nem o funcionamento da V1 e não bloqueia nenhuma sprint atual.
+
+### Parametrizar timeframe do PivotService
+
+**Descrição**: Na V1 o `PivotService` utiliza exclusivamente o candle diário fechado (`PERIOD_D1`, shift 1).
+
+**Objetivo**: Na V2 avaliar:
+- D1
+- W1
+- MN1
+
+configuráveis via `Config`.
+
+**Status**: Postergado para V2.
+
+**Origem**: Sprint 5.2 – PivotService.
+
+**Prioridade**: Baixa.
+
+**Justificativa**: Não impacta a compilação nem o funcionamento da V1 e não bloqueia nenhuma sprint atual.
