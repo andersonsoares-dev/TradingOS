@@ -44,3 +44,9 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - ADRs movidos para `docs/05-decisions`.
 - Numeração de diretórios padronizada.
 - Estrutura oficial consolidada.
+- Adicionada regra em `AGENTS.md`: documentos devem ser referenciados por `id` (nunca por caminho físico), desacoplando identidade lógica de localização — reduz o custo de futuras reorganizações de diretório.
+
+### 2026-07-21 — Domain (Evidence)
+
+- Adicionado `Docs/02-domain/DOMAIN-003-Evidence.md` — conceito de Evidence (observação imutável do mercado), estrutura (Category/Source/Value/Confidence/Weight/Timestamp/Metadata), classificação (Primary/Derived/Composite) e regras de negócio (BR-001 a BR-005).
+- `TRACEABILITY.md` atualizado com referência a DOMAIN-003 e seu mapeamento contra a Legacy Baseline.
