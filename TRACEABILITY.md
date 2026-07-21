@@ -268,6 +268,14 @@ Especifica responsabilidades, entradas/saídas, máquina de estados com condiç�
 
 Dependência registrada, não uma inconsistência: `Order Manager` consome `Risk Result`, cujo formato depende da classificação de `Risk Profile` — ainda `Open` em `RFC-001`. `EXEC-001` consome esse dado como entrada abstrata, sem antecipar sua estrutura; poderá exigir revisão de compatibilidade quando `RFC-001` for decidida.
 
+## EXEC-002 — Position Manager
+
+`Docs/03-architecture/EXEC-002-Position-Manager.md` detalha o Execution Component `Position Manager` (já catalogado em `SPEC-001`, status `Future`). Solicitado originalmente como `SPEC-007` — mesmo tratamento já aplicado a `EXEC-001`: componente único segue o prefixo `EXEC-00X`, não `SPEC-00X`.
+
+Especifica responsabilidades, entradas (originadas em `EXEC-001` — Order Accepted/Filled/Modified/Closed), saídas, máquina de estados de 7 estágios com condições de transição explícitas, atributos mínimos da posição, validações, eventos, interface de consulta, dependências e casos de teste. Rastreado contra `ARCH-001`, `SPEC-001`, `EXEC-001`.
+
+Mesma dependência não satisfeita já registrada em `EXEC-001`: consumo por `Risk Service` depende da classificação de `Risk Profile`, ainda `Open` em `RFC-001`.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
