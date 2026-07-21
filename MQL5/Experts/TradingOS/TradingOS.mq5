@@ -31,6 +31,10 @@ int OnInit()
 
    Dashboard.Create();
 
+   // Limpa objetos orfaos de versoes anteriores do PivotRenderer antes
+   // de comecar a desenhar (idempotente - nao afeta um grafico limpo).
+   PivotRenderer.Destroy();
+
    CLogger::Info("TradingOS iniciado.");
 
    return(INIT_SUCCEEDED);

@@ -92,6 +92,17 @@ public:
       RemoveLevel("TradingOS_Pivot_S3");
       RemoveLevel("TradingOS_Pivot_YH");
       RemoveLevel("TradingOS_Pivot_YL");
+
+      // Objetos orfaos da 1a versao do PivotRenderer (antes de existirem
+      // rotulos/sufixo _Line), quando os nomes eram sem sufixo e o estilo
+      // era tracejado. Limpeza definitiva de migracao.
+      ObjectDelete(0, "TradingOS_Pivot_PP");
+      ObjectDelete(0, "TradingOS_Pivot_R1");
+      ObjectDelete(0, "TradingOS_Pivot_R2");
+      ObjectDelete(0, "TradingOS_Pivot_R3");
+      ObjectDelete(0, "TradingOS_Pivot_S1");
+      ObjectDelete(0, "TradingOS_Pivot_S2");
+      ObjectDelete(0, "TradingOS_Pivot_S3");
    }
 };
 

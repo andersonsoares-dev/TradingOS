@@ -31,8 +31,8 @@ private:
       {
          ObjectCreate(0, name, OBJ_LABEL, 0, 0, 0);
          ObjectSetInteger(0, name, OBJPROP_CORNER,     CORNER_RIGHT_UPPER);
-         ObjectSetInteger(0, name, OBJPROP_ANCHOR,     ANCHOR_UPPER);
-         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  260);
+         ObjectSetInteger(0, name, OBJPROP_ANCHOR,     ANCHOR_LEFT_UPPER);
+         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  180);
          ObjectSetInteger(0, name, OBJPROP_FONTSIZE,   8);
          ObjectSetString(0,  name, OBJPROP_FONT,       "Consolas");
          ObjectSetInteger(0, name, OBJPROP_COLOR,      clrWhite);
@@ -134,6 +134,32 @@ private:
       return (confirmed ? "✔ " : "✘ ") + label;
    }
 
+   void AddWrapped(const string text, int maxWidth)
+   {
+      string words[];
+      int wordCount = StringSplit(text, ' ', words);
+
+      string line = "";
+
+      for(int i = 0; i < wordCount; i++)
+      {
+         string candidate = (line == "") ? words[i] : (line + " " + words[i]);
+
+         if(StringLen(candidate) > maxWidth && line != "")
+         {
+            Add(line);
+            line = words[i];
+         }
+         else
+         {
+            line = candidate;
+         }
+      }
+
+      if(line != "")
+         Add(line);
+   }
+
 public:
 
    bool Create()
@@ -182,7 +208,7 @@ public:
       Add(Confirm(signal.ADXConfirmed,     "Strong ADX"));
       Add(Confirm(signal.RSIConfirmed,     "RSI Momentum"));
       Add(Confirm(signal.SessionConfirmed, "Session"));
-      Add("Reason: " + signal.Reason);
+      AddWrapped("Reason: " + signal.Reason, 28);
       Add("");
 
       Add("--- EA STATUS ---");
