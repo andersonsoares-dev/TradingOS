@@ -234,6 +234,14 @@ A Validação Prévia (Document Validation Pipeline) identificou, no entanto, um
 
 Gestão de risco (position sizing, risco por operação) e critérios de saída (stop loss, take profit) são explicitamente excluídos do escopo — nenhum dos dois existe hoje em qualquer `DOMAIN`/`SPEC` (associados a `Risk Service`, `SPEC-001` status `Planned`, e `REQ-009`, não atendido) — e ficam reservados para RFC/ADR próprios, conforme `ADR-008`.
 
+## RFC-005 — Trading Risk & Exit Strategy
+
+`Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md` (solicitado originalmente como `RFC-004`, renumerado por colisão de id) analisa — sem decidir — alternativas de saída de posição (Stop Fixo, Stop baseado em ATR, Stop por Estrutura de Mercado, Stop Temporal, Trailing Stop, Break-even) e de Position Sizing (Lote Fixo, Percentual de Capital, Percentual por Risco, Volatilidade/ATR), necessárias para que `VALIDATION-001` possa executar o primeiro `BACKTEST-001`.
+
+Recomendação registrada (não uma decisão): Stop baseado em ATR + Stop Temporal como saída da Release 1.0, Percentual por Risco como position sizing — ambos reaproveitando componentes já especificados (`Indicator Provider`/`Time Provider`, `INFRA-002`/`INFRA-003`), sem exigir componente novo. `Stop por Estrutura de Mercado`, se um dia adotado, exigiria um Provider/Service novo, hoje não catalogado em `SPEC-001` — RFC própria seria necessária antes de qualquer implementação.
+
+A recomendação depende de aprovação via ADR próprio antes de influenciar `DOMAIN`, `SPEC` ou `Risk Service` (`SPEC-001`, status `Planned`). Nenhum documento da Baseline foi alterado por esta RFC.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

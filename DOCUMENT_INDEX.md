@@ -41,6 +41,7 @@
 | RFC-002 | Infrastructure Candidate Components | Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md | 1.0.0 | Open |
 | RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 1.0.0 | Open |
 | RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
+| RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Open |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -86,6 +87,7 @@ knowledge/
 - `INFRA-002-Data-Provider.md` (Entrega 02) detalha o Port Data Provider. `Replay Adapter`, `CSV Provider`/`CSV Adapter`, `Mock Provider`, `REST Adapter`, `FIX Adapter` e `WebSocket Adapter` não constam no Canonical Component Catalog (SPEC-001) — registrados em `RFC-003`, pendentes de decisão arquitetural.
 - `INFRA-003-Indicator-Provider.md` (Entrega 03) detalha o Port Indicator Provider — nenhum componente candidato novo desta vez. Identificada divergência preexistente entre SPEC-001 (mapeia TrendService/ATRService/RSIService/ADXService para Indicator Provider) e SPEC-003 (mapeia os mesmos para Evidence Builder) — registrada em `RFC-004`, pendente de decisão arquitetural.
 - Roadmap reestruturado em três trilhas paralelas por `ADR-008` (Platform / Validation / Learning). `VALIDATION-001` inaugura a Trilha 2 em `06-validation/`, com escopo limitado a estratégia de validação e critérios de aceitação — gestão de risco e critérios de saída ficam fora de escopo, pendentes de RFC/ADR próprios.
+- `RFC-005-Trading-Risk-Exit-Strategy.md` analisa (sem decidir) alternativas de stop/saída e position sizing para viabilizar o primeiro Backtest — solicitado originalmente como `RFC-004`, renumerado por colisão de id com o `RFC-004` já existente (Legacy Indicator Mapping Ambiguity).
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.
