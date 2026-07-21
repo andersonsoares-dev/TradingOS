@@ -101,9 +101,9 @@ O próprio documento reconhece na seção "Legacy Baseline" que a V1 (`TrendServ
 
 `Docs/ARCHITECTURE.md` (a arquitetura informal da V1, referenciada na tabela "Estado atual" acima) e `ARCH-001` coexistem deliberadamente: o primeiro documenta o que existe, o segundo define o que será construído daqui em diante.
 
-## SPEC-001 — Component Model (v1.2.0, Canonical Component Catalog)
+## SPEC-001 — Component Model (v1.4.0, Canonical Component Catalog)
 
-`Docs/04-specifications/SPEC-001-Component-Model.md` é agora a **única fonte oficial de nomenclatura arquitetural** do projeto (Canonical Component Catalog), organizada em: Core Domain Builders (Evidence Builder, Market Context Builder), Core Domain Services (Opportunity Service, Decision Service, Confidence Service, Risk Service), Domain Policies (Context Validation Policy, Evidence Validation Policy), Infrastructure Providers (Data/Indicator/Configuration/Time/Persistence Provider, Logger) e Execution Components (Signal Builder, Order Manager, Position Manager, Broker Adapter, MT5 Adapter). Rastreado contra ARCH-001, DOMAIN-003/004/005 e REQ-001 a REQ-010.
+`Docs/04-specifications/SPEC-001-Component-Model.md` é agora a **única fonte oficial de nomenclatura arquitetural** do projeto (Canonical Component Catalog), organizada em: Core Domain Builders (Evidence Builder, Market Context Builder), Core Domain Services (Opportunity Service, Decision Service, Confidence Service, Risk Service), Domain Policies (Context Validation Policy, Evidence Validation Policy), Application Services (5 Use Cases — ver SPEC-004), Infrastructure Providers (Data/Indicator/Configuration/Time/Persistence Provider, Logger) e Execution Components (Signal Builder, Order Manager, Position Manager, Broker Adapter, MT5 Adapter). Rastreado contra ARCH-001, SPEC-004, DOMAIN-003/004/005 e REQ-001 a REQ-010.
 
 A tabela "Component Lifecycle" foi atualizada para usar esses nomes canônicos. Destaque: `MT5 Adapter` = Planned (acesso ao MT5 hoje disperso em cada serviço, sem adapter isolado — a mesma violação já apontada em ARCH-001).
 
@@ -118,6 +118,12 @@ Renomeado para usar os nomes canônicos do SPEC-001: `Evidence Factory` → `Evi
 ## SPEC-003 — Domain Services (v1.1.0, escopo restrito)
 
 `Docs/04-specifications/SPEC-003-Domain-Services.md` contém exclusivamente os 4 Domain Services oficiais do SPEC-001: Opportunity Service, Decision Service, Confidence Service, Risk Service (renomeado de "Risk Evaluation Service"). `Evidence Evaluation Service` e `Context Validation Service` foram removidos deste documento — os conceitos equivalentes (Evidence Builder, Evidence Validation Policy, Context Validation Policy) pertencem ao SPEC-001, não a Domain Services. Rastreado contra ARCH-001, SPEC-001, SPEC-002, DOMAIN-001/003/004/005.
+
+## SPEC-004 — Application Services
+
+`Docs/04-specifications/SPEC-004-Application-Services.md` define 5 Use Cases (Analyze Market, Validate Context, Evaluate Opportunity, Generate Decision, Publish Signal) que orquestram Builders, Domain Services e Policies — sem implementar regras de negócio, sem depender diretamente de MT5 Adapter/Broker Adapter/Order Manager/Position Manager. Rastreado contra ARCH-001, SPEC-001/002/003, DOMAIN-003/004/005.
+
+O documento reconhece na seção "Legacy Baseline" que `TradingOS.mq5` (o EA principal) já executa parte dessa orquestração de forma implícita (`OnTimer()`: `Market.Update()` → `SignalBuilder.Build()` → `Dashboard.Update()`), sem um Application Service dedicado — todos os 5 Use Cases estão classificados como Planned no `SPEC-001` (Component Lifecycle). Nenhuma refatoração retroativa é exigida (ADR-001).
 
 ## Architecture Stabilization (taxonomia)
 

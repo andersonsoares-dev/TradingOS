@@ -86,3 +86,9 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 ### 2026-07-21 — Documentation Governance Stabilization
 
 - Criação do processo oficial de validação documental.
+
+### 2026-07-21 — Specifications (Application Services)
+
+- Adicionado `Docs/04-specifications/SPEC-004-Application-Services.md` — 5 Use Cases (Analyze Market, Validate Context, Evaluate Opportunity, Generate Decision, Publish Signal) que orquestram Builders/Domain Services/Policies, sem implementar regras de negócio.
+- `Docs/04-specifications/SPEC-001-Component-Model.md` atualizado para v1.4.0 — "Application Services" adicionada como 6ª categoria do Canonical Component Catalog, com os 5 Use Cases registrados na tabela "Component Lifecycle" (todos Planned — hoje `TradingOS.mq5` orquestra parte desse fluxo de forma implícita).
+- `TRACEABILITY.md` atualizado com referência a SPEC-004.

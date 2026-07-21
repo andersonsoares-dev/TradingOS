@@ -1,7 +1,7 @@
 ---
 id: SPEC-001
 title: Component Model
-version: 1.3.0
+version: 1.4.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -9,6 +9,7 @@ depends_on:
 related:
   - SPEC-002
   - SPEC-003
+  - SPEC-004
 last_updated: 2026-07-21
 ---
 
@@ -70,6 +71,7 @@ O sistema é dividido nos seguintes grupos (Canonical Component Catalog):
 - Core Domain Builders
 - Core Domain Services
 - Domain Policies
+- Application Services
 - Infrastructure Providers
 - Execution Components
 
@@ -142,6 +144,50 @@ Validar invariantes do Market Context.
 Responsabilidade:
 
 Validar consistência das Evidence.
+
+---
+
+# Application Services
+
+Orquestram o fluxo da aplicação, coordenando Builders, Domain Services e Policies. Não implementam regras de negócio, não calculam indicadores, não executam ordens. Definidos em detalhe no SPEC-004.
+
+## Analyze Market Use Case
+
+Responsabilidade:
+
+Executar um ciclo completo de análise do mercado (Data Provider → Evidence Builder → Market Context Builder → Opportunity Service → Decision Service → Decision).
+
+---
+
+## Validate Context Use Case
+
+Responsabilidade:
+
+Construir e validar um Market Context (Evidence Builder → Market Context Builder → Context Validation Policy).
+
+---
+
+## Evaluate Opportunity Use Case
+
+Responsabilidade:
+
+Avaliar uma Opportunity para um Market Context válido.
+
+---
+
+## Generate Decision Use Case
+
+Responsabilidade:
+
+Produzir uma Decision para uma Opportunity (Confidence Service → Risk Service → Decision Service).
+
+---
+
+## Publish Signal Use Case
+
+Responsabilidade:
+
+Entregar uma Decision ao contexto de Execution via Signal Builder. Encerra a responsabilidade do Application Service.
 
 ---
 
@@ -277,6 +323,16 @@ Estados possíveis: **Implemented** (existe na Legacy Baseline, ainda que inform
 | Context Validation Policy | Planned | Modelado aqui; hoje não há validação explícita de invariantes do `MarketContext` além do `Clear()`. |
 | Evidence Validation Policy | Planned | Modelado aqui; nenhuma validação formal de consistência entre evidências existe hoje. |
 
+## Application Services
+
+| Componente | Status | Observação |
+|---|---|---|
+| Analyze Market Use Case | Planned | Modelado em SPEC-004; hoje `TradingOS.mq5` orquestra parte desse fluxo de forma implícita (`OnTimer()` chama `Market.Update()` → `SignalBuilder.Build()`), sem um Application Service dedicado. |
+| Validate Context Use Case | Planned | Nenhuma validação explícita de contexto existe hoje (depende de Context Validation Policy, também Planned). |
+| Evaluate Opportunity Use Case | Planned | Aproximado informalmente pela chamada a `MarketAssessmentService` dentro de `MarketService.Update()`, sem separação como Application Service. |
+| Generate Decision Use Case | Planned | Aproximado informalmente pela chamada a `SignalBuilder.Build()` em `TradingOS.mq5`, sem separação como Application Service. |
+| Publish Signal Use Case | Planned | Hoje o `TradingSignal` resultante é consumido diretamente pelo `Dashboard`, sem uma etapa dedicada de publicação para Execution. |
+
 ## Infrastructure Providers
 
 | Componente | Status | Observação |
@@ -307,6 +363,8 @@ Nenhum componente listado neste documento se enquadra nesta categoria hoje. Os m
 # Rastreabilidade
 
 ARCH-001
+
+SPEC-004
 
 DOMAIN-003
 
