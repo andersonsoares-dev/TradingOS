@@ -1,7 +1,7 @@
 ---
 id: ARCH-001
 title: Architecture Blueprint
-version: 1.2.0
+version: 1.3.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -13,6 +13,7 @@ depends_on:
   - DOMAIN-005
 related:
   - SPEC-001
+  - ADR-010
 last_updated: 2026-07-21
 ---
 
@@ -269,6 +270,16 @@ Execution é um Bounded Context independente.
 Opportunity nunca atravessa o limite entre Core Domain e Execution.
 
 A entidade compartilhada entre os contextos é a Decision publicada, posteriormente materializada como Signal pelo contexto de Execution.
+
+---
+
+## Learning Domain
+
+Bounded Context independente, adicionado por `ADR-010`.
+
+Consolida evidências produzidas pela Validation e gera conhecimento reutilizável para futuras evoluções do sistema.
+
+Não pertence ao Core Domain. Não participa da execução operacional da Release 1.0. Não depende de, nem é dependido por, nenhum componente de Execution. Não altera, substitui ou se sobrepõe a `Evidence`, `Market Context`, `Opportunity` ou `Decision`.
 
 ---
 

@@ -360,6 +360,57 @@ A mesma divergência de pipeline identificada em `ROADMAP-003` (`Opportunity`/`D
 
 Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `ROADMAP-001` a `ROADMAP-004`, `INFRA-002`, `INFRA-003`, `EXEC-001` a `EXEC-005`, `DATA-001` (convenção de evidências reaproveitada). Marca o encerramento formal da Release 1.0 após sua conclusão.
 
+## ADR-010 — Learning Domain (novo Bounded Context)
+
+`Docs/05-decisions/ADR-010-Learning-Domain-Bounded-Context.md` (v1.1.0, Accepted) cria o quinto Bounded Context do TradingOS: `Learning Domain`. Decisão: Core Domain permanece inalterado (`Evidence`/`Market Context`/`Opportunity`/`Decision`, `ARCH-001`); `Knowledge` não é incorporado ao Core Domain; `Learning Domain` consolida evidências da Validation (Trilha 2, `ADR-008`) e gera conhecimento reutilizável; não participa da execução operacional da Release 1.0; não depende de/não é dependido por `EXEC-001` a `EXEC-005`; `DOMAIN-006` será seu primeiro documento formal.
+
+Um brief paralelo solicitava formalizar a mesma decisão como `RFC-008` — recusado por decisão do usuário, para evitar duas fontes normativas do mesmo assunto (Regra 19, `DOCUMENT_CONTROL`). O conteúdo adicional solicitado (Não Responsabilidades/"Não introduzir IA", relações com Platform/Validation/Core Domain, Compatibilidade com ADR-009, Critérios de Aceite) foi incorporado ao próprio `ADR-010` em vez disso.
+
+**Correção registrada**: a v1.0.0 do `ADR-010` atribuiu incorretamente ao `ADR-009` a frase "sem posição definida em nenhum Bounded Context..." — a fonte real é `ADR-008` ("Escopo desta decisão"). Corrigido na v1.1.0.
+
+## Propagação do ADR-010 (relatório "ALIGN-001", sem nova família documental)
+
+Um brief solicitava um documento `ALIGN-001` para propagar o `ADR-010` aos documentos normativos — `ALIGN-*` não é família congelada por `ADR-009`, e a própria tarefa se descreve como relatório (não decisão nova), então o registro ficou aqui e em `CHANGELOG.md`, sem novo arquivo/família.
+
+**Arquivos revisados e alterações**:
+
+| Documento | Alteração | Justificativa |
+|---|---|---|
+| `ADR-008` | v1.1.0 → v1.2.0. Frase "sem posição definida..." substituída por nota referenciando `ADR-010` | A lacuna que essa frase registrava foi resolvida; o restante do ADR-008 (sequenciamento de trilhas) permanece válido e intocado |
+| `ARCH-001` | v1.2.0 → v1.3.0. Adicionada `## Learning Domain` em "Bounded Contexts" | Aditivo apenas, conforme o próprio `ADR-010` já previa ("Impacto em ARCH-001") — nenhuma seção de Core Domain/Infrastructure/Strategy/Execution tocada |
+| `SPEC-001` | Nenhuma alteração | O brief pedia incluir componentes do Learning Domain — contradiz o próprio `ADR-010` ("nenhum componente nesta decisão") e a Restrição do brief ("não criar novos componentes"); nenhum componente concreto existe ainda para catalogar |
+| `ADR-009` | Nenhuma alteração | Verificado: `ADR-009` nunca conteve a frase-gatilho nem qualquer menção a `Knowledge`/Learning Engine; a condição do brief não se aplicou |
+
+**Impacto na rastreabilidade**: `ADR-010` passa a ser referenciado em `related` de `ARCH-001` e `ADR-008`. Nenhuma referência cruzada quebrada foi introduzida.
+
+**Confirmação**: nenhuma nova decisão arquitetural foi introduzida por esta propagação — `ADR-010` é a única fonte normativa para o Learning Domain; `ARCH-001` e `SPEC-001` estão consistentes com ele (o segundo, por não precisar de alteração); `ADR-009` não continha decisão pendente sobre este tema; nenhuma duplicação de conhecimento foi criada (nem a `RFC-008` recusada, nem um novo arquivo `ALIGN-001`).
+
+## DOMAIN-006 — Knowledge Model (primeiro documento do Learning Domain)
+
+`Docs/02-domain/DOMAIN-006-Knowledge-Model.md` define formalmente `Knowledge` dentro do Learning Domain criado por `ADR-010`. Nenhuma decisão arquitetural nova — o documento assume o Bounded Context e as fronteiras já aprovadas, seguindo a validação prévia exigida (compatibilidade confirmada com `ADR-010`, `ARCH-001`, `SPEC-001`, `ADR-009`, `DOMAIN-004`, sem conflitos).
+
+Conteúdo: definição de `Knowledge` (conhecimento consolidado a partir de resultados observados e validados), 7 princípios obrigatórios, ciclo de vida de 4 estados (`Proposed → Validated → Published → Superseded`, nunca apagado), fontes de criação (exclusivamente `Outcome`, produzido pela Validation), e relações explícitas com `Validation` (única fonte de entrada), `Evidence` (`DOMAIN-003` — relação indireta, mediada por `Outcome`, sem dependência direta do Core Domain), `Outcome` (matéria-prima do Knowledge), `Learning` (consumidor do Knowledge, ainda não implementado) e `Platform` (nenhuma relação direta).
+
+Preserva integralmente a regra de `ADR-010` "Relação com Core Domain: Nenhuma" — `Knowledge` nunca depende de `Evidence`/`Market Context`/`Opportunity`/`Decision` diretamente. Nenhum componente novo foi registrado em `SPEC-001`. A Release 1.0 (`ROADMAP-001` a `005`, `EXEC-001` a `EXEC-005`) permanece integralmente não afetada.
+
+## ROADMAP-006 — Architecture Decision Backlog
+
+`Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md` (solicitado originalmente como `ADB-001`, família não congelada por `ADR-009` — reprefixado para `ROADMAP-*`, continuando a numeração existente) formaliza o backlog oficial de decisões arquiteturais pendentes. Registra 7 itens, todos originados da análise técnica de evolução do `DOMAIN-003` (Evidence) desta sessão, classificados em 5 categorias (Correção documental / Evolução compatível / Evolução arquitetural / Novo conceito / Conceito em avaliação) e rastreados por 8 estados (`Proposed` → ... → `Archived`).
+
+Itens atuais: `ITEM-01` (renomear Structure→Market Structure, Cat. 1, Proposed), `ITEM-02` (categorias Price Action/Custom, Cat. 2, Proposed), `ITEM-03` (categoria Risk, Cat. 3, Awaiting RFC, dependente de `RFC-001`), `ITEM-04` (categoria Execution, Cat. 3, Awaiting ADR), `ITEM-05` (ciclo de vida de Evidence, Cat. 3, Awaiting ADR), `ITEM-06` (atributos Estado/Validade, Cat. 3, dependente de ITEM-05, Awaiting ADR), `ITEM-07` (conceito Observation, Cat. 5, **Rejected** — avaliado nesta sessão: não é conceito de domínio novo, já coberto por `Data Provider`/`Indicator Provider`/`Evidence Builder`; não bloqueia mais `ITEM-05`/`ITEM-06`).
+
+Nenhuma decisão arquitetural foi tomada por este documento; `DOMAIN-003` e todos os demais documentos permanecem inalterados. Este backlog passa a ser a referência para as próximas revisões arquiteturais do projeto.
+
+## ADR-011 — Evidence Lifecycle (ITEM-05/ITEM-06 implementados)
+
+`Docs/05-decisions/ADR-011-Evidence-Lifecycle.md` formaliza o ciclo de vida de `Evidence` (`DOMAIN-003`): `Candidate → Confirmed → Weak → Rejected → Expired`, com significado de cada estado (`Candidate` recém-produzida; `Confirmed`/`Weak` compõem `Market Context` com peso pleno/reduzido; `Rejected` nunca compõe; `Expired` ultrapassou a `Validade`, preservada para auditoria). Adiciona `BR-006` a `BR-008` e os atributos `Estado`/`Validade`.
+
+`DOMAIN-003` atualizado para v2.0.0 propagando integralmente esta decisão. `ROADMAP-006`: `ITEM-05`/`ITEM-06` (que motivaram este ADR) transitam de `Awaiting ADR` para `Implemented`. `ITEM-07` (Observation), que bloqueava ambos, foi avaliado nesta sessão e **rejeitado** como conceito de domínio novo — sua responsabilidade já está coberta por `Data Provider`/`Indicator Provider`/`Evidence Builder`, sem necessidade de uma entidade formal adicional.
+
+Nenhum impacto na Release 1.0: `Evidence` é Core Domain, fora do pipeline de Execução decidido pela `RFC-007` (Alternativa B) para a Release 1.0. `Evidence Validation Policy` (`SPEC-001`, ainda `Planned`) ganha responsabilidade implícita de decidir entre `Confirmed`/`Weak`/`Rejected`, a detalhar quando especificada — não antecipada por este ADR.
+
+Restam em `ROADMAP-006`: `ITEM-01`/`ITEM-02` (Categoria 1/2, prontos para aplicação direta, ainda não aplicados) e `ITEM-03`/`ITEM-04` (Categoria 3, ainda bloqueados — `ITEM-03` por `RFC-001`, `ITEM-04` aguardando ADR próprio).
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

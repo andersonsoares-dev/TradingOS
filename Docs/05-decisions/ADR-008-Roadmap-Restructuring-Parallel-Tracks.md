@@ -1,7 +1,7 @@
 ---
 id: ADR-008
 title: Roadmap Restructuring — Parallel Tracks (Platform, Validation, Learning)
-version: 1.1.0
+version: 1.2.0
 status: Accepted
 owner: Product Owner
 depends_on:
@@ -12,6 +12,7 @@ related:
   - INFRA-001
   - INFRA-002
   - INFRA-003
+  - ADR-010
 last_updated: 2026-07-21
 ---
 
@@ -65,7 +66,9 @@ Esta regra aplica-se às três trilhas e existe para conter o risco de "analysis
 
 ## Escopo desta decisão
 
-Esta é uma decisão de **sequenciamento de roadmap/entrega**, não uma alteração da arquitetura definida em `ARCH-001`. Os Bounded Contexts (Core Domain, Infrastructure, Strategy, Execution) permanecem exatamente como definidos em `ARCH-001` — nenhum Bounded Context novo ("Validation", "Learning") é criado por este ADR. `Validation` é tratada como disciplina de verificação transversal (mesmo papel que `06-validation/` já cumpria para `AUDIT-001`); `Learning Engine`/`Knowledge Repository`/`Recommendation Engine` seguem exatamente como itens de "Futura Evolução" já citados em `INFRA-001`/`INFRA-002`, sem posição definida em nenhum Bounded Context até que uma decisão arquitetural própria seja tomada.
+Esta é uma decisão de **sequenciamento de roadmap/entrega**, não uma alteração da arquitetura definida em `ARCH-001`. Os Bounded Contexts (Core Domain, Infrastructure, Strategy, Execution) permanecem exatamente como definidos em `ARCH-001` no momento desta decisão — nenhum Bounded Context novo é criado por este ADR. `Validation` é tratada como disciplina de verificação transversal (mesmo papel que `06-validation/` já cumpria para `AUDIT-001`); `Learning Engine`/`Knowledge Repository`/`Recommendation Engine` seguem exatamente como itens de "Futura Evolução" já citados em `INFRA-001`/`INFRA-002`.
+
+**Atualização (v1.2.0)**: o posicionamento arquitetural de `Knowledge`/Learning Engine, que esta seção deixava em aberto ("sem posição definida em nenhum Bounded Context até que uma decisão arquitetural própria seja tomada"), foi resolvido por `ADR-010` — criação do Bounded Context `Learning Domain`, adicionado a `ARCH-001`. Esta seção permanece válida quanto ao sequenciamento das trilhas; a lacuna de posicionamento que ela registrava não existe mais.
 
 ## Impactos
 

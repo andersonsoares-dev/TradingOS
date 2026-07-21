@@ -293,3 +293,41 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - 10 validações funcionais, 7 validações técnicas, 10 testes end-to-end, plano de evidências (reaproveitando a convenção de `DATA-001`), classificação de resultado (SUCCESS/PARTIAL SUCCESS/FAILED).
 - Documento marca, ao final, que a conclusão desta sprint encerra a Release 1.0.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-005.
+
+### 2026-07-21 — ADR-010: Learning Domain (novo Bounded Context)
+
+- Um brief de origem solicitava criar `RFC-008` para a mesma decisão já redigida como `ADR-010` (Proposed) — identificado que seria duplicação de conhecimento (Regra 19). Por decisão do usuário, `RFC-008` não foi criada; `ADR-010` foi expandido em vez disso, com as seções que o brief da RFC-008 pedia (Não Responsabilidades — incluindo "Não introduzir IA", Relação com Platform/Validation/Core Domain/Futuras Implementações, Impacto em ARCH-001/SPEC-001, Compatibilidade com ADR-009, Critérios de Aceite).
+- `ADR-010` (v1.0.0 → v1.1.0): status alterado de `Proposed` para `Accepted`. Decisão: Core Domain permanece inalterado (`Evidence`/`Market Context`/`Opportunity`/`Decision`); `Knowledge` não é incorporado ao Core Domain; criado um novo Bounded Context, `Learning Domain` — consolida evidências da Validation (Trilha 2) e gera conhecimento reutilizável; não participa da execução operacional da Release 1.0; `DOMAIN-006` será seu primeiro documento formal.
+- **Correção de citação**: a v1.0.0 do ADR-010 atribuía a frase "sem posição definida em nenhum Bounded Context..." ao `ADR-009` — incorreto. A frase pertence ao `ADR-008` (seção "Escopo desta decisão"). Corrigido na v1.1.0.
+
+### 2026-07-21 — ALIGN-001: Propagação do ADR-010 (relatório, sem novo documento)
+
+- Um brief de origem solicitava um documento `ALIGN-001` — família não congelada por `ADR-009` (Governança/Arquitetura/Especificações/Validação/Roadmap não incluem `ALIGN-*`). Como o próprio brief descreve a tarefa como "não cria novas decisões arquiteturais, apenas propaga a decisão já aprovada", este relatório foi registrado aqui e em `TRACEABILITY.md`, sem abrir uma família documental nova.
+- **`ADR-008`** (v1.1.0 → v1.2.0): substituída a frase "sem posição definida em nenhum Bounded Context até que uma decisão arquitetural própria seja tomada" por uma nota referenciando `ADR-010` como a resolução. Nenhuma outra parte do documento alterada.
+- **`ARCH-001`** (v1.2.0 → v1.3.0): adicionada a subseção `## Learning Domain` em "Bounded Contexts" (aditivo apenas — nenhuma seção de Core Domain/Infrastructure/Strategy/Execution alterada).
+- **`SPEC-001`**: **nenhuma alteração**. O brief de origem pedia "incluir os componentes do Learning Domain" no Canonical Component Catalog — isso contradiz diretamente o próprio `ADR-010` ("Nenhum [componente] nesta decisão... isso só ocorrerá quando... futuras especificações do Learning Domain exigirem componentes concretos, por registro próprio e posterior") e a Restrição do próprio brief ("não criar novos componentes"). Nenhum componente foi adicionado — nenhum componente concreto do Learning Domain existe ainda para catalogar.
+- **`ADR-009`**: **nenhuma alteração**. Verificado que `ADR-009` nunca conteve a frase "posição arquitetural ainda não definida" nem qualquer referência a `Knowledge`/Learning Engine — a condição do brief ("caso contenha... substituir") não se aplicou.
+- Confirmação: nenhuma nova decisão arquitetural foi introduzida por esta propagação; `ADR-010` é a única fonte normativa do Learning Domain; nenhuma duplicação de conhecimento foi criada.
+
+### 2026-07-21 — DOMAIN-006 (Knowledge Model)
+
+- Adicionado `Docs/02-domain/DOMAIN-006-Knowledge-Model.md` — primeiro documento formal do Learning Domain (`ADR-010`). Define `Knowledge`: princípios obrigatórios (Persistente/Versionável/Auditável/Reproduzível/Explicável/Independente da implementação/Baseado exclusivamente em evidências validadas), ciclo de vida (Proposed → Validated → Published → Superseded, nunca apagado), fontes de criação (exclusivamente `Outcome` produzido pela Validation), relações com Validation/Evidence/Outcome/Learning/Platform, regras arquiteturais, casos de uso e exemplos conceituais.
+- Nenhuma decisão arquitetural nova — o documento assume integralmente o Bounded Context e as fronteiras já definidas em `ADR-010`. Relação com `Evidence` (`DOMAIN-003`) tratada como indireta, mediada por `Outcome`, preservando "Relação com Core Domain: Nenhuma" (`ADR-010`).
+- Nenhum componente novo registrado em `SPEC-001`; Release 1.0 (`ROADMAP-001` a `005`, `EXEC-001` a `EXEC-005`) não afetada.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com DOMAIN-006.
+
+### 2026-07-21 — ROADMAP-006 (Architecture Decision Backlog)
+
+- Um brief de origem solicitava criar `ADB-001` — família não congelada por `ADR-009`. Criado como `Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md`, continuando a numeração `ROADMAP-*` já existente. Itens internos do backlog renumerados de `ADB-001..007` (colisão com o id do próprio documento) para `ITEM-01..07`.
+- Backlog registra os 7 itens de evolução identificados durante a análise técnica de `DOMAIN-003` (Evidence) realizada nesta sessão: renomear "Structure"→"Market Structure" (Categoria 1); adicionar categorias "Price Action"/"Custom" (Categoria 2); categoria "Risk" (Categoria 3, dependente de `RFC-001`); categoria "Execution" (Categoria 3); ciclo de vida de Evidence — Candidate/Confirmed/Weak/Rejected/Expired (Categoria 3); atributos "Estado"/"Validade" (Categoria 3, dependente do item anterior); conceito "Observation" (Categoria 5, em avaliação).
+- Documento inclui processo de decisão, fluxo de governança por categoria, critérios de priorização, 8 estados possíveis, critérios de entrada/saída/encerramento. Nenhuma decisão arquitetural foi tomada; `DOMAIN-003` e demais documentos permanecem inalterados.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-006.
+
+### 2026-07-21 — ITEM-07 avaliado (rejeitado) e ADR-011 (Evidence Lifecycle)
+
+- **`ITEM-07` (Observation) avaliado**: conclusão técnica de que `Observation` não é um conceito de domínio novo — já coberto pela saída de `Data Provider` (`INFRA-002`)/`Indicator Provider` (`INFRA-003`), consumida por `Evidence Builder` (`SPEC-001`) para construir `Evidence`. Status alterado para `Rejected` em `ROADMAP-006`; não bloqueia mais `ITEM-05`/`ITEM-06`.
+- Adicionado `Docs/05-decisions/ADR-011-Evidence-Lifecycle.md` — formaliza `ITEM-05` (ciclo de vida de Evidence: `Candidate → Confirmed → Weak → Rejected → Expired`, com significado de cada estado) e `ITEM-06` (atributos `Estado`/`Validade`), incluindo 3 novas regras de negócio (`BR-006` a `BR-008`: toda Evidence nasce Candidate; apenas Confirmed/Weak compõem Market Context; transição automática para Expired via Validade).
+- `DOMAIN-003` (Evidence) atualizado (v1.0.0 → v2.0.0): nova seção "Ciclo de Vida", atributos `Estado`/`Validade` na Estrutura, `BR-006` a `BR-008` adicionadas, seção "Alterações" registrando a origem (`ADR-011`/`ROADMAP-006`).
+- `ROADMAP-006` atualizado (v1.0.0 → v1.1.0): `ITEM-05`/`ITEM-06` de `Awaiting ADR` para `Implemented`; `ITEM-07` de `Under Analysis` para `Rejected`; resumo recalculado (2 itens bloqueados restantes: `ITEM-03`/`ITEM-04`).
+- Nenhum impacto na Release 1.0 — `Evidence`/Core Domain permanece fora do pipeline de Execução decidido pela `RFC-007`.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.

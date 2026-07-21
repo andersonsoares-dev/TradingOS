@@ -1,12 +1,13 @@
 ---
 id: DOMAIN-003
 title: Evidence
-version: 1.0.0
+version: 2.0.0
 status: Approved
 owner: Product Owner
 depends_on:
   - REQ-001
   - DOMAIN-002
+  - ADR-011
 related:
   - DOMAIN-004
   - DOMAIN-005
@@ -161,6 +162,18 @@ Informações adicionais específicas da origem.
 
 ---
 
+## Estado
+
+Um dos cinco estados do ciclo de vida da Evidence (ver "Ciclo de Vida"): `Candidate`, `Confirmed`, `Weak`, `Rejected`, `Expired`.
+
+---
+
+## Validade
+
+Janela temporal após a qual a Evidence transita automaticamente para o estado `Expired`.
+
+---
+
 # Classificação
 
 Evidence pode ser:
@@ -195,6 +208,62 @@ Momentum Confirmation
 
 ---
 
+# Ciclo de Vida
+
+Adicionado por `ADR-011`.
+
+## Estados
+
+Candidate
+
+↓
+
+Confirmed
+
+↓
+
+Weak
+
+↓
+
+Rejected
+
+↓
+
+Expired
+
+---
+
+### Candidate
+
+Evidence recém-produzida por um Core Domain Builder (`Evidence Builder`), ainda não avaliada pela `Evidence Validation Policy`.
+
+---
+
+### Confirmed
+
+Avaliada e aprovada pela `Evidence Validation Policy` — consistente, compõe um `Market Context` com seu `Weight` pleno.
+
+---
+
+### Weak
+
+Avaliada e aprovada, porém com baixa confiança/consistência — compõe um `Market Context`, mas com influência reduzida (`Weight` rebaixado). Não é o mesmo que `Rejected`.
+
+---
+
+### Rejected
+
+Falhou na avaliação da `Evidence Validation Policy` — nunca compõe um `Market Context`.
+
+---
+
+### Expired
+
+Ultrapassou sua janela de validade (`Validade`) — deixa de ser elegível para novos `Market Context`, mas é preservada para auditoria.
+
+---
+
 # Regras de Negócio
 
 ## BR-001
@@ -226,6 +295,24 @@ Ela apenas descreve uma observação.
 ## BR-005
 
 Evidence não pode produzir Decision.
+
+---
+
+## BR-006
+
+Toda Evidence nasce em estado `Candidate` (adicionado por `ADR-011`).
+
+---
+
+## BR-007
+
+Apenas Evidence em estado `Confirmed` ou `Weak` pode compor um Market Context; `Candidate`, `Rejected` e `Expired` não podem (adicionado por `ADR-011`).
+
+---
+
+## BR-008
+
+A transição para `Expired` ocorre automaticamente quando `Validade` é ultrapassada, independentemente do estado anterior, exceto se já `Rejected` (adicionado por `ADR-011`).
 
 ---
 
@@ -290,8 +377,14 @@ REQ-004
 
 REQ-010
 
+ADR-011
+
+ROADMAP-006
+
 ---
 
 # Alterações
 
 Novas categorias de Evidence poderão ser adicionadas sem alteração do modelo de domínio, desde que respeitem as regras definidas neste documento.
+
+**v2.0.0** (`ADR-011`): adicionado o Ciclo de Vida (`Candidate → Confirmed → Weak → Rejected → Expired`), os atributos `Estado` e `Validade`, e as regras de negócio `BR-006` a `BR-008`. Origem: `ROADMAP-006` (Architecture Decision Backlog), itens `ITEM-05`/`ITEM-06`.

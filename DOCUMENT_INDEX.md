@@ -13,10 +13,11 @@
 | REQ-001 | Requirements Specification | Docs/01-requirements/REQ-001-Requirements-Specification.md | 1.0.0 | Approved |
 | DOMAIN-001 | Opportunity | Docs/02-domain/DOMAIN-001-Opportunity.md | 1.1.0 | Approved |
 | DOMAIN-002 | Ubiquitous Language | Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md | 1.3.0 | Approved |
-| DOMAIN-003 | Evidence | Docs/02-domain/DOMAIN-003-Evidence.md | 1.0.0 | Approved |
+| DOMAIN-003 | Evidence | Docs/02-domain/DOMAIN-003-Evidence.md | 2.0.0 | Approved |
 | DOMAIN-004 | Market Context | Docs/02-domain/DOMAIN-004-Market-Context.md | 1.1.0 | Approved |
 | DOMAIN-005 | Decision | Docs/02-domain/DOMAIN-005-Decision.md | 1.1.0 | Approved |
-| ARCH-001 | Architecture Blueprint | Docs/03-architecture/ARCH-001-Architecture-Blueprint.md | 1.2.0 | Approved |
+| DOMAIN-006 | Knowledge Model | Docs/02-domain/DOMAIN-006-Knowledge-Model.md | 1.0.0 | Approved |
+| ARCH-001 | Architecture Blueprint | Docs/03-architecture/ARCH-001-Architecture-Blueprint.md | 1.3.0 | Approved |
 | INFRA-001 | Infrastructure Overview | Docs/03-architecture/INFRA-001-Infrastructure-Overview.md | 1.1.0 | Approved |
 | INFRA-002 | Data Provider | Docs/03-architecture/INFRA-002-Data-Provider.md | 1.0.0 | Approved |
 | INFRA-003 | Indicator Provider | Docs/03-architecture/INFRA-003-Indicator-Provider.md | 1.0.0 | Approved |
@@ -38,8 +39,10 @@
 | ADR-005 | Ubiquitous Language Refinement | Docs/05-decisions/ADR-005-Ubiquitous-Language-Refinement.md | 1.0.0 | Accepted |
 | ADR-006 | Opportunity Lifecycle Alignment | Docs/05-decisions/ADR-006-Opportunity-Lifecycle-Alignment.md | 1.0.0 | Accepted |
 | ADR-007 | Architecture Baseline v1.0 Freeze | Docs/05-decisions/ADR-007-Architecture-Baseline-v1.0-Freeze.md | 1.0.0 | Accepted |
-| ADR-008 | Roadmap Restructuring — Parallel Tracks | Docs/05-decisions/ADR-008-Roadmap-Restructuring-Parallel-Tracks.md | 1.1.0 | Accepted |
+| ADR-008 | Roadmap Restructuring — Parallel Tracks | Docs/05-decisions/ADR-008-Roadmap-Restructuring-Parallel-Tracks.md | 1.2.0 | Accepted |
 | ADR-009 | Baseline Lock v1.1 — Documentation Stabilization & Delivery Sequence | Docs/05-decisions/ADR-009-Baseline-Lock-v1.1.md | 1.1.0 | Accepted |
+| ADR-010 | Learning Domain — New Bounded Context | Docs/05-decisions/ADR-010-Learning-Domain-Bounded-Context.md | 1.1.0 | Accepted |
+| ADR-011 | Evidence Lifecycle | Docs/05-decisions/ADR-011-Evidence-Lifecycle.md | 1.0.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | VALIDATION-001 | Trading Strategy Validation Baseline | Docs/06-validation/VALIDATION-001-Trading-Strategy-Validation-Baseline.md | 2.0.0 | Approved |
@@ -57,6 +60,7 @@
 | ROADMAP-003 | Sprint 3 — Signal Evaluation & Risk Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md | 1.0.0 | Approved |
 | ROADMAP-004 | Sprint 4 — Order Execution Integration (Release 1.0) | Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md | 1.0.0 | Approved |
 | ROADMAP-005 | Sprint 5 — First Execution & End-to-End Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-005-First-Execution.md | 1.0.0 | Approved |
+| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.1.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -122,3 +126,5 @@ knowledge/
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.
+- `ADR-010` cria o Bounded Context `Learning Domain` (quinto, ao lado de Core Domain/Infrastructure/Strategy/Execution); `ARCH-001` (v1.3.0) e `ADR-008` (v1.2.0) atualizados por propagação. `DOMAIN-006-Knowledge-Model.md` é o primeiro documento formal desse domínio — modela `Knowledge`, sem dependência do Core Domain nem da Platform, sem componente novo em `SPEC-001`. Release 1.0 não afetada.
+- `ROADMAP-006-Architecture-Decision-Backlog.md` (solicitado originalmente como `ADB-001`, família não congelada — reprefixado para `ROADMAP-*`) registra 7 itens de evolução identificados durante a análise de `DOMAIN-003` (Evidence). `ITEM-07` (Observation) avaliado e rejeitado (não é conceito de domínio). `ITEM-05`/`ITEM-06` (ciclo de vida de Evidence + atributos Estado/Validade) formalizados por `ADR-011` e propagados a `DOMAIN-003` (v2.0.0). `ITEM-03` (categoria Risk, bloqueado por RFC-001) e `ITEM-04` (categoria Execution) seguem em aberto. `ITEM-01`/`ITEM-02` seguem prontos para aplicação direta.
