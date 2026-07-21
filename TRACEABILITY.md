@@ -24,5 +24,21 @@ Toda nova funcionalidade deverá preencher esta matriz integralmente (REQ → DO
 
 ## Divergências conhecidas (ver Docs/BACKLOG.md e Docs/TECH_DEBT.md)
 
-- CONST-001 declara a missão como Swing Trade; a configuração atual do sistema é intradiária (day trade) — migração deliberadamente adiada.
-- CONST-001 declara "Oportunidade" como objeto central do domínio; o código atual usa `MarketAssessment`/`TradingSignal`, não um agregado `Opportunity`.
+- CONST-001 declara a missão como Swing Trade; a configuração atual do sistema é intradiária (day trade) — resolvido pelo ADR-003 (Product Scope): intraday é uma especialização válida da missão, não uma violação.
+- CONST-001 declara "Oportunidade" como objeto central do domínio; o código atual usa `MarketAssessment`/`TradingSignal`, não um agregado `Opportunity` — resolvido pelo ADR-002 (Domain Evolution): convivência aceita, migração só ocorre com benefício real.
+
+## Legacy Components
+
+Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
+
+- TrendService
+- ATRService
+- ADXService
+- RSIService
+- SessionService
+- PivotService
+- MarketAssessment
+- SignalBuilder
+- Dashboard
+
+Esses componentes só serão rastreados formalmente quando sofrerem evolução arquitetural — não retroativamente, e não apenas por conformidade documental.

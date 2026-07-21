@@ -140,15 +140,9 @@ Status: Deprecated
 
 # REGRA 11
 
-Toda resposta produzida por qualquer IA deverá resultar em:
+Toda decisão aprovada, alteração arquitetural, regra de negócio consolidada ou conhecimento definitivo deverá resultar na criação ou atualização de documentos do repositório.
 
-- criação de arquivo
-
-ou
-
-- atualização de arquivo
-
-Nunca apenas resposta em conversa.
+Discussões exploratórias, brainstorms, análises comparativas e revisões arquiteturais podem permanecer apenas na conversa até que uma decisão seja aprovada.
 
 ---
 

@@ -89,9 +89,9 @@ Nunca permitir divergência entre documentação e código.
 
 # Persistência do conhecimento
 
-Nenhum conhecimento poderá permanecer apenas na conversa.
+Toda decisão aprovada, alteração arquitetural, regra de negócio consolidada ou conhecimento definitivo deverá resultar na criação ou atualização de documentos do repositório.
 
-Toda informação relevante deverá ser salva em Markdown.
+Discussões exploratórias, brainstorms, análises comparativas e revisões arquiteturais podem permanecer apenas na conversa até que uma decisão seja aprovada.
 
 ---
 

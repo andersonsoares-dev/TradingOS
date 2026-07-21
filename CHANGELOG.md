@@ -13,4 +13,12 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Adicionado `AGENTS.md` — protocolo universal para qualquer agente de IA.
 - Adicionado `Docs/00-governance/ENG-000-Engineering-Handbook.md`.
 - Adicionado `Docs/00-governance/CONST-001-Constitution.md`.
+- Adicionado `Docs/00-governance/VISION-001-Product-Vision.md`.
 - Adicionado `DOCUMENT_INDEX.md` e `TRACEABILITY.md`.
+
+### 2026-07-21 — Governance Stabilization
+
+- Legacy Baseline formalizada (ADR-001).
+- Evolução do domínio documentada (ADR-002).
+- Escopo estratégico alinhado (ADR-003).
+- Estratégia oficial de validação definida (ADR-004).
