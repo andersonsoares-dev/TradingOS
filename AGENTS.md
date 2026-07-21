@@ -141,6 +141,18 @@ knowledge/
 
 ---
 
+# Identificação de Documentos
+
+Todo documento deverá ser referenciado pelo seu `id` (exemplo: `DOMAIN-003`, `ARCH-001`, `ADR-005`), nunca pelo caminho físico do arquivo.
+
+Caminhos físicos podem mudar em reorganizações futuras de diretórios. A identidade lógica (`id`) nunca muda.
+
+Referências cruzadas (`depends_on`, `related`, menções em outros documentos) deverão sempre usar o `id`, não o caminho.
+
+`DOCUMENT_INDEX.md` é o único lugar responsável por mapear cada `id` ao seu caminho físico atual.
+
+---
+
 # Fluxo obrigatório
 
 Antes de implementar:
