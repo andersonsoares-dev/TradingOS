@@ -22,6 +22,9 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Evolução do domínio documentada (ADR-002).
 - Escopo estratégico alinhado (ADR-003).
 - Estratégia oficial de validação definida (ADR-004).
+- ADR-005 aprovado.
+- Vocabulário do domínio refinado.
+- Signal e Confirmation passam a ser termos oficiais em seus respectivos contextos.
 
 ### 2026-07-21 — Requirements
 
@@ -32,3 +35,5 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 
 - Adicionado `Docs/02-domain/DOMAIN-001-Opportunity.md` — entidade central do domínio-alvo (Opportunity), com ciclo de vida, atributos, regras de negócio (BR-001 a BR-006) e mapeamento de evolução a partir de `MarketAssessment`/`TradingSignal` (ADR-002).
 - `TRACEABILITY.md` atualizado com referência a DOMAIN-001.
+- Adicionado `Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md` — vocabulário oficial do domínio (Opportunity, Market Context, Evidence, Decision, Confidence, Risk Profile, Strategy, Signal, Indicator, Adapter, Domain Service, Infrastructure Service) e regras de linguagem proibindo sinônimos.
+- `TRACEABILITY.md` atualizado com nota sobre divergência de vocabulário entre DOMAIN-002 e a Legacy Baseline (coberta por ADR-001/ADR-002).
