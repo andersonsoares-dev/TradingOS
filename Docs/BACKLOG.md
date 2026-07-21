@@ -93,3 +93,64 @@ Desacoplar a identificação das sessões do horário do servidor e permitir mai
 **Prioridade**: Baixa.
 
 **Justificativa**: Não impacta a compilação nem o funcionamento da V1 e não bloqueia nenhuma sprint atual.
+
+### Parametrizar timeframe do PivotService
+
+**Descrição**: Na V1 o `PivotService` utiliza exclusivamente o candle diário fechado (`PERIOD_D1`, shift 1).
+
+**Objetivo**: Na V2 avaliar:
+- D1
+- W1
+- MN1
+
+configuráveis via `Config`.
+
+**Status**: Postergado para V2.
+
+**Origem**: Sprint 5.2 – PivotService.
+
+**Prioridade**: Baixa.
+
+**Justificativa**: Não impacta a compilação nem o funcionamento da V1 e não bloqueia nenhuma sprint atual.
+
+---
+
+## RC1 — Release Candidate 1 (Sprint 5.3)
+
+**Status**: RC1 APROVADO COM RESSALVAS.
+
+Validado: compilação (0 errors/0 warnings), Dashboard funcional em EURUSD e USDJPY, matemática do `PivotService` confirmada por reconstrução manual de High/Low/Close a partir dos valores exibidos nas duas capturas de tela.
+
+Pendências registradas (não bloqueantes): Journal não inspecionado, atualização em tempo real não confirmada por evidência dupla, GBPUSD/XAUUSD não testados, M15/H1/H4 não testados especificamente (o `Pivot` é timeframe-independente por construção, já que `MarketService` sempre lê `PERIOD_D1` fixo, independente do timeframe do gráfico), performance não monitorada.
+
+Candidato a defeito (não corrigido, aguardando confirmação): possível sobreposição visual entre a linha nativa de Bid/Ask do gráfico e o texto do Dashboard (`Comment()`), observada em EURUSD/M1 e não reproduzida em USDJPY/Daily — hipótese é a linha de preço do próprio MetaTrader cruzando a área do texto, não um bug do `Comment()`.
+
+---
+
+## Melhorias Sugeridas (UI/UX)
+
+### Mover Dashboard para painel lateral direito
+
+**Descrição**: Hoje o Dashboard é ancorado via `Comment()` no canto superior esquerdo do gráfico, mesma região onde o MetaTrader desenha suas próprias linhas de preço nativas, o que pode gerar sobreposição visual (ver RC1 acima).
+
+**Objetivo**: Avaliar mover a exibição para um painel fixo no lado direito do gráfico.
+
+**Origem**: RC1 (Sprint 5.3).
+
+**Prioridade**: Baixa (estética/UX, não funcional).
+
+### Converter níveis de Pivot em linhas no gráfico
+
+**Descrição**: Hoje Pivot/R1-R3/S1-S3 são exibidos apenas como texto no painel do Dashboard.
+
+**Objetivo**: Avaliar desenhar os níveis como linhas horizontais sobre o gráfico (objetos gráficos nativos do MQL5), mantendo o texto do painel como complemento, não substituto.
+
+**Origem**: RC1 (Sprint 5.3).
+
+**Prioridade**: Baixa (estética/UX, não funcional).
+
+---
+
+## Próxima direção confirmada
+
+A Sprint seguinte à V1 concluída (Trend/ATR/RSI/ADX/Session/Pivot) é a **Decision Engine** (já listada acima como "Sprint 4"), evoluindo de exibição de números crus para interpretação de leitura de mercado (força de tendência, contexto, recomendação operacional), consumindo `MarketContext` — confirmado nesta conversa como o próximo passo após a aprovação do RC1.
