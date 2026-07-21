@@ -257,3 +257,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ADR-009` atualizado (v1.0.0 → v1.1.0) com nova seção "8. Critério de reabertura de discussão arquitetural": após a aprovação de `RFC-006`/`RFC-007`, qualquer discussão arquitetural só pode ser reaberta mediante evidência obtida durante implementação, testes ou Primeira Execução — não por hipótese ou preferência conceitual. Hipóteses e melhorias conceituais passam automaticamente para o backlog da Release 2.0, sem pausar a implementação em curso.
 - `depends_on`/`related` de `ADR-009` atualizados para referenciar `RFC-006`/`RFC-007`.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.
+
+### 2026-07-21 — ROADMAP-001 (Sprint 1 — Foundation)
+
+- Um brief de origem solicitava criar `Docs/07-implementation/IMPLEMENTATION-001-Sprint-1.md` — identificado conflito com `ADR-009` (Baseline Lock v1.1): `Docs/07-implementation/` não existe na árvore oficial travada (posição `07` é `07-testing/`), e `IMPLEMENTATION-*` não está entre as famílias documentais congeladas. Criado como `Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md`, inaugurando a família `ROADMAP-*` já prevista e congelada em `ADR-009`, sem exigir nova reorganização.
+- `ROADMAP-001` define o plano executivo da Sprint 1 (Foundation): objetivos (compilar, inicializar, carregar configuração, logging, versão, Event Bus, estado Idle — sem estratégia/execução), escopo (Bootstrap/Config/Logger/Common Types/Error Model/Event Model/Dependency Initialization/Lifecycle), fora de escopo (todos os EXEC-00X permanecem apenas contrato nesta sprint), checklist de 8 itens, critérios de aceitação (Build OK, zero erros/warnings, inicialização/encerramento limpos, logs corretos).
+- Nenhuma arquitetura, contrato ou componente foi alterado — documento é puramente sequenciamento de implementação.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-001.

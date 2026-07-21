@@ -52,6 +52,7 @@
 | RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Open |
 | RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 2.0.0 | Approved |
 | RFC-007 | Signal Builder Pipeline Divergence (ARCH-001/SPEC-002 vs EXEC-004) | Docs/10-rfc/RFC-007-Signal-Builder-Pipeline-Divergence.md | 2.0.0 | Approved |
+| ROADMAP-001 | Sprint 1 — Foundation (Release 1.0) | Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md | 1.0.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -109,6 +110,7 @@ knowledge/
 - `EXEC-005-MT5-Adapter.md` conclui a sequência travada de Execution Components (ADR-009). Nenhuma divergência nova encontrada. Observação de rastreabilidade registrada (não decisão): `GetAccount()`/`Account Snapshot`, aqui definidos, podem ser a fonte real do que `EXEC-003` chamava de "Account Provider" (RFC-006) — relevante para quando essa RFC for resolvida.
 - **Post-Execution Architecture Review**: `RFC-007` (v2.0.0, Approved) decide a Alternativa B (`Indicators → Decision → Risk Service → Order Manager`) como pipeline normativo da Release 1.0 — `ARCH-001`/`DOMAIN-001`/`DOMAIN-005`/`SPEC-003` permanecem intactos como arquitetura-alvo de longo prazo. `RFC-006` (v2.0.0, Approved), alinhada, decide que `Risk Service` é o Gate Operacional de `EXEC-003` para a Release 1.0, não o Domain Service de `SPEC-003`. `EXEC-001` a `EXEC-005` não sofreram nenhuma alteração — ambas as decisões confirmam que já estavam corretos.
 - `ADR-009` atualizado para v1.1.0 — adicionado critério de reabertura de discussão arquitetural: após RFC-006/RFC-007, só reabre mediante evidência de implementação/teste/Primeira Execução; hipóteses conceituais vão automaticamente para o backlog da Release 2.0.
+- `ROADMAP-001-Sprint-1-Foundation.md` inaugura a família `ROADMAP-*` (`Docs/09-roadmap/`), primeiro documento pós-arquitetura. Solicitado originalmente como `IMPLEMENTATION-001` em `Docs/07-implementation/` — pasta/família inexistentes na estrutura travada por `ADR-009` (posição `07` é `07-testing/`); criado sob a família `ROADMAP-*` já congelada.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

@@ -322,6 +322,14 @@ Esta decisão é de **escopo de implementação da Release 1.0**, não uma alter
 
 `ADR-009` atualizado para v1.1.0 com o critério formal de reabertura: após a aprovação de `RFC-006`/`RFC-007`, qualquer discussão arquitetural só pode ser reaberta mediante evidência obtida durante implementação, testes ou Primeira Execução — nunca por hipótese ou preferência conceitual. Toda ideia levantada a partir de agora sem essa evidência vai automaticamente para o backlog da Release 2.0, sem pausar a implementação em curso.
 
+## ROADMAP-001 — Sprint 1 (Foundation)
+
+`Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md` inaugura a família `ROADMAP-*` (congelada em `ADR-009`, até então sem uso). Solicitado originalmente como `IMPLEMENTATION-001` em uma pasta `Docs/07-implementation/` inexistente na árvore oficial travada (a posição `07` pertence a `07-testing/`) — corrigido para a família já prevista, sem exigir reorganização nova nem violar `ADR-009`.
+
+Define o plano executivo da Sprint 1: objetivos (compilar/inicializar/config/logging/versão/Event Bus/estado Idle, sem estratégia ou execução), escopo restrito a infraestrutura comum, fora de escopo explícito (`EXEC-001` a `EXEC-005` permanecem apenas contrato nesta sprint), checklist de implementação e critérios de aceitação objetivos (Build OK, zero erros/warnings). Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `EXEC-001` a `EXEC-005`, `ADR-004`.
+
+Nenhuma arquitetura, contrato ou componente foi alterado por este documento.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
