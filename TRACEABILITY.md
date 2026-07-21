@@ -260,6 +260,14 @@ A pasta raiz proposta no brief de origem (`Validation/`) foi renomeada para `val
 
 Registrada recomendação (não decisão): `Raw/` e `Screenshots/` não deveriam ser versionados diretamente no Git principal, dado o precedente de binários no histórico já apontado em `Docs/TECH_DEBT.md` (item 8) — avaliar armazenamento externo ou Git LFS antes do primeiro backtest real.
 
+## EXEC-001 — Order Manager (novo prefixo EXEC-00X)
+
+`Docs/03-architecture/EXEC-001-Order-Manager.md` detalha o Execution Component `Order Manager` (já catalogado em `SPEC-001`, status `Future`). Solicitado originalmente como `SPEC-006` — colisão de id com `SPEC-006-Business-Rules.md` já existente, e, mais relevante, os documentos `SPEC-00X` sempre trataram categorias inteiras de componentes, não componentes isolados. Segue o padrão já estabelecido por `INFRA-00X` (`Data Provider`, `Indicator Provider`) para detalhamento de componente único, agora sob prefixo `EXEC-00X`, reservado para Execution Components (`SPEC-001`: Signal Builder, Order Manager, Position Manager, Broker Adapter, MT5 Adapter).
+
+Especifica responsabilidades, entradas/saídas, máquina de estados com condições de transição explícitas, validações pré-envio, tratamento de erros, eventos, interface conceitual, dependências e casos de teste. Rastreado contra `ARCH-001`, `SPEC-001`, `SPEC-002`, `SPEC-003`, `INFRA-002`, `INFRA-003`.
+
+Dependência registrada, não uma inconsistência: `Order Manager` consome `Risk Result`, cujo formato depende da classificação de `Risk Profile` — ainda `Open` em `RFC-001`. `EXEC-001` consome esse dado como entrada abstrata, sem antecipar sua estrutura; poderá exigir revisão de compatibilidade quando `RFC-001` for decidida.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

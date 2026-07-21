@@ -20,6 +20,7 @@
 | INFRA-001 | Infrastructure Overview | Docs/03-architecture/INFRA-001-Infrastructure-Overview.md | 1.1.0 | Approved |
 | INFRA-002 | Data Provider | Docs/03-architecture/INFRA-002-Data-Provider.md | 1.0.0 | Approved |
 | INFRA-003 | Indicator Provider | Docs/03-architecture/INFRA-003-Indicator-Provider.md | 1.0.0 | Approved |
+| EXEC-001 | Order Manager | Docs/03-architecture/EXEC-001-Order-Manager.md | 1.0.0 | Approved |
 | SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.4.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
@@ -93,6 +94,7 @@ knowledge/
 - `VALIDATION-001` reescrito/expandido para v2.0.0 e renomeado para `Trading-Strategy-Validation-Baseline.md` (histórico preservado via `git mv`) — protocolo completo com hipóteses H1/H0, universo de teste, protocolo de 7 etapas, métricas obrigatórias, critérios de aprovação/reprovação, reprodutibilidade, evidências obrigatórias e modelo de relatório. Usa a recomendação da `RFC-005` como hipótese de teste, não decisão.
 - `BACKTEST-001-Backtest-Execution-Protocol.md` define o procedimento operacional de execução de Backtests (10 etapas), alinhado a `VALIDATION-001` — não registra resultados nem aprova estratégias.
 - `DATA-001-Validation-Data-Repository-Standard.md` padroniza a estrutura de artefatos de validação em `validation-runs/` (renomeado do `Validation/` do brief de origem, para evitar colisão de nome com `Docs/06-validation/`).
+- `EXEC-001-Order-Manager.md` detalha o Execution Component `Order Manager` (já catalogado em SPEC-001). Solicitado originalmente como `SPEC-006` (colisão de id com SPEC-006 já existente); reprefixado para `EXEC-00X` por consistência com o padrão `INFRA-00X` (documentos de componente único, não de categoria). Inaugura o prefixo `EXEC-00X` para Execution Components em `Docs/03-architecture/`.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.
