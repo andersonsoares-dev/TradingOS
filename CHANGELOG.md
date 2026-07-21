@@ -271,3 +271,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ROADMAP-002` define o plano executivo da Sprint 2: implementar `Data Provider`/`Indicator Provider` usando os contratos já definidos em `INFRA-002`/`INFRA-003` (sem alterá-los), Market Snapshot/Indicator Snapshot, cache, atualização por Tick/Candle. Fora de escopo: Signal Builder/Risk Service/Order Manager/Position Manager/execução. Checklist de 6 validações, 7 cenários de teste, critérios de aceitação objetivos.
 - Nenhuma arquitetura, contrato ou componente foi alterado.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-002.
+
+### 2026-07-21 — ROADMAP-003 (Sprint 3 — Signal Evaluation & Risk Validation)
+
+- Adicionado `Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md` — plano executivo da Sprint 3: implementar `EXEC-004` (Signal Builder) e `EXEC-003` (Risk Service) exatamente conforme já especificados, sem alteração de contrato.
+- **Divergência real corrigida (não uma nova RFC)**: o brief de origem descrevia o pipeline como `Signal Engine → Opportunity → Risk Service → Decision`, incompatível com a Alternativa B já decidida em `RFC-007` (`Indicators → Decision → Risk Service → Order Manager`, sem estágio `Opportunity`) e com os contratos já existentes de `EXEC-004` (saída: `SignalResult`) e `EXEC-003` (saída: `Risk Approved`/`Risk Rejected`/`Risk Evaluation Result`). `Opportunity`/`Decision` são entidades do Core Domain (`DOMAIN-001`/`DOMAIN-005`, congeladas) — usá-las como saída de componentes de Execution reintroduziria o cruzamento de camada que `RFC-007` decidiu evitar, sem evidência de implementação/teste (exigida por `ADR-009` §8 para reabrir a decisão). Corrigido usando os nomes já aprovados; nenhuma RFC nova foi aberta, já que `RFC-007` já respondeu a esta pergunta.
+- Checklist técnico (Signal Builder + Risk Service), 9 validações, 8 cenários de teste, critérios de aceitação determinísticos, 3 riscos de implementação registrados (sem propor alteração arquitetural).
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-003.

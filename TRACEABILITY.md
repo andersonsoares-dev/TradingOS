@@ -336,6 +336,14 @@ Nenhuma arquitetura, contrato ou componente foi alterado por este documento.
 
 Nenhuma arquitetura, contrato ou componente foi alterado por este documento.
 
+## ROADMAP-003 — Sprint 3 (Signal Evaluation & Risk Validation)
+
+`Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md` define o plano executivo da Sprint 3: implementação de `EXEC-004` (Signal Builder) e `EXEC-003` (Risk Service), exatamente conforme já especificados.
+
+**Divergência real identificada e corrigida na Validação Prévia (não introduzida por este documento, e não tratada como nova RFC)**: o brief de origem descrevia o pipeline como `Signal Engine → Opportunity → Risk Service → Decision`. Isso contradiz diretamente a Alternativa B já decidida em `RFC-007` (`Indicators → Decision → Risk Service → Order Manager`, sem estágio `Opportunity`, com `Risk Service` produzindo aprovação/rejeição, não uma `Decision`) e os contratos textuais já existentes de `EXEC-004` (saída `SignalResult`) e `EXEC-003` (saída `Risk Approved`/`Risk Rejected`/`Risk Evaluation Result`). `Opportunity` e `Decision` pertencem ao Core Domain (`DOMAIN-001`/`DOMAIN-005`, congeladas) — nomeá-los como saída de componentes de Execution reintroduziria o cruzamento de camada que `RFC-007` decidiu evitar, sem nenhuma evidência de implementação/teste, que `ADR-009` §8 exige para reabrir essa decisão. `ROADMAP-003` foi escrito usando os nomes já aprovados (`Signal Result`, `Risk Approved`/`Risk Rejected`); nenhuma RFC nova foi aberta, pois `RFC-007` já resolveu esta exata questão.
+
+Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `ROADMAP-001`, `ROADMAP-002`, `EXEC-003`, `EXEC-004`, `INFRA-002`, `INFRA-003`. Fora de escopo: `EXEC-001`, `EXEC-002`, `EXEC-005`, envio de ordens, integração MT5.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
