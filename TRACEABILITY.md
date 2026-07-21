@@ -155,6 +155,12 @@ O ciclo de vida da Opportunity, conforme originalmente definido em DOMAIN-001, i
 
 Nenhum documento remanescente referencia `Opportunity Executed`, `Opportunity Closed` ou `Opportunity Archived` (validado antes do commit).
 
+## SPEC-006 — Business Rules (v1.0.0)
+
+`Docs/04-specifications/SPEC-006-Business-Rules.md` consolida as regras de negócio do domínio em numeração global própria: BR-1xx (Validação, Evidence/Market Context), BR-2xx (Contexto/Market Context), BR-3xx (Opportunity), BR-4xx (Decision), BR-5xx (Execution Boundary). Não define componentes, arquitetura ou algoritmos — apenas consolida a definição funcional já existente, distribuída hoje entre serviços do Expert Advisor (Legacy Baseline). Rastreado contra DOMAIN-001/003/004/005, ARCH-001, SPEC-003/004, ADR-006.
+
+**Divergência aberta (não bloqueante)**: DOMAIN-001 e DOMAIN-005 já possuem suas próprias regras de negócio numeradas localmente (`BR-001` a `BR-006`, por entidade). SPEC-006 introduz uma numeração global paralela (`BR-1xx` a `BR-5xx`) sem declarar a correspondência entre as duas — por exemplo, não há indicação de qual `BR-00x` local (se algum) equivale a `BR-101`/`BR-301`/`BR-401`. Os dois esquemas não colidem tecnicamente (namespaces distintos), mas a ausência de mapeamento explícito é uma lacuna de rastreabilidade a ser resolvida em revisão futura.
+
 ## Architecture Stabilization (taxonomia)
 
 Consolidação da nomenclatura arquitetural entre SPEC-001/002/003, eliminando 3 variações de nome para os mesmos papéis que existiam antes desta estabilização:

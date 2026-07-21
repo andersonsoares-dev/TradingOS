@@ -22,6 +22,7 @@
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
 | SPEC-004 | Application Services | Docs/04-specifications/SPEC-004-Application-Services.md | 1.0.0 | Approved |
 | SPEC-005 | Domain Lifecycle | Docs/04-specifications/SPEC-005-Domain-Lifecycle.md | 1.0.0 | Approved |
+| SPEC-006 | Business Rules | Docs/04-specifications/SPEC-006-Business-Rules.md | 1.0.0 | Approved |
 | ADR-001 | Legacy Baseline | Docs/05-decisions/ADR-001-Legacy-Baseline.md | 1.0.0 | Accepted |
 | ADR-002 | Domain Evolution | Docs/05-decisions/ADR-002-Domain-Evolution.md | 1.0.0 | Accepted |
 | ADR-003 | Product Scope | Docs/05-decisions/ADR-003-Product-Scope.md | 1.0.0 | Accepted |
@@ -65,7 +66,8 @@ knowledge/
 
 ## Pendências conhecidas
 
-- Suíte de domínio (DOMAIN-001 a DOMAIN-005), arquitetura (ARCH-001) e cinco especificações técnicas (SPEC-001 a SPEC-005) completas.
+- Suíte de domínio (DOMAIN-001 a DOMAIN-005), arquitetura (ARCH-001) e seis especificações técnicas (SPEC-001 a SPEC-006) completas.
+- `SPEC-007` (referenciado como `related` em SPEC-006) ainda não existe.
 - Ciclo de vida da Opportunity realinhado com os Bounded Contexts via ADR-006: Execution deixou de fazer parte do ciclo de vida da Opportunity (ver Docs/CHANGELOG.md — Architecture Stabilization / ADR-006).
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
