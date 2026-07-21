@@ -10,6 +10,7 @@
 #include <TradingOS/Indicators/RSIService.mqh>
 #include <TradingOS/Indicators/ADXService.mqh>
 #include <TradingOS/Services/SessionService.mqh>
+#include <TradingOS/Services/PivotService.mqh>
 
 class CMarketService
 {
@@ -20,6 +21,7 @@ private:
    CRSIService     RSI;
    CADXService     ADX;
    CSessionService Session;
+   CPivotService   Pivot;
 
 public:
 
@@ -73,6 +75,13 @@ public:
 
       context.CurrentSession =
          Session.GetSession(TimeCurrent());
+
+      double pivotHigh  = iHigh(_Symbol, PERIOD_D1, 1);
+      double pivotLow   = iLow(_Symbol, PERIOD_D1, 1);
+      double pivotClose = iClose(_Symbol, PERIOD_D1, 1);
+
+      context.CurrentPivot =
+         Pivot.Calculate(pivotHigh, pivotLow, pivotClose);
 
       return true;
    }

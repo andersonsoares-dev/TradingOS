@@ -6,6 +6,7 @@
 
 #include <TradingOS/Indicators/TrendService.mqh>
 #include <TradingOS/Services/SessionService.mqh>
+#include <TradingOS/Services/PivotService.mqh>
 
 struct MarketContext
 {
@@ -35,6 +36,8 @@ struct MarketContext
 
    ENUM_MARKET_SESSION CurrentSession;
 
+   PivotLevels CurrentPivot;
+
    void Clear()
    {
       Symbol = "";
@@ -62,6 +65,14 @@ struct MarketContext
       AdxM15 = 0.0;
 
       CurrentSession = SESSION_CLOSED;
+
+      CurrentPivot.Pivot = 0.0;
+      CurrentPivot.R1 = 0.0;
+      CurrentPivot.R2 = 0.0;
+      CurrentPivot.R3 = 0.0;
+      CurrentPivot.S1 = 0.0;
+      CurrentPivot.S2 = 0.0;
+      CurrentPivot.S3 = 0.0;
    }
 };
 
