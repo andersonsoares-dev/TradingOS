@@ -8,6 +8,25 @@
 #include <TradingOS/Services/SessionService.mqh>
 #include <TradingOS/Services/PivotService.mqh>
 
+enum ENUM_MARKET_BIAS
+{
+   BIAS_NEUTRAL = 0,
+   BIAS_BULLISH,
+   BIAS_BEARISH
+};
+
+struct MarketAssessment
+{
+   int              Score;
+   ENUM_MARKET_BIAS Bias;
+
+   MarketAssessment()
+   {
+      Score = 0;
+      Bias  = BIAS_NEUTRAL;
+   }
+};
+
 struct MarketContext
 {
    string Symbol;
@@ -37,6 +56,8 @@ struct MarketContext
    ENUM_MARKET_SESSION CurrentSession;
 
    PivotLevels CurrentPivot;
+
+   MarketAssessment Assessment;
 
    void Clear()
    {
@@ -73,6 +94,9 @@ struct MarketContext
       CurrentPivot.S1 = 0.0;
       CurrentPivot.S2 = 0.0;
       CurrentPivot.S3 = 0.0;
+
+      Assessment.Score = 0;
+      Assessment.Bias  = BIAS_NEUTRAL;
    }
 };
 

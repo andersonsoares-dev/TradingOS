@@ -11,17 +11,19 @@
 #include <TradingOS/Indicators/ADXService.mqh>
 #include <TradingOS/Services/SessionService.mqh>
 #include <TradingOS/Services/PivotService.mqh>
+#include <TradingOS/Services/MarketAssessmentService.mqh>
 
 class CMarketService
 {
 private:
 
-   CTrendService   Trend;
-   CATRService     ATR;
-   CRSIService     RSI;
-   CADXService     ADX;
-   CSessionService Session;
-   CPivotService   Pivot;
+   CTrendService            Trend;
+   CATRService              ATR;
+   CRSIService               RSI;
+   CADXService               ADX;
+   CSessionService           Session;
+   CPivotService             Pivot;
+   CMarketAssessmentService  AssessmentService;
 
 public:
 
@@ -72,6 +74,11 @@ public:
 
       context.AdxM15 =
          ADX.GetValue(_Symbol, PERIOD_M15);
+
+      // MarketAssessmentService roda somente apos Trend, ADX e RSI
+      // ja estarem gravados no context.
+      context.Assessment =
+         AssessmentService.Calculate(context);
 
       context.CurrentSession =
          Session.GetSession(TimeCurrent());
