@@ -214,6 +214,14 @@ Correção de vocabulário aplicada diretamente (sem RFC, por ser conformidade c
 
 Seis nomes citados no brief de origem (`Replay Adapter`, `CSV Provider`/`CSV Adapter`, `Mock Provider`, `REST Adapter`, `FIX Adapter`, `WebSocket Adapter`) não constam no Canonical Component Catalog (`SPEC-001`). Registrados em `RFC-003` (Data Provider Candidate Adapters), classificados "Requires Architectural Decision", e não incorporados como dependências aprovadas em INFRA-002. `MT5 Adapter` foi referenciado usando a categorização já existente em SPEC-001 (Execution Component), mesma observação já feita em INFRA-001.
 
+## INFRA-003 — Indicator Provider (Fase 2, Entrega 03)
+
+`Docs/03-architecture/INFRA-003-Indicator-Provider.md` detalha o Port `Indicator Provider` (catalogado em `SPEC-001`, contratado em `SPEC-002`): responsabilidades, fonte de dados restrita ao `Data Provider`, modelo uniforme de resultado, portas públicas, dependências permitidas/proibidas, requisitos não funcionais, padronização, extensibilidade, diagrama, casos de uso, observabilidade, Definition of Ready/Done, critérios de teste. Rastreado contra `ARCH-001`, `SPEC-001`, `SPEC-002`, `SPEC-003`, `INFRA-001`, `INFRA-002`. Respeita o congelamento de `ADR-007` — nenhum documento da Baseline foi alterado.
+
+Diferente de `INFRA-001`/`INFRA-002`, nenhum componente candidato novo foi solicitado nesta entrega — todos os itens do brief (ATR/RSI/ADX/EMA/SMA/MACD/Bollinger/VWAP) são valores produzidos pelo único componente já canônico `Indicator Provider`, não componentes separados.
+
+A Validação Prévia (Document Validation Pipeline) identificou, no entanto, uma divergência preexistente entre dois documentos da própria Baseline: `SPEC-001` (Component Lifecycle) mapeia `TrendService`/`ATRService`/`RSIService`/`ADXService` para `Indicator Provider` (Infrastructure Providers); `SPEC-003` (Legacy Baseline) mapeia os mesmos quatro serviços para `Evidence Builder` (Core Domain Builders) — dois componentes de camadas arquiteturais diferentes. Nenhum dos dois documentos foi alterado (ambos congelados por `ADR-007`). Registrada em `RFC-004` (Legacy Indicator Mapping Ambiguity), classificada "Requires Architectural Decision". `INFRA-003` seguiu o mapeamento de `SPEC-001` por ser o Canonical Component Catalog, sem resolver a divergência com `SPEC-003`.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
