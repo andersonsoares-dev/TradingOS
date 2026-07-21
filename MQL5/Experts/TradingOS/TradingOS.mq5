@@ -9,12 +9,16 @@
 #include <TradingOS/Core/Logger.mqh>
 
 #include <TradingOS/Services/MarketService.mqh>
+#include <TradingOS/Services/SignalBuilderService.mqh>
 
 #include <TradingOS/Models/MarketContext.mqh>
+#include <TradingOS/Models/TradingSignal.mqh>
 #include <TradingOS/UI/Dashboard.mqh>
 #include <TradingOS/UI/PivotRenderer.mqh>
 MarketContext Context;
+TradingSignal Signal;
 CMarketService Market;
+CSignalBuilderService SignalBuilder;
 CDashboard Dashboard;
 CPivotRenderer PivotRenderer;
 
@@ -43,9 +47,11 @@ void OnDeinit(const int reason)
 //+------------------------------------------------------------------+
 void OnTimer()
 {
-   Market.Update(Context);
+   bool marketOk = Market.Update(Context);
 
-   Dashboard.Update(Context);
+   Signal = SignalBuilder.Build(Context);
+
+   Dashboard.Update(Context, Signal, marketOk);
 
    PivotRenderer.Update(Context);
 

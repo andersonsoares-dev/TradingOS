@@ -15,15 +15,26 @@ enum ENUM_MARKET_BIAS
    BIAS_BEARISH
 };
 
+enum ENUM_CONFIDENCE_LEVEL
+{
+   CONFIDENCE_LOW = 0,
+   CONFIDENCE_MEDIUM,
+   CONFIDENCE_HIGH
+};
+
 struct MarketAssessment
 {
-   int              Score;
-   ENUM_MARKET_BIAS Bias;
+   int                   Score;
+   ENUM_MARKET_BIAS      Bias;
+   int                   ConfidenceScore;
+   ENUM_CONFIDENCE_LEVEL ConfidenceLevel;
 
    MarketAssessment()
    {
-      Score = 0;
-      Bias  = BIAS_NEUTRAL;
+      Score           = 0;
+      Bias            = BIAS_NEUTRAL;
+      ConfidenceScore = 0;
+      ConfidenceLevel = CONFIDENCE_LOW;
    }
 };
 
@@ -101,8 +112,10 @@ struct MarketContext
       PreviousDayHigh = 0.0;
       PreviousDayLow  = 0.0;
 
-      Assessment.Score = 0;
-      Assessment.Bias  = BIAS_NEUTRAL;
+      Assessment.Score           = 0;
+      Assessment.Bias            = BIAS_NEUTRAL;
+      Assessment.ConfidenceScore = 0;
+      Assessment.ConfidenceLevel = CONFIDENCE_LOW;
    }
 };
 

@@ -8,11 +8,17 @@
 
 // Recebe o MarketContext ja preenchido (Trend/ADX/RSI). Nao acessa o
 // broker, nao usa Symbol nem Timeframe - trabalha somente sobre valores
-// ja calculados por outros servicos. Confidence NAO implementado nesta
-// sprint (ver Docs/BACKLOG.md).
+// ja calculados por outros servicos.
 class CMarketAssessmentService
 {
 private:
+
+   int SignOf(double value)
+   {
+      if(value > 0.0) return 1;
+      if(value < 0.0) return -1;
+      return 0;
+   }
 
    double TrendScore(ENUM_TREND trend)
    {
@@ -63,6 +69,22 @@ public:
          assessment.Bias = BIAS_BEARISH;
       else
          assessment.Bias = BIAS_NEUTRAL;
+
+      int overallSign = SignOf((double)assessment.Score);
+      int agreement   = 0;
+
+      if(SignOf(scoreH4)  == overallSign) agreement++;
+      if(SignOf(scoreH1)  == overallSign) agreement++;
+      if(SignOf(scoreM15) == overallSign) agreement++;
+
+      assessment.ConfidenceScore = (int)MathRound(100.0 * agreement / 3.0);
+
+      if(assessment.ConfidenceScore >= 67)
+         assessment.ConfidenceLevel = CONFIDENCE_HIGH;
+      else if(assessment.ConfidenceScore >= 34)
+         assessment.ConfidenceLevel = CONFIDENCE_MEDIUM;
+      else
+         assessment.ConfidenceLevel = CONFIDENCE_LOW;
 
       return assessment;
    }
