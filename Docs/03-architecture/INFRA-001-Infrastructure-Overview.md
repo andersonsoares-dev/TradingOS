@@ -1,7 +1,7 @@
 ---
 id: INFRA-001
 title: Infrastructure Overview
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -177,6 +177,23 @@ Princípios obrigatórios para qualquer componente de Infrastructure:
 
 ---
 
+# Princípio de Evolução
+
+A camada Infrastructure deverá ser projetada para permitir futura integração com:
+
+- Learning Engine
+- Knowledge Repository
+- Performance Analyzer
+- Recommendation Engine
+
+Sem dependências diretas.
+
+Nenhum destes componentes deverá ser criado nesta entrega.
+
+Apenas garantir que a arquitetura permita sua futura integração através de Ports & Adapters e Dependency Inversion.
+
+---
+
 # Diagrama
 
 ```mermaid
@@ -217,6 +234,8 @@ Este documento não cria código, interfaces, contratos, componentes novos, Prov
 **Observação de categorização**: `Broker Adapter` e `MT5 Adapter` estão catalogados em `SPEC-001` como Execution Components, não como Infrastructure Providers. `ARCH-001` já os cita em ambas as seções (Infrastructure — como exemplo de integração externa — e Execution — como componente típico), uma inconsistência preexistente não introduzida por este documento. Este documento os lista por serem, na prática, adapters de integração externa consumidos pela camada de Infrastructure, sem reclassificá-los em `SPEC-001`.
 
 **Observação — RFC obrigatória**: `Event Dispatcher` e `Scheduler`, mencionados no brief desta entrega, **não constam no Canonical Component Catalog (`SPEC-001`)**. Conforme instrução desta própria entrega ("Caso seja identificada qualquer inconsistência, registrar como RFC") e a regra de Canonical Naming (`AGENTS.md`: "É proibido introduzir novos nomes para componentes existentes... qualquer novo componente deverá ser registrado primeiro em SPEC-001"), esses dois itens **não foram incorporados como componentes aprovados** neste documento. Foram registrados em `Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md`, pendentes de decisão arquitetural antes de qualquer atualização de `SPEC-001`.
+
+**Observação — Princípio de Evolução**: `Learning Engine`, `Knowledge Repository`, `Performance Analyzer` e `Recommendation Engine` (seção "Princípio de Evolução") também não constam no Canonical Component Catalog (`SPEC-001`). Diferente de `Event Dispatcher`/`Scheduler`, eles não são apresentados aqui como componentes da camada Infrastructure, nem incluídos na tabela de Componentes — são citados apenas como possíveis destinos de integração futura, para garantir que a arquitetura de Ports & Adapters não crie acoplamento que os impeça. Nenhum RFC foi aberto para eles nesta entrega; caso e quando algum desses nomes evolua para um componente real, deverá seguir o mesmo processo de `RFC-001`/`RFC-002` antes de ser registrado em `SPEC-001`.
 
 ---
 

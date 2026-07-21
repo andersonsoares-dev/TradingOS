@@ -204,6 +204,8 @@ Componentes citados (Data Provider, Indicator Provider, Configuration Provider, 
 
 Dois itens do brief de origem — `Event Dispatcher` e `Scheduler` — não constam no Canonical Component Catalog (`SPEC-001`). Por não haver autorização para criar componentes novos fora do processo formal (`AGENTS.md` — Canonical Naming; `ADR-007` — Baseline Freeze), foram registrados em `RFC-002` (Infrastructure Candidate Components), classificados "Requires Architectural Decision", e não incorporados como componentes aprovados em INFRA-001.
 
+**v1.1.0**: adicionada a seção "Princípio de Evolução", declarando que a camada Infrastructure deve permanecer compatível com futura integração de `Learning Engine`, `Knowledge Repository`, `Performance Analyzer` e `Recommendation Engine` via Ports & Adapters/Dependency Inversion, sem dependências diretas. Nenhum desses quatro nomes consta em SPEC-001; diferente de `Event Dispatcher`/`Scheduler`, não foram tratados como RFC nesta entrega, por não serem apresentados como componentes da camada — apenas como possíveis destinos de integração futura.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

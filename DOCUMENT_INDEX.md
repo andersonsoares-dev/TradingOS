@@ -17,7 +17,7 @@
 | DOMAIN-004 | Market Context | Docs/02-domain/DOMAIN-004-Market-Context.md | 1.1.0 | Approved |
 | DOMAIN-005 | Decision | Docs/02-domain/DOMAIN-005-Decision.md | 1.1.0 | Approved |
 | ARCH-001 | Architecture Blueprint | Docs/03-architecture/ARCH-001-Architecture-Blueprint.md | 1.2.0 | Approved |
-| INFRA-001 | Infrastructure Overview | Docs/03-architecture/INFRA-001-Infrastructure-Overview.md | 1.0.0 | Approved |
+| INFRA-001 | Infrastructure Overview | Docs/03-architecture/INFRA-001-Infrastructure-Overview.md | 1.1.0 | Approved |
 | SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.4.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |

@@ -143,3 +143,9 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Dois itens do brief de origem (`Event Dispatcher`, `Scheduler`) não constam no Canonical Component Catalog (`SPEC-001`) — não foram incorporados como componentes aprovados. Adicionado `Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md`, classificado "Requires Architectural Decision".
 - `Broker Adapter`/`MT5 Adapter` (catalogados em SPEC-001 como Execution Components, não Infrastructure Providers) e `Logger` (citado no brief como "Logger Provider", nome não-canônico) foram referenciados em INFRA-001 usando os nomes e categorias já estabelecidos em SPEC-001, com observação explícita da divergência de nomenclatura do brief.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com INFRA-001 e RFC-002.
+
+### 2026-07-21 — INFRA-001 v1.1.0 (Princípio de Evolução)
+
+- `Docs/03-architecture/INFRA-001-Infrastructure-Overview.md` atualizado para v1.1.0 — adicionada a seção "Princípio de Evolução": a camada Infrastructure deve permitir futura integração com Learning Engine, Knowledge Repository, Performance Analyzer e Recommendation Engine, sem dependências diretas, via Ports & Adapters e Dependency Inversion. Nenhum desses componentes foi criado nesta entrega.
+- Nenhum dos quatro nomes consta no Canonical Component Catalog (SPEC-001); diferente de `Event Dispatcher`/`Scheduler` (RFC-002), eles não foram incluídos na tabela de Componentes nem tratados como RFC nesta entrega — são citados apenas como alvos de integração futura, garantindo que a arquitetura de Ports & Adapters permaneça compatível.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com a nova versão de INFRA-001.
