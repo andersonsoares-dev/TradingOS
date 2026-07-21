@@ -278,3 +278,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - **Divergência real corrigida (não uma nova RFC)**: o brief de origem descrevia o pipeline como `Signal Engine → Opportunity → Risk Service → Decision`, incompatível com a Alternativa B já decidida em `RFC-007` (`Indicators → Decision → Risk Service → Order Manager`, sem estágio `Opportunity`) e com os contratos já existentes de `EXEC-004` (saída: `SignalResult`) e `EXEC-003` (saída: `Risk Approved`/`Risk Rejected`/`Risk Evaluation Result`). `Opportunity`/`Decision` são entidades do Core Domain (`DOMAIN-001`/`DOMAIN-005`, congeladas) — usá-las como saída de componentes de Execution reintroduziria o cruzamento de camada que `RFC-007` decidiu evitar, sem evidência de implementação/teste (exigida por `ADR-009` §8 para reabrir a decisão). Corrigido usando os nomes já aprovados; nenhuma RFC nova foi aberta, já que `RFC-007` já respondeu a esta pergunta.
 - Checklist técnico (Signal Builder + Risk Service), 9 validações, 8 cenários de teste, critérios de aceitação determinísticos, 3 riscos de implementação registrados (sem propor alteração arquitetural).
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-003.
+
+### 2026-07-21 — ROADMAP-004 (Sprint 4 — Order Execution Integration)
+
+- Adicionado `Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md` — plano executivo da Sprint 4: implementar `EXEC-001` (Order Manager), `EXEC-002` (Position Manager) e `EXEC-005` (MT5 Adapter) exatamente conforme já especificados.
+- Ajuste cosmético de terminologia (não uma divergência de pipeline, diferente de ROADMAP-003): "Decision" (gatilho de Order Manager) e "Execution Result" (saída de MT5 Adapter) do brief de origem substituídos pelos termos exatos já especificados — `Signal Result`/`Risk Result` (entradas de EXEC-001) e `Order Response` (saída de EXEC-005).
+- Checklist técnico (Order Manager + MT5 Adapter + Position Manager), 7 validações, 8 cenários de teste, critérios de aceitação, 3 riscos técnicos de integração registrados (sem propor alteração arquitetural).
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-004.

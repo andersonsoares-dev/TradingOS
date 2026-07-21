@@ -344,6 +344,14 @@ Nenhuma arquitetura, contrato ou componente foi alterado por este documento.
 
 Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `ROADMAP-001`, `ROADMAP-002`, `EXEC-003`, `EXEC-004`, `INFRA-002`, `INFRA-003`. Fora de escopo: `EXEC-001`, `EXEC-002`, `EXEC-005`, envio de ordens, integração MT5.
 
+## ROADMAP-004 — Sprint 4 (Order Execution Integration)
+
+`Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md` define o plano executivo da Sprint 4: implementação de `EXEC-001` (Order Manager), `EXEC-002` (Position Manager) e `EXEC-005` (MT5 Adapter), exatamente conforme já especificados.
+
+Ajuste de terminologia aplicado (cosmético — diferente da divergência de pipeline corrigida em `ROADMAP-003`): o brief usava "Decision" como gatilho de `Order Manager` e "Execution Result" como saída de `MT5 Adapter`. `EXEC-001` já especifica suas entradas como `Signal Result`/`Risk Result`/`Symbol Information`/`Configuration`; `EXEC-005` já especifica sua saída como `Order Response`. `ROADMAP-004` usa os termos exatos já aprovados.
+
+Rastreado contra `ADR-009`, `RFC-006`, `RFC-007`, `ROADMAP-001` a `ROADMAP-003`, `EXEC-001`, `EXEC-002`, `EXEC-005`. Fora de escopo: novas estratégias, novos indicadores, gestão de portfólio, multiativo, otimizações.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

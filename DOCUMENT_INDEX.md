@@ -55,6 +55,7 @@
 | ROADMAP-001 | Sprint 1 — Foundation (Release 1.0) | Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md | 1.0.0 | Approved |
 | ROADMAP-002 | Sprint 2 — Market Data & Indicators (Release 1.0) | Docs/09-roadmap/ROADMAP-002-Sprint-2-Market-Data-Indicators.md | 1.0.0 | Approved |
 | ROADMAP-003 | Sprint 3 — Signal Evaluation & Risk Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md | 1.0.0 | Approved |
+| ROADMAP-004 | Sprint 4 — Order Execution Integration (Release 1.0) | Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md | 1.0.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -115,6 +116,7 @@ knowledge/
 - `ROADMAP-001-Sprint-1-Foundation.md` inaugura a família `ROADMAP-*` (`Docs/09-roadmap/`), primeiro documento pós-arquitetura. Solicitado originalmente como `IMPLEMENTATION-001` em `Docs/07-implementation/` — pasta/família inexistentes na estrutura travada por `ADR-009` (posição `07` é `07-testing/`); criado sob a família `ROADMAP-*` já congelada.
 - `ROADMAP-002-Sprint-2-Market-Data-Indicators.md` — mesma correção de família/pasta (era `IMPLEMENTATION-002`). Implementa Data Provider/Indicator Provider usando os contratos de `INFRA-002`/`INFRA-003`, sem alterá-los.
 - `ROADMAP-003-Sprint-3-Signal-Risk.md` corrige uma divergência real de pipeline no brief de origem (`Signal Engine → Opportunity → Risk Service → Decision`, incompatível com a Alternativa B de `RFC-007` e reintroduzindo nomes do Core Domain — `Opportunity`/`Decision` — na camada de Execution). Implementado com os nomes já aprovados: `Signal Result` (saída de EXEC-004) e `Risk Approved`/`Risk Rejected`/`Risk Evaluation Result` (saída de EXEC-003). Nenhuma RFC nova aberta — `RFC-007` já decidiu esta questão.
+- `ROADMAP-004-Sprint-4-Order-Execution.md` — ajuste cosmético de terminologia (não uma divergência de pipeline como ROADMAP-003): "Decision"/"Execution Result" do brief substituídos pelos termos exatos já especificados em `EXEC-001` (`Signal Result`/`Risk Result`) e `EXEC-005` (`Order Response`).
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.
