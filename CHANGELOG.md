@@ -27,3 +27,8 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 
 - Adicionado `Docs/01-requirements/REQ-001-Requirements-Specification.md` — 12 requisitos funcionais (REQ-001 a REQ-012) e 8 requisitos não funcionais (NFR-001 a NFR-008).
 - `TRACEABILITY.md` atualizado com mapeamento de cada requisito contra a Legacy Baseline (V1).
+
+### 2026-07-21 — Domain
+
+- Adicionado `Docs/02-domain/DOMAIN-001-Opportunity.md` — entidade central do domínio-alvo (Opportunity), com ciclo de vida, atributos, regras de negócio (BR-001 a BR-006) e mapeamento de evolução a partir de `MarketAssessment`/`TradingSignal` (ADR-002).
+- `TRACEABILITY.md` atualizado com referência a DOMAIN-001.
