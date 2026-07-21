@@ -79,6 +79,20 @@ O próprio documento reconhece na seção "Legacy Baseline" que a V1 (`TrendServ
 
 `Docs/ARCHITECTURE.md` (a arquitetura informal da V1, referenciada na tabela "Estado atual" acima) e `ARCH-001` coexistem deliberadamente: o primeiro documenta o que existe, o segundo define o que será construído daqui em diante.
 
+## SPEC-001 — Component Model
+
+`Docs/04-specifications/SPEC-001-Component-Model.md` define os componentes oficiais organizados em quatro grupos (Core Domain, Strategy, Infrastructure, Execution), com contratos (interface pública, responsabilidades, dependências, eventos) e a regra de que nenhum componente pode acessar dependências fora do permitido por ARCH-001. Rastreado contra ARCH-001, DOMAIN-003/004/005 e REQ-001 a REQ-010.
+
+**Observação**: a lista "Componentes Legacy" do SPEC-001 (TrendService, ATRService, ADXService, RSIService, SessionService, PivotService, TradingSignal, SignalBuilderService, Config, Logger) não menciona `MarketAssessmentService`, `Dashboard` nem `PivotRenderer` — todos já reconhecidos como Legacy Baseline em outros documentos (ver ADR-001 e seção "Legacy Components" abaixo). Divergência de escopo entre documentos, não bloqueante.
+
+**Atualização (v1.1.0)**: adicionada seção "Component Lifecycle", classificando cada componente (Implemented/Planned/Deprecated/Future) frente ao código real. Destaque: `MT5 Adapter` = Planned (acesso ao MT5 hoje disperso em cada serviço, sem adapter isolado — a mesma violação já apontada em ARCH-001).
+
+## SPEC-002 — Interface Contracts
+
+`Docs/04-specifications/SPEC-002-Interface-Contracts.md` define os contratos entre componentes no pipeline `Data Provider → Indicator Provider → Evidence Factory → Market Context Builder → Opportunity Evaluator → Decision Engine → Signal Builder → Order Manager`, com pré/pós-condições e tratamento de erros. Rastreado contra ARCH-001, SPEC-001, DOMAIN-003/004/005.
+
+**Observação não reconciliada**: `Evidence Factory`, `Market Context Builder`, `Opportunity Evaluator` e `Decision Engine` são nomes de componente que não aparecem no SPEC-001 (nem na tabela "Component Lifecycle") — o SPEC-001 tem "Strategy Engine" com papel parecido, mas não esses quatro nomes específicos de pipeline. Não está claro se são sinônimos ou conceitos adicionais faltando no SPEC-001. Nenhum código implementa nenhum dos quatro.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
