@@ -264,3 +264,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ROADMAP-001` define o plano executivo da Sprint 1 (Foundation): objetivos (compilar, inicializar, carregar configuração, logging, versão, Event Bus, estado Idle — sem estratégia/execução), escopo (Bootstrap/Config/Logger/Common Types/Error Model/Event Model/Dependency Initialization/Lifecycle), fora de escopo (todos os EXEC-00X permanecem apenas contrato nesta sprint), checklist de 8 itens, critérios de aceitação (Build OK, zero erros/warnings, inicialização/encerramento limpos, logs corretos).
 - Nenhuma arquitetura, contrato ou componente foi alterado — documento é puramente sequenciamento de implementação.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-001.
+
+### 2026-07-21 — ROADMAP-002 (Sprint 2 — Market Data & Indicators)
+
+- Um brief de origem solicitava criar `Docs/07-implementation/IMPLEMENTATION-002-Sprint-2.md` — mesmo conflito com `ADR-009` já identificado em `ROADMAP-001`. Criado como `Docs/09-roadmap/ROADMAP-002-Sprint-2-Market-Data-Indicators.md`.
+- `ROADMAP-002` define o plano executivo da Sprint 2: implementar `Data Provider`/`Indicator Provider` usando os contratos já definidos em `INFRA-002`/`INFRA-003` (sem alterá-los), Market Snapshot/Indicator Snapshot, cache, atualização por Tick/Candle. Fora de escopo: Signal Builder/Risk Service/Order Manager/Position Manager/execução. Checklist de 6 validações, 7 cenários de teste, critérios de aceitação objetivos.
+- Nenhuma arquitetura, contrato ou componente foi alterado.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-002.

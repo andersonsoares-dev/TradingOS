@@ -330,6 +330,12 @@ Define o plano executivo da Sprint 1: objetivos (compilar/inicializar/config/log
 
 Nenhuma arquitetura, contrato ou componente foi alterado por este documento.
 
+## ROADMAP-002 — Sprint 2 (Market Data & Indicators)
+
+`Docs/09-roadmap/ROADMAP-002-Sprint-2-Market-Data-Indicators.md` — mesma correção de família/pasta já aplicada em `ROADMAP-001` (era `IMPLEMENTATION-002` em `Docs/07-implementation/`). Define o plano executivo da Sprint 2: implementação de `Data Provider`/`Indicator Provider` usando exatamente os contratos já definidos em `INFRA-002`/`INFRA-003`, sem alterá-los; Market Snapshot/Indicator Snapshot; cache; atualização por Tick/Candle. Fora de escopo: `Signal Builder`, `Risk Service`, `Order Manager`, `Position Manager`, execução. Rastreado contra `ADR-009`, `ROADMAP-001`, `INFRA-002`, `INFRA-003`, `ADR-004`.
+
+Nenhuma arquitetura, contrato ou componente foi alterado por este documento.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
