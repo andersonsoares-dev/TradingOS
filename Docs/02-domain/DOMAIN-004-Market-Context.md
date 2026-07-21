@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-004
 title: Market Context
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -194,6 +194,50 @@ Opportunity
 ↓
 
 Decision
+
+---
+
+# Ciclo de Vida
+
+## Estados
+
+Building
+
+↓
+
+Validated
+
+↓
+
+Frozen
+
+↓
+
+Obsolete
+
+---
+
+### Building
+
+Evidence sendo agregadas.
+
+---
+
+### Validated
+
+Contexto consistente.
+
+---
+
+### Frozen
+
+Contexto imutável utilizado pelo domínio.
+
+---
+
+### Obsolete
+
+Contexto substituído por um mais recente.
 
 ---
 

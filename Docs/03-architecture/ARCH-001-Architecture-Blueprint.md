@@ -1,7 +1,7 @@
 ---
 id: ARCH-001
 title: Architecture Blueprint
-version: 1.1.0
+version: 1.2.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -263,6 +263,12 @@ Interpretação do mercado.
 ## Execution
 
 Conversão de Decision em ações operacionais.
+
+Execution é um Bounded Context independente.
+
+Opportunity nunca atravessa o limite entre Core Domain e Execution.
+
+A entidade compartilhada entre os contextos é a Decision publicada, posteriormente materializada como Signal pelo contexto de Execution.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-005
 title: Decision
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -207,6 +207,60 @@ Signal
 ↓
 
 Execution
+
+---
+
+# Ciclo de Vida
+
+## Estados
+
+Draft
+
+↓
+
+Generated
+
+↓
+
+Published
+
+↓
+
+Consumed
+
+↓
+
+Archived
+
+---
+
+### Draft
+
+Decision em construção.
+
+---
+
+### Generated
+
+Decision concluída.
+
+---
+
+### Published
+
+Disponibilizada ao contexto de Execution.
+
+---
+
+### Consumed
+
+Recebida pelo contexto de Execution.
+
+---
+
+### Archived
+
+Mantida apenas para auditoria.
 
 ---
 

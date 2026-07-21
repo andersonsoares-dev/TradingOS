@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-002
 title: Ubiquitous Language
-version: 1.2.0
+version: 1.3.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -52,6 +52,16 @@ Hipótese operacional identificada pelo domínio.
 Não representa uma ordem.
 
 Não representa uma posição.
+
+---
+
+## Completed
+
+Estado final da Opportunity.
+
+Representa que a Opportunity cumpriu sua finalidade no domínio.
+
+Não representa execução de ordem.
 
 ---
 

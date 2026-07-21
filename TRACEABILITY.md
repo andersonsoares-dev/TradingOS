@@ -49,6 +49,7 @@ Toda nova funcionalidade deverá preencher esta matriz integralmente (REQ → DO
 - CONST-001 declara a missão como Swing Trade; a configuração atual do sistema é intradiária (day trade) — resolvido pelo ADR-003 (Product Scope): intraday é uma especialização válida da missão, não uma violação.
 - CONST-001 declara "Oportunidade" como objeto central do domínio; o código atual usa `MarketAssessment`/`TradingSignal`, não um agregado `Opportunity` — resolvido pelo ADR-002 (Domain Evolution): convivência aceita, migração só ocorre com benefício real.
 - DOMAIN-002 proibia os termos "Signal" e "Confirmation", usados pela Legacy Baseline — resolvido pelo ADR-005 (Ubiquitous Language Refinement): ambos passam a ser termos oficiais no contexto de execução/estratégia, não mais proibidos.
+- SPEC-005 v1.0 redefinia o ciclo de vida da Opportunity de forma divergente de DOMAIN-001, incluindo estados (`Executed`/`Closed`/`Archived`) que pertenciam ao contexto de Execution — resolvido pelo ADR-006 (Opportunity Lifecycle Alignment): ciclo de vida simplificado para `Draft → Qualified → Approved → Completed`, com SPEC-005 revisado para ser exclusivamente um documento de orquestração.
 
 ## REQ-001 — Mapeamento contra a Legacy Baseline
 
@@ -71,31 +72,41 @@ Avaliação de cada requisito funcional de `Docs/01-requirements/REQ-001-Require
 
 Requisitos não atendidos (REQ-002, REQ-009, REQ-011, REQ-012) não são tratados como pendências bloqueantes — refletem decisões já formalizadas em ADR-001/ADR-003, ou trabalho futuro já previsto no roadmap.
 
-## DOMAIN-001 — Opportunity (modelo-alvo)
+## DOMAIN-001 — Opportunity (modelo-alvo, v1.1.0)
 
 `Docs/02-domain/DOMAIN-001-Opportunity.md` define a entidade central do domínio-alvo (`Opportunity`, ciclo de vida, atributos, BR-001 a BR-006), rastreada contra REQ-005 a REQ-009. Nenhum código ainda implementa `Opportunity` — a V1 usa `MarketAssessment`/`TradingSignal` (ADR-002). Este documento é referência para implementações futuras, não descreve a Legacy Baseline.
 
-## DOMAIN-002 — Ubiquitous Language (vocabulário refinado pelo ADR-005)
+Conforme **ADR-006 (Opportunity Lifecycle Alignment)**, o ciclo de vida foi simplificado de `Draft → Qualified → Approved → Executed → Closed → Archived` para `Draft → Qualified → Approved → Completed`. Os estados `Executed`, `Closed` e `Archived` foram removidos por representarem responsabilidade do contexto de Execution (ARCH-001), não da entidade Opportunity — ver seção "Architecture Stabilization (Opportunity Lifecycle Alignment)" abaixo.
+
+## DOMAIN-002 — Ubiquitous Language (v1.3.0, vocabulário refinado pelo ADR-005; termo `Completed` adicionado pelo ADR-006)
 
 `Docs/02-domain/DOMAIN-002-Ubiquitous-Language.md` originalmente proibia os termos "Signal" e "Confirmation" em favor de "Evidence"/"Decision". O **ADR-005 (Ubiquitous Language Refinement)** revisou essa regra: "Signal" e "Confirmation" deixam de ser termos proibidos — passam a ser termos oficiais do contexto de execução/estratégia (não do Core Domain). "Trigger" continua fora do Core Domain. Com isso, `TradingSignal`, `SignalBuilderService`, `ENUM_TRADING_SIGNAL` e os campos `TrendConfirmed`/`ADXConfirmed`/`RSIConfirmed`/`SessionConfirmed` da Legacy Baseline deixam de representar uma violação de vocabulário.
+
+O termo `Completed` foi adicionado ao vocabulário oficial (ADR-006), representando o estado final da Opportunity — não representa execução de ordem.
 
 ## DOMAIN-003 — Evidence (modelo-alvo)
 
 `Docs/02-domain/DOMAIN-003-Evidence.md` define o objeto de domínio imutável `Evidence` (Category/Source/Value/Confidence/Weight/Timestamp/Metadata), rastreado contra REQ-003, REQ-004 e REQ-010. O próprio documento reconhece que, na Legacy Baseline, `TrendService`, `ATRService`, `RSIService`, `ADXService`, `SessionService` e `PivotService` já produzem informações equivalentes a `Evidence`, embora sem essa estrutura formal (sem `EvidenceId`, `Category`, `Weight` ou `Confidence` por evidência individual — a confiança hoje só existe agregada em `MarketAssessment.ConfidenceScore`). Nenhuma migração retroativa é exigida (ADR-001).
 
-## DOMAIN-004 — Market Context (modelo-alvo)
+## DOMAIN-004 — Market Context (modelo-alvo, v1.1.0)
 
 `Docs/02-domain/DOMAIN-004-Market-Context.md` define o Aggregate Root `Market Context` (ContextId/Asset/Timeframe/Timestamp/Evidence Collection/Summary/Confidence), imutável após construção (BR-005), rastreado contra REQ-002 a REQ-005 e REQ-010. **Atenção a colisão de nome**: a V1 já possui um `struct MarketContext` (`MQL5/Include/TradingOS/Models/MarketContext.mqh`) — mesmo nome, estrutura diferente (mutável, campos públicos escritos diretamente pelo `MarketService`, sem coleção formal de `Evidence`). O próprio DOMAIN-004 reconhece isso na seção "Legacy Baseline". Nenhuma migração retroativa é exigida (ADR-001).
 
-## DOMAIN-005 — Decision (modelo-alvo)
+Ciclo de vida próprio adicionado: `Building → Validated → Frozen → Obsolete` (movido de SPEC-005 v1.0 — ver seção SPEC-005 abaixo).
+
+## DOMAIN-005 — Decision (modelo-alvo, v1.1.0)
 
 `Docs/02-domain/DOMAIN-005-Decision.md` define o objeto de domínio imutável `Decision` (DecisionId/OpportunityId/ContextId/Decision Type/Confidence/Rationale/Timestamp), rastreado contra REQ-005 a REQ-010. O próprio documento reconhece que, na Legacy Baseline, `TradingSignal`, `SignalBuilderService` e `ENUM_TRADING_SIGNAL` desempenham parcialmente esse papel — sem `DecisionId`/`OpportunityId`/`ContextId` formais, e sem separação entre Decision (conclusão do domínio) e Signal (representação de execução), distinção que o ADR-005 já formalizou no vocabulário. Nenhuma migração retroativa é exigida (ADR-001/ADR-002).
 
+Ciclo de vida próprio adicionado: `Draft → Generated → Published → Consumed → Archived` (movido de SPEC-005 v1.0 — ver seção SPEC-005 abaixo).
+
 Com DOMAIN-005, a suíte de domínio-alvo está completa: `DOMAIN-001` (Opportunity) → `DOMAIN-003` (Evidence) → `DOMAIN-004` (Market Context) → `DOMAIN-005` (Decision), com `DOMAIN-002` (Ubiquitous Language) definindo o vocabulário comum a todos.
 
-## ARCH-001 — Architecture Blueprint (arquitetura-alvo)
+## ARCH-001 — Architecture Blueprint (arquitetura-alvo, v1.2.0)
 
 `Docs/03-architecture/ARCH-001-Architecture-Blueprint.md` define os Bounded Contexts (Core Domain, Infrastructure, Strategy, Execution), as dependências permitidas/proibidas (Core Domain nunca acessa MT5/Broker/Logger/File System/Indicators/APIs/Network) e o fluxo oficial `Indicators → Evidence → Market Context → Opportunity → Decision → Signal → Execution → Order`, rastreado contra REQ-001 a REQ-010 e DOMAIN-001/003/004/005.
+
+Conforme ADR-006, foi adicionada observação explícita de que Execution é um Bounded Context independente e que Opportunity nunca atravessa o limite entre Core Domain e Execution — a entidade compartilhada entre os contextos é a Decision publicada, materializada como Signal pelo contexto de Execution.
 
 O próprio documento reconhece na seção "Legacy Baseline" que a V1 (`TrendService`, `RSIService`, `ATRService`, `ADXService`, `PivotService`, `SessionService`, `TradingSignal`, `SignalBuilderService`) viola diretamente a dependência proibida "Core Domain → Indicators" (esses serviços chamam `iMA`/`iRSI`/`iATR`/`iADX` diretamente, sem camada de Infrastructure/Adapter). Nenhuma refatoração retroativa é exigida (ADR-001/ADR-002) — a arquitetura-alvo se aplica só a novas evoluções.
 
@@ -124,6 +135,25 @@ Renomeado para usar os nomes canônicos do SPEC-001: `Evidence Factory` → `Evi
 `Docs/04-specifications/SPEC-004-Application-Services.md` define 5 Use Cases (Analyze Market, Validate Context, Evaluate Opportunity, Generate Decision, Publish Signal) que orquestram Builders, Domain Services e Policies — sem implementar regras de negócio, sem depender diretamente de MT5 Adapter/Broker Adapter/Order Manager/Position Manager. Rastreado contra ARCH-001, SPEC-001/002/003, DOMAIN-003/004/005.
 
 O documento reconhece na seção "Legacy Baseline" que `TradingOS.mq5` (o EA principal) já executa parte dessa orquestração de forma implícita (`OnTimer()`: `Market.Update()` → `SignalBuilder.Build()` → `Dashboard.Update()`), sem um Application Service dedicado — todos os 5 Use Cases estão classificados como Planned no `SPEC-001` (Component Lifecycle). Nenhuma refatoração retroativa é exigida (ADR-001).
+
+## SPEC-005 — Domain Lifecycle (v1.0.0, documento de orquestração)
+
+`Docs/04-specifications/SPEC-005-Domain-Lifecycle.md` **não define estados** — os estados de Opportunity, Market Context e Decision pertencem exclusivamente a DOMAIN-001, DOMAIN-004 e DOMAIN-005, respectivamente. SPEC-005 mapeia, para cada transição já definida nesses documentos, qual Application Service (SPEC-004) orquestra, qual Domain Service (SPEC-001/003) executa a regra de negócio e qual Policy (SPEC-001) valida a transição — usando exclusivamente nomes do Canonical Component Catalog. Onde nenhum componente está definido hoje para uma transição, a célula é marcada `—` (nenhum componente foi inventado).
+
+**Histórico**: a v1.0 original deste documento definia os três ciclos de vida diretamente dentro de SPEC-005, incluindo um ciclo de vida de Opportunity divergente do já existente em DOMAIN-001 (`Draft → Identified → Evaluated → Accepted → Rejected → Expired` vs. `Draft → Qualified → Approved → Executed → Closed → Archived`). Essa divergência foi identificada antes do commit e resolvida por dois movimentos: (1) os estados de Market Context e Decision foram movidos para DOMAIN-004 v1.1.0 e DOMAIN-005 v1.1.0; (2) o próprio ciclo de vida da Opportunity foi revisado pelo **ADR-006** — ver seção abaixo.
+
+## Architecture Stabilization (Opportunity Lifecycle Alignment — ADR-006)
+
+O ciclo de vida da Opportunity, conforme originalmente definido em DOMAIN-001, incluía os estados `Executed`, `Closed` e `Archived` após `Approved`. Esses estados descreviam responsabilidades do contexto de Execution (transformar uma Decision em ordens, posições e histórico), não da entidade Opportunity — que, conforme ARCH-001 e o fluxo oficial `Opportunity → Decision → Signal → Execution → Order`, nunca é executada diretamente.
+
+**ADR-006 (Opportunity Lifecycle Alignment)** formalizou a correção:
+
+- DOMAIN-001 (v1.1.0): ciclo de vida simplificado para `Draft → Qualified → Approved → Completed`. `Completed` representa que a Opportunity produziu uma Decision válida — não representa execução, ordem ou posição.
+- DOMAIN-002 (v1.3.0): termo `Completed` adicionado ao vocabulário oficial.
+- ARCH-001 (v1.2.0): observação adicionada — Execution é um Bounded Context independente; a entidade compartilhada entre Core Domain e Execution é a Decision publicada (materializada como Signal).
+- SPEC-005 (v1.0.0): tabela de orquestração da Opportunity Lifecycle atualizada para `Draft → Qualified → Approved → Completed`, removendo qualquer referência a `Executed`/`Closed`/`Archived` para Opportunity.
+
+Nenhum documento remanescente referencia `Opportunity Executed`, `Opportunity Closed` ou `Opportunity Archived` (validado antes do commit).
 
 ## Architecture Stabilization (taxonomia)
 

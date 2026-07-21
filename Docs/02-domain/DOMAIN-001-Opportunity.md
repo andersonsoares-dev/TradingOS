@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-001
 title: Opportunity
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -83,17 +83,23 @@ Approved
 
 ↓
 
-Executed
-
-↓
-
-Closed
-
-↓
-
-Archived
+Completed
 
 Nem todos os estados precisam existir na implementação inicial.
+
+---
+
+### Completed
+
+Representa que a Opportunity cumpriu sua finalidade ao produzir uma Decision.
+
+Não representa execução de ordem.
+
+Não representa Position.
+
+Não representa Signal.
+
+Execution pertence ao contexto de Execution definido em ARCH-001.
 
 ---
 
