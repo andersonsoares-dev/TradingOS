@@ -243,3 +243,17 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Observação de rastreabilidade registrada (não decisão): `GetAccount()`/`Account Snapshot`, definidos aqui, podem ser a origem real do que `EXEC-003` chamava de "Account Provider" (gap registrado em `RFC-006`) — relevante para a futura resolução daquela RFC, sem antecipá-la.
 - Sequência `EXEC-001 → EXEC-002 → EXEC-003 → EXEC-004 → EXEC-005` (ADR-009) concluída. Próximo item: Sprint 1 — condicionado à revisão pendente de `RFC-006` e, principalmente, `RFC-007`.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com EXEC-005.
+
+### 2026-07-21 — Post-Execution Architecture Review: RFC-007 e RFC-006 resolvidas
+
+- `RFC-007` (v1.0.0 → v2.0.0, status Open → Approved): comparação formal entre Alternativa A (`Indicators → Opportunity → Risk Service → Decision → Order Manager`) e Alternativa B (`Indicators → Decision → Risk Service → Order Manager`) por responsabilidades, acoplamento, rastreabilidade, testabilidade, extensibilidade e impacto na implementação. **Decisão: Alternativa B adotada como pipeline normativo da Release 1.0**, por ser a única compatível com a prioridade de Primeira Execução (`ADR-009`) sem exigir implementar do zero `Opportunity Service`/`Decision Service`/`Market Context Builder`/`Evidence Builder` (hoje 0% implementados). `ARCH-001`, `DOMAIN-001`, `DOMAIN-005` e `SPEC-003` não foram alterados — o fluxo `Opportunity → Decision` permanece como arquitetura-alvo de longo prazo, para migração futura com benefício real (`ADR-001`/`ADR-002`).
+- `RFC-006` (v1.0.0 → v2.0.0, status Open → Approved), resolvida em alinhamento com `RFC-007`: **decisão — `Risk Service` é o Gate Operacional já especificado em `EXEC-003`, para a Release 1.0**, não o Domain Service de `SPEC-003` (que permanece congelado e válido para a arquitetura-alvo). Recomendação registrada para Release 2.0 (não aplicada): nomear os dois papéis separadamente no Canonical Component Catalog quando o Core Domain for implementado.
+- **Nenhuma alteração em `EXEC-001` a `EXEC-005`** — ambas as decisões confirmam que os cinco documentos já estavam corretos, sem necessidade de revisão.
+- Com estas duas RFCs resolvidas, a fase de arquitetura da Release 1.0 é considerada encerrada. Próximo trabalho: implementação, rumo à Primeira Execução.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com as decisões.
+
+### 2026-07-21 — ADR-009 v1.1.0: critério de reabertura de discussão arquitetural
+
+- `ADR-009` atualizado (v1.0.0 → v1.1.0) com nova seção "8. Critério de reabertura de discussão arquitetural": após a aprovação de `RFC-006`/`RFC-007`, qualquer discussão arquitetural só pode ser reaberta mediante evidência obtida durante implementação, testes ou Primeira Execução — não por hipótese ou preferência conceitual. Hipóteses e melhorias conceituais passam automaticamente para o backlog da Release 2.0, sem pausar a implementação em curso.
+- `depends_on`/`related` de `ADR-009` atualizados para referenciar `RFC-006`/`RFC-007`.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.

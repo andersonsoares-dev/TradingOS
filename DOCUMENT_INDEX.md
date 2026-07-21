@@ -39,7 +39,7 @@
 | ADR-006 | Opportunity Lifecycle Alignment | Docs/05-decisions/ADR-006-Opportunity-Lifecycle-Alignment.md | 1.0.0 | Accepted |
 | ADR-007 | Architecture Baseline v1.0 Freeze | Docs/05-decisions/ADR-007-Architecture-Baseline-v1.0-Freeze.md | 1.0.0 | Accepted |
 | ADR-008 | Roadmap Restructuring — Parallel Tracks | Docs/05-decisions/ADR-008-Roadmap-Restructuring-Parallel-Tracks.md | 1.1.0 | Accepted |
-| ADR-009 | Baseline Lock v1.1 — Documentation Stabilization & Delivery Sequence | Docs/05-decisions/ADR-009-Baseline-Lock-v1.1.md | 1.0.0 | Accepted |
+| ADR-009 | Baseline Lock v1.1 — Documentation Stabilization & Delivery Sequence | Docs/05-decisions/ADR-009-Baseline-Lock-v1.1.md | 1.1.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | VALIDATION-001 | Trading Strategy Validation Baseline | Docs/06-validation/VALIDATION-001-Trading-Strategy-Validation-Baseline.md | 2.0.0 | Approved |
@@ -50,8 +50,8 @@
 | RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 1.0.0 | Open |
 | RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
 | RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Open |
-| RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 1.0.0 | Open |
-| RFC-007 | Signal Builder Pipeline Divergence (ARCH-001/SPEC-002 vs EXEC-004) | Docs/10-rfc/RFC-007-Signal-Builder-Pipeline-Divergence.md | 1.0.0 | Open |
+| RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 2.0.0 | Approved |
+| RFC-007 | Signal Builder Pipeline Divergence (ARCH-001/SPEC-002 vs EXEC-004) | Docs/10-rfc/RFC-007-Signal-Builder-Pipeline-Divergence.md | 2.0.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -107,6 +107,8 @@ knowledge/
 - `EXEC-003-Risk-Service.md` detalha um gate operacional pré-envio de ordem ("Pre-Order Risk Gate"). Divergência real encontrada: seu contrato (Entrada Signal Result/Account Information/Current Exposure, Saída Risk Approved/Rejected + Risk Evaluation Result) é incompatível com o contrato de `Risk Service` já definido em `SPEC-003` (Entrada Opportunity/Market Context, Saída Risk Profile). Registrada em `RFC-006`, não resolvida (SPEC-003 está congelado). `Account Provider` (dependência citada) também não consta em SPEC-001 — incluído na mesma RFC.
 - `EXEC-004-Signal-Builder.md` (renomeado de "Signal Engine" no brief, mesma correção do ADR-009) detalha um mecanismo de sinal que consome Market Context + Indicator Snapshot diretamente e produz SignalResult (BUY/SELL/NO_SIGNAL) para Risk Service (EXEC-003) — **divergência séria**: contorna inteiramente Opportunity (DOMAIN-001) e Decision (DOMAIN-005), e diverge do contrato já existente de Signal Builder em SPEC-002 (Entrada Decision, Saída Signal, Consumidor Order Manager). Registrada em `RFC-007` (severidade alta), não resolvida.
 - `EXEC-005-MT5-Adapter.md` conclui a sequência travada de Execution Components (ADR-009). Nenhuma divergência nova encontrada. Observação de rastreabilidade registrada (não decisão): `GetAccount()`/`Account Snapshot`, aqui definidos, podem ser a fonte real do que `EXEC-003` chamava de "Account Provider" (RFC-006) — relevante para quando essa RFC for resolvida.
+- **Post-Execution Architecture Review**: `RFC-007` (v2.0.0, Approved) decide a Alternativa B (`Indicators → Decision → Risk Service → Order Manager`) como pipeline normativo da Release 1.0 — `ARCH-001`/`DOMAIN-001`/`DOMAIN-005`/`SPEC-003` permanecem intactos como arquitetura-alvo de longo prazo. `RFC-006` (v2.0.0, Approved), alinhada, decide que `Risk Service` é o Gate Operacional de `EXEC-003` para a Release 1.0, não o Domain Service de `SPEC-003`. `EXEC-001` a `EXEC-005` não sofreram nenhuma alteração — ambas as decisões confirmam que já estavam corretos.
+- `ADR-009` atualizado para v1.1.0 — adicionado critério de reabertura de discussão arquitetural: após RFC-006/RFC-007, só reabre mediante evidência de implementação/teste/Primeira Execução; hipóteses conceituais vão automaticamente para o backlog da Release 2.0.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

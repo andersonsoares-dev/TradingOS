@@ -308,6 +308,20 @@ Nenhuma divergência arquitetural nova foi encontrada — primeira entrega da s�
 
 Com `EXEC-005`, a sequência travada `EXEC-001 → EXEC-002 → EXEC-003 → EXEC-004 → EXEC-005` (`ADR-009`) está completa. O próximo item da sequência é Sprint 1, que — por instrução do Product Owner — permanece condicionado à revisão pendente de `RFC-006` e `RFC-007` antes de avançar.
 
+## Post-Execution Architecture Review — RFC-007 e RFC-006 resolvidas
+
+Após a conclusão de `EXEC-001` a `EXEC-005` (`ADR-009`), as duas divergências identificadas durante sua elaboração foram formalmente resolvidas.
+
+**`RFC-007` (v2.0.0, Approved)** — comparou Alternativa A (`Indicators → Opportunity → Risk Service → Decision → Order Manager`, o fluxo de `ARCH-001`/`DOMAIN-001`/`DOMAIN-005`/`SPEC-003`) contra Alternativa B (`Indicators → Decision → Risk Service → Order Manager`, o que `EXEC-003`/`EXEC-004` já especificavam). **Decisão: Alternativa B é o pipeline normativo da Release 1.0** — justificada pela prioridade de Primeira Execução (`ADR-009`): a Alternativa A exigiria implementar `Opportunity Service`, `Decision Service`, `Market Context Builder` e `Evidence Builder` do zero (0% implementados hoje), enquanto a Alternativa B reaproveita a Legacy Baseline já implementada/compilando mais a camada `EXEC-00X` já inteiramente especificada.
+
+Esta decisão é de **escopo de implementação da Release 1.0**, não uma alteração arquitetural: `ARCH-001`, `DOMAIN-001`, `DOMAIN-005` e `SPEC-003` permanecem congelados e válidos como arquitetura-alvo de longo prazo, conforme já estabelecido por `ADR-001`/`ADR-002` (Legacy Baseline convive com o modelo-alvo; migração só ocorre com benefício real).
+
+**`RFC-006` (v2.0.0, Approved)**, resolvida em alinhamento com `RFC-007` — pergunta: `Risk Service` é Domain Service ou Gate Operacional? **Decisão: Gate Operacional**, exatamente como já especificado em `EXEC-003`, para a Release 1.0. O contrato de Domain Service em `SPEC-003` (Entrada Opportunity/Market Context, Saída Risk Profile) não é revogado — permanece válido para quando o Core Domain for implementado. Recomendação registrada para Release 2.0 (não aplicada agora): nomear os dois papéis separadamente no Canonical Component Catalog (ex.: `Risk Service` para o Domain Service, `Pre-Order Risk Gate` para o operacional), e formalizar a conexão entre `Account Provider` (gap de `RFC-006`) e `MT5 Adapter.GetAccount()`/`Account Snapshot` (observação de `EXEC-005`).
+
+**Nenhuma alteração foi feita em `EXEC-001` a `EXEC-005`** — ambas as decisões confirmam que os cinco documentos já estavam corretamente especificados segundo a Alternativa B. Com estas duas resoluções, a fase de arquitetura da Release 1.0 é considerada encerrada por instrução do Product Owner; o próximo trabalho é exclusivamente implementação, rumo à Primeira Execução.
+
+`ADR-009` atualizado para v1.1.0 com o critério formal de reabertura: após a aprovação de `RFC-006`/`RFC-007`, qualquer discussão arquitetural só pode ser reaberta mediante evidência obtida durante implementação, testes ou Primeira Execução — nunca por hipótese ou preferência conceitual. Toda ideia levantada a partir de agora sem essa evidência vai automaticamente para o backlog da Release 2.0, sem pausar a implementação em curso.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

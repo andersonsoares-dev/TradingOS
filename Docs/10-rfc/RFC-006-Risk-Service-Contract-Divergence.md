@@ -1,8 +1,8 @@
 ---
 id: RFC-006
 title: Risk Service Contract Divergence (SPEC-003 vs EXEC-003)
-version: 1.0.0
-status: Open
+version: 2.0.0
+status: Approved
 owner: Product Owner
 depends_on:
   - SPEC-001
@@ -51,6 +51,33 @@ Adicionalmente, esta RFC registra que `Account Provider` (dependência citada em
 
 Uma decisão formal (ADR ou RFC aprovada) deverá escolher entre as alternativas acima (ou outra), antes que qualquer implementação de `Risk Service`/`EXEC-003` comece, e antes que `Account Provider` seja usado por qualquer outro documento como se já fosse canônico.
 
-## Status
+---
 
-Open — aguardando decisão do Product Owner / Chief Architect.
+## Post-Execution Architecture Review — Risk Service Classification (Prioridade 2)
+
+Revisão realizada **após** a decisão do `RFC-007` (Prioridade 1), à qual esta decisão deve estar alinhada, conforme instruído.
+
+### Pergunta
+
+O `Risk Service` é:
+
+A) um Domain Service; ou
+B) um Gate Operacional entre Opportunity/Decision e Order Manager.
+
+### Decisão
+
+**Opção B — Risk Service é o Gate Operacional especificado em `EXEC-003`, para a Release 1.0.**
+
+Justificativa: `RFC-007` adotou a Alternativa B (`Indicators → Decision → Risk Service → Order Manager`) como pipeline normativo da Release 1.0. Nessa alternativa, `Risk Service` atua exatamente como `EXEC-003` já o especifica — um gate pré-envio de ordem, avaliando `Signal Result`/exposição/conta imediatamente antes de `Order Manager`, não uma avaliação de `Opportunity` no Core Domain.
+
+`EXEC-003`, tal como já especificado, está correto e **não precisa de nenhuma alteração**.
+
+O contrato de `Risk Service` como Core Domain Service, definido em `SPEC-003` (Entrada `Opportunity`/`Market Context`, Saída `Risk Profile`), **não é revogado nem alterado** — `SPEC-003` permanece congelado e válido como parte da arquitetura-alvo de longo prazo (Alternativa A de `RFC-007`), para uso quando o Core Domain for implementado em uma release futura. Para a Release 1.0, apenas o papel de Gate Operacional (`EXEC-003`) é normativo.
+
+**Recomendação para Release 2.0** (registrada, não aplicada agora): quando `Opportunity Service`/`Decision Service` forem implementados, avaliar se os dois papéis de "Risk Service" devem receber nomes distintos no Canonical Component Catalog (ex.: manter `Risk Service` para o Core Domain Service de `SPEC-003`, e nomear o gate operacional como `Pre-Order Risk Gate` — nome já usado como subtítulo em `EXEC-003`), evitando a ambiguidade de nome encontrada nesta RFC. Isso exigiria atualização de `SPEC-001`, fora do escopo desta decisão.
+
+**Account Provider**: permanece não catalogado em `SPEC-001`. Observação já registrada em `EXEC-005`: `MT5 Adapter.GetAccount()`/`Account Snapshot` podem ser a origem real do dado — recomendação para Release 2.0 é formalizar essa conexão em vez de introduzir um novo Provider, mas isso não é decidido nesta RFC.
+
+### Status
+
+**Approved** — decisão normativa para a Release 1.0, alinhada a `RFC-007`.

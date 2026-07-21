@@ -1,7 +1,7 @@
 ---
 id: ADR-009
 title: Baseline Lock v1.1 — Documentation Stabilization & Delivery Sequence
-version: 1.0.0
+version: 1.1.0
 status: Accepted
 owner: Product Owner
 depends_on:
@@ -10,6 +10,8 @@ depends_on:
 related:
   - EXEC-001
   - EXEC-002
+  - RFC-006
+  - RFC-007
   - DOCUMENT_INDEX.md
 last_updated: 2026-07-21
 ---
@@ -88,6 +90,12 @@ Primeira Execução
 
 Esta sequência não será alterada, salvo impossibilidade estrutural comprovada.
 
+### 8. Critério de reabertura de discussão arquitetural (pós-aprovação de RFC-006/RFC-007)
+
+Após a aprovação de `RFC-006` e `RFC-007` (Post-Execution Architecture Review), qualquer discussão arquitetural só poderá ser reaberta mediante **evidência obtida durante a implementação, testes ou Primeira Execução** — não por hipótese ou preferência conceitual levantada em discussão.
+
+Hipóteses e melhorias conceituais identificadas a partir deste ponto são registradas automaticamente como backlog da Release 2.0, sem interromper a implementação em curso.
+
 ---
 
 ## Observações (achados na Validação Prévia — não bloqueiam esta decisão)
@@ -106,3 +114,4 @@ Nenhuma das duas observações é tratada como inconsistência bloqueante — am
 - `EXEC-003`, `EXEC-004`, `EXEC-005` são ids pré-reservados pela sequência acima — futuras entregas devem usá-los exatamente nesta ordem, sem renumeração.
 - Sugestões de melhoria estrutural, quando identificadas, serão registradas (RFC ou nota em `TRACEABILITY.md`), nunca aplicadas de forma automática.
 - Este ADR não será revisitado até a conclusão da Primeira Execução, conforme instrução explícita do Product Owner.
+- A partir da aprovação de `RFC-006`/`RFC-007`, novas ideias arquiteturais sem evidência de implementação/teste vão automaticamente para o backlog da Release 2.0 — nenhuma delas pausa ou reabre a implementação em curso.
