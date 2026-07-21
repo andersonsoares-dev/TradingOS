@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-002
 title: Ubiquitous Language
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -246,3 +246,27 @@ REQ-008
 # Alterações
 
 Novos termos deverão ser adicionados somente após aprovação do Product Owner e, quando impactarem o modelo de domínio, registrados em ADR.
+
+---
+
+# Terminologia Arquitetural
+
+Builders
+
+Responsáveis pela construção de objetos do domínio.
+
+Services
+
+Executam regras de negócio.
+
+Policies
+
+Validam invariantes e regras específicas.
+
+Providers
+
+Obtêm dados externos.
+
+Adapters
+
+Integram plataformas externas.

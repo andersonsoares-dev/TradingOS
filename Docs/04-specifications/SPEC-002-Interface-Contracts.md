@@ -1,7 +1,7 @@
 ---
 id: SPEC-002
 title: Interface Contracts
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -60,7 +60,7 @@ Market Data Snapshot
 
 Indicator Provider
 
-Evidence Factory
+Evidence Builder
 
 ---
 
@@ -80,11 +80,11 @@ Indicator Values
 
 ## Consumidores
 
-Evidence Factory
+Evidence Builder
 
 ---
 
-# Contrato: Evidence Factory
+# Contrato: Evidence Builder
 
 ## Responsabilidade
 
@@ -122,11 +122,11 @@ Market Context
 
 ## Consumidores
 
-Opportunity Evaluator
+Opportunity Service
 
 ---
 
-# Contrato: Opportunity Evaluator
+# Contrato: Opportunity Service
 
 ## Responsabilidade
 
@@ -142,11 +142,11 @@ Opportunity
 
 ## Consumidores
 
-Decision Engine
+Decision Service
 
 ---
 
-# Contrato: Decision Engine
+# Contrato: Decision Service
 
 ## Responsabilidade
 

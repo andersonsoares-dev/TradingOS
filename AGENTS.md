@@ -153,6 +153,16 @@ Referências cruzadas (`depends_on`, `related`, menções em outros documentos) 
 
 ---
 
+## Canonical Naming
+
+Antes de criar qualquer novo documento, verificar obrigatoriamente o SPEC-001.
+
+É proibido introduzir novos nomes para componentes existentes.
+
+Qualquer novo componente deverá ser registrado primeiro em SPEC-001.
+
+---
+
 # Fluxo obrigatório
 
 Antes de implementar:

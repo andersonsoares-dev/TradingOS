@@ -1,7 +1,7 @@
 ---
 id: SPEC-001
 title: Component Model
-version: 1.1.0
+version: 1.2.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -24,184 +24,134 @@ Nenhum componente poderá ser criado fora deste modelo sem aprovação através 
 
 ---
 
+# Canonical Component Catalog
+
+Este documento é a fonte oficial de nomenclatura arquitetural do TradingOS.
+
+Todos os documentos futuros deverão reutilizar exatamente os nomes definidos aqui.
+
+Nenhum novo componente poderá ser criado em outros documentos sem atualização prévia deste catálogo.
+
+Este documento define:
+
+- componentes;
+- builders;
+- providers;
+- services;
+- policies;
+- adapters.
+
+---
+
 # Organização
 
-O sistema é dividido em quatro grandes grupos:
+O sistema é dividido nos seguintes grupos (Canonical Component Catalog):
 
-- Core Domain
-- Strategy
-- Infrastructure
-- Execution
+- Core Domain Builders
+- Core Domain Services
+- Domain Policies
+- Infrastructure Providers
+- Execution Components
 
 ---
 
-# Core Domain
+# Core Domain Builders
 
-## Opportunity
+## Evidence Builder
 
 Responsabilidade:
 
-Representar uma oportunidade identificada pelo domínio.
-
-Entradas:
-
-- Market Context
-
-Saídas:
-
-- Opportunity
+Construir objetos Evidence a partir de dados provenientes da infraestrutura.
 
 ---
 
-## Evidence
+## Market Context Builder
 
 Responsabilidade:
 
-Representar fatos observados.
-
-Entradas:
-
-- Data Providers
-
-Saídas:
-
-- Evidence
+Construir o Aggregate Root Market Context.
 
 ---
 
-## Market Context
+# Core Domain Services
+
+## Opportunity Service
 
 Responsabilidade:
 
-Consolidar múltiplas Evidence.
-
-Entradas:
-
-- Evidence
-
-Saídas:
-
-- Market Context
+Avaliar um Market Context e produzir uma Opportunity.
 
 ---
 
-## Decision
+## Decision Service
 
 Responsabilidade:
 
-Representar a decisão produzida pelo domínio.
-
-Entradas:
-
-- Opportunity
-
-Saídas:
-
-- Decision
+Avaliar uma Opportunity e produzir uma Decision.
 
 ---
 
-# Strategy
-
-## Strategy Engine
+## Confidence Service
 
 Responsabilidade:
 
-Interpretar Evidence.
-
-Aplicar pesos.
-
-Aplicar regras.
-
-Gerar Opportunity.
+Calcular o grau de confiança do domínio.
 
 ---
 
-## Confidence Evaluator
+## Risk Service
 
 Responsabilidade:
 
-Calcular Confidence.
+Avaliar o risco da Opportunity.
 
 ---
 
-## Risk Evaluator
+# Domain Policies
+
+## Context Validation Policy
 
 Responsabilidade:
 
-Avaliar risco.
-
-Não executa gerenciamento de posição.
+Validar invariantes do Market Context.
 
 ---
 
-# Infrastructure
+## Evidence Validation Policy
 
-## Data Provider
+Responsabilidade:
 
-Obtém dados do mercado.
-
----
-
-## Indicator Provider
-
-Calcula indicadores.
+Validar consistência das Evidence.
 
 ---
 
-## Configuration Provider
+# Infrastructure Providers
 
-Fornece parâmetros.
+Data Provider
 
----
+Indicator Provider
 
-## Logger
+Configuration Provider
 
-Persistência de logs.
+Time Provider
 
----
+Persistence Provider
 
-## Persistence
-
-Armazenamento de dados.
+Logger
 
 ---
 
-## Time Provider
+# Execution Components
 
-Fornece tempo padronizado.
+Signal Builder
 
----
+Order Manager
 
-# Execution
+Position Manager
 
-## Signal Builder
+Broker Adapter
 
-Converte Decision em Signal.
-
----
-
-## Order Manager
-
-Converte Signal em ordens.
-
----
-
-## Position Manager
-
-Gerencia posições abertas.
-
----
-
-## Broker Adapter
-
-Integra com corretoras.
-
----
-
-## MT5 Adapter
-
-Integra com MetaTrader.
+MT5 Adapter
 
 ---
 
@@ -284,35 +234,41 @@ Classificação de cada componente listado neste documento frente ao estado real
 
 Estados possíveis: **Implemented** (existe na Legacy Baseline, ainda que informalmente), **Planned** (modelado, não implementado), **Deprecated** (mantido só por compatibilidade), **Future** (previsto, sem modelo concreto ainda).
 
-## Core Domain
+## Core Domain Builders
 
 | Componente | Status | Observação |
 |---|---|---|
-| Opportunity | Planned | Modelado em DOMAIN-001; nenhum código implementa. `TradingSignal` cobre parte do papel, mas não é equivalente estrutural. |
-| Evidence | Implemented | Informal — `TrendService`, `ATRService`, `RSIService`, `ADXService`, `SessionService`, `PivotService` produzem informação equivalente, sem a estrutura formal de DOMAIN-003 (sem `EvidenceId`/`Category`/`Weight`). |
-| Market Context | Implemented | `struct MarketContext` cumpre o papel hoje — mutável, campos públicos, sem coleção formal de Evidence (diferente da Aggregate Root imutável de DOMAIN-004). |
-| Decision | Implemented | `TradingSignal`/`ENUM_TRADING_SIGNAL`/`SignalBuilderService` cumprem o papel — sem `DecisionId`/`OpportunityId`/`ContextId` formais (DOMAIN-005). |
+| Evidence Builder | Implemented | Informal — `TrendService`, `ATRService`, `RSIService`, `ADXService`, `SessionService`, `PivotService` produzem informação equivalente, sem a estrutura formal de DOMAIN-003 (sem `EvidenceId`/`Category`/`Weight`). |
+| Market Context Builder | Implemented | `struct MarketContext` cumpre o papel hoje — mutável, campos públicos, sem coleção formal de Evidence (diferente da Aggregate Root imutável de DOMAIN-004). |
 
-## Strategy
+## Core Domain Services
 
 | Componente | Status | Observação |
 |---|---|---|
-| Strategy Engine | Implemented | Informal — `MarketAssessmentService` aplica pesos (0.5/0.3/0.2 por timeframe) e regras (thresholds ±20) sobre Evidence, sem existir como componente separado da camada Strategy. |
-| Confidence Evaluator | Implemented | Informal — embutido dentro de `MarketAssessmentService` (`ConfidenceScore`/`ConfidenceLevel`), não é um componente isolado. |
-| Risk Evaluator | Planned | Modelado aqui; nenhuma avaliação de risco existe no código (REQ-009 não atendido, ver TRACEABILITY.md). |
+| Opportunity Service | Implemented | Informal — `MarketAssessmentService` aplica pesos (0.5/0.3/0.2 por timeframe) e regras (thresholds ±20) sobre Evidence, aproximando o papel de Opportunity Service, sem produzir um `Opportunity` formal (DOMAIN-001). |
+| Decision Service | Implemented | Informal — `SignalBuilderService` cumpre o papel — sem `DecisionId`/`OpportunityId`/`ContextId` formais (DOMAIN-005). |
+| Confidence Service | Implemented | Informal — embutido dentro de `MarketAssessmentService` (`ConfidenceScore`/`ConfidenceLevel`), não é um componente isolado. |
+| Risk Service | Planned | Modelado aqui; nenhuma avaliação de risco existe no código (REQ-009 não atendido, ver TRACEABILITY.md). |
 
-## Infrastructure
+## Domain Policies
+
+| Componente | Status | Observação |
+|---|---|---|
+| Context Validation Policy | Planned | Modelado aqui; hoje não há validação explícita de invariantes do `MarketContext` além do `Clear()`. |
+| Evidence Validation Policy | Planned | Modelado aqui; nenhuma validação formal de consistência entre evidências existe hoje. |
+
+## Infrastructure Providers
 
 | Componente | Status | Observação |
 |---|---|---|
 | Data Provider | Implemented | Informal — chamadas diretas (`iHigh`/`iLow`/`iClose`) embutidas em `MarketService`, sem componente isolado. |
 | Indicator Provider | Implemented | Informal — cada serviço (`TrendService`, `ATRService` etc.) chama `iMA`/`iRSI`/`iATR`/`iADX` diretamente, sem abstração separada. |
 | Configuration Provider | Implemented | `CConfig` (`Config.mqh`). |
-| Logger | Implemented | `CLogger` (`Logger.mqh`). |
-| Persistence | Future | Nenhuma necessidade identificada até agora; sem modelo concreto. |
 | Time Provider | Future | Chamadas diretas a `TimeCurrent()`/`PeriodSeconds()` onde necessário; sem abstração. |
+| Persistence Provider | Future | Nenhuma necessidade identificada até agora; sem modelo concreto. |
+| Logger | Implemented | `CLogger` (`Logger.mqh`). |
 
-## Execution
+## Execution Components
 
 | Componente | Status | Observação |
 |---|---|---|

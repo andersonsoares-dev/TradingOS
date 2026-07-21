@@ -79,19 +79,36 @@ O próprio documento reconhece na seção "Legacy Baseline" que a V1 (`TrendServ
 
 `Docs/ARCHITECTURE.md` (a arquitetura informal da V1, referenciada na tabela "Estado atual" acima) e `ARCH-001` coexistem deliberadamente: o primeiro documenta o que existe, o segundo define o que será construído daqui em diante.
 
-## SPEC-001 — Component Model
+## SPEC-001 — Component Model (v1.2.0, Canonical Component Catalog)
 
-`Docs/04-specifications/SPEC-001-Component-Model.md` define os componentes oficiais organizados em quatro grupos (Core Domain, Strategy, Infrastructure, Execution), com contratos (interface pública, responsabilidades, dependências, eventos) e a regra de que nenhum componente pode acessar dependências fora do permitido por ARCH-001. Rastreado contra ARCH-001, DOMAIN-003/004/005 e REQ-001 a REQ-010.
+`Docs/04-specifications/SPEC-001-Component-Model.md` é agora a **única fonte oficial de nomenclatura arquitetural** do projeto (Canonical Component Catalog), organizada em: Core Domain Builders (Evidence Builder, Market Context Builder), Core Domain Services (Opportunity Service, Decision Service, Confidence Service, Risk Service), Domain Policies (Context Validation Policy, Evidence Validation Policy), Infrastructure Providers (Data/Indicator/Configuration/Time/Persistence Provider, Logger) e Execution Components (Signal Builder, Order Manager, Position Manager, Broker Adapter, MT5 Adapter). Rastreado contra ARCH-001, DOMAIN-003/004/005 e REQ-001 a REQ-010.
 
-**Observação**: a lista "Componentes Legacy" do SPEC-001 (TrendService, ATRService, ADXService, RSIService, SessionService, PivotService, TradingSignal, SignalBuilderService, Config, Logger) não menciona `MarketAssessmentService`, `Dashboard` nem `PivotRenderer` — todos já reconhecidos como Legacy Baseline em outros documentos (ver ADR-001 e seção "Legacy Components" abaixo). Divergência de escopo entre documentos, não bloqueante.
+A tabela "Component Lifecycle" foi atualizada para usar esses nomes canônicos. Destaque: `MT5 Adapter` = Planned (acesso ao MT5 hoje disperso em cada serviço, sem adapter isolado — a mesma violação já apontada em ARCH-001).
 
-**Atualização (v1.1.0)**: adicionada seção "Component Lifecycle", classificando cada componente (Implemented/Planned/Deprecated/Future) frente ao código real. Destaque: `MT5 Adapter` = Planned (acesso ao MT5 hoje disperso em cada serviço, sem adapter isolado — a mesma violação já apontada em ARCH-001).
+**Observação (ainda aberta)**: a lista "Componentes Legacy" do SPEC-001 (TrendService, ATRService, ADXService, RSIService, SessionService, PivotService, TradingSignal, SignalBuilderService, Config, Logger) não menciona `MarketAssessmentService`, `Dashboard` nem `PivotRenderer` — todos já reconhecidos como Legacy Baseline em outros documentos (ver ADR-001 e seção "Legacy Components" abaixo). Divergência de escopo entre documentos, não bloqueante.
 
-## SPEC-002 — Interface Contracts
+## SPEC-002 — Interface Contracts (v1.1.0, nomenclatura estabilizada)
 
-`Docs/04-specifications/SPEC-002-Interface-Contracts.md` define os contratos entre componentes no pipeline `Data Provider → Indicator Provider → Evidence Factory → Market Context Builder → Opportunity Evaluator → Decision Engine → Signal Builder → Order Manager`, com pré/pós-condições e tratamento de erros. Rastreado contra ARCH-001, SPEC-001, DOMAIN-003/004/005.
+`Docs/04-specifications/SPEC-002-Interface-Contracts.md` define os contratos entre componentes no pipeline `Data Provider → Indicator Provider → Evidence Builder → Market Context Builder → Opportunity Service → Decision Service → Signal Builder → Order Manager`, com pré/pós-condições e tratamento de erros. Rastreado contra ARCH-001, SPEC-001, DOMAIN-003/004/005.
 
-**Observação não reconciliada**: `Evidence Factory`, `Market Context Builder`, `Opportunity Evaluator` e `Decision Engine` são nomes de componente que não aparecem no SPEC-001 (nem na tabela "Component Lifecycle") — o SPEC-001 tem "Strategy Engine" com papel parecido, mas não esses quatro nomes específicos de pipeline. Não está claro se são sinônimos ou conceitos adicionais faltando no SPEC-001. Nenhum código implementa nenhum dos quatro.
+Renomeado para usar os nomes canônicos do SPEC-001: `Evidence Factory` → `Evidence Builder`, `Opportunity Evaluator` → `Opportunity Service`, `Decision Engine` → `Decision Service` (`Market Context Builder` já estava correto).
+
+## SPEC-003 — Domain Services (v1.1.0, escopo restrito)
+
+`Docs/04-specifications/SPEC-003-Domain-Services.md` contém exclusivamente os 4 Domain Services oficiais do SPEC-001: Opportunity Service, Decision Service, Confidence Service, Risk Service (renomeado de "Risk Evaluation Service"). `Evidence Evaluation Service` e `Context Validation Service` foram removidos deste documento — os conceitos equivalentes (Evidence Builder, Evidence Validation Policy, Context Validation Policy) pertencem ao SPEC-001, não a Domain Services. Rastreado contra ARCH-001, SPEC-001, SPEC-002, DOMAIN-001/003/004/005.
+
+## Architecture Stabilization (taxonomia)
+
+Consolidação da nomenclatura arquitetural entre SPEC-001/002/003, eliminando 3 variações de nome para os mesmos papéis que existiam antes desta estabilização:
+
+| Papel | Nome antes (por documento) | Nome canônico (SPEC-001) |
+|---|---|---|
+| Market Context → Opportunity | Strategy Engine (SPEC-001) / Opportunity Evaluator (SPEC-002) / Opportunity Service (SPEC-003) | **Opportunity Service** |
+| Opportunity → Decision | — (SPEC-001) / Decision Engine (SPEC-002) / Decision Service (SPEC-003) | **Decision Service** |
+| Dados técnicos → Evidence | — (SPEC-001) / Evidence Factory (SPEC-002) | **Evidence Builder** |
+| Avaliação de risco | Risk Evaluator (SPEC-001) / Risk Evaluation Service (SPEC-003) | **Risk Service** |
+
+`SPEC-001` passa a ser a fonte única de nomenclatura (ver regra "Canonical Naming" em `AGENTS.md`); `SPEC-002`/`SPEC-003` foram atualizados para reutilizar exatamente esses nomes.
 
 ## Legacy Components
 
