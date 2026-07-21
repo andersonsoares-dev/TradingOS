@@ -61,14 +61,6 @@ public:
 
       Add("Session: " + sessionLabel);
 
-      Add("Pivot  : " + DoubleToString(context.CurrentPivot.Pivot,_Digits));
-      Add("R1     : " + DoubleToString(context.CurrentPivot.R1,_Digits));
-      Add("R2     : " + DoubleToString(context.CurrentPivot.R2,_Digits));
-      Add("R3     : " + DoubleToString(context.CurrentPivot.R3,_Digits));
-      Add("S1     : " + DoubleToString(context.CurrentPivot.S1,_Digits));
-      Add("S2     : " + DoubleToString(context.CurrentPivot.S2,_Digits));
-      Add("S3     : " + DoubleToString(context.CurrentPivot.S3,_Digits));
-
       Show();
    }
 

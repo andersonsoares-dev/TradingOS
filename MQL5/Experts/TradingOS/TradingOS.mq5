@@ -12,9 +12,11 @@
 
 #include <TradingOS/Models/MarketContext.mqh>
 #include <TradingOS/UI/Dashboard.mqh>
+#include <TradingOS/UI/PivotRenderer.mqh>
 MarketContext Context;
 CMarketService Market;
 CDashboard Dashboard;
+CPivotRenderer PivotRenderer;
 
 //+------------------------------------------------------------------+
 int OnInit()
@@ -44,6 +46,8 @@ void OnTimer()
    Market.Update(Context);
 
    Dashboard.Update(Context);
+
+   PivotRenderer.Update(Context);
 
    Dashboard.Show();
 }
