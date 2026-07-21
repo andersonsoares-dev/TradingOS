@@ -23,6 +23,7 @@
 | EXEC-001 | Order Manager | Docs/03-architecture/EXEC-001-Order-Manager.md | 1.0.0 | Approved |
 | EXEC-002 | Position Manager | Docs/03-architecture/EXEC-002-Position-Manager.md | 1.0.0 | Approved |
 | EXEC-003 | Risk Service (Pre-Order Risk Gate) | Docs/03-architecture/EXEC-003-Risk-Service.md | 1.0.0 | Approved |
+| EXEC-004 | Signal Builder (Execution-Layer Signal Mechanism) | Docs/03-architecture/EXEC-004-Signal-Builder.md | 1.0.0 | Approved |
 | SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.4.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
 | SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
@@ -49,6 +50,7 @@
 | RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
 | RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Open |
 | RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 1.0.0 | Open |
+| RFC-007 | Signal Builder Pipeline Divergence (ARCH-001/SPEC-002 vs EXEC-004) | Docs/10-rfc/RFC-007-Signal-Builder-Pipeline-Divergence.md | 1.0.0 | Open |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -102,6 +104,7 @@ knowledge/
 - `EXEC-002-Position-Manager.md` detalha o Execution Component `Position Manager` (já catalogado em SPEC-001). Solicitado originalmente como `SPEC-007`; segue o mesmo prefixo `EXEC-00X` já estabelecido por EXEC-001.
 - `ADR-009` (Baseline Lock v1.1) congela a estrutura documental do repositório: nenhuma nova reorganização, renumeração ou movimentação de documentos; `DOCUMENT_INDEX.md` como fonte de verdade para ids; família `EXEC-*` confirmada para Execution Components; sequência de entrega travada até a Primeira Execução (EXEC-001→002→003→004→005→Sprint 1). Observações registradas (não bloqueantes): "Signal Engine" do brief de origem corrigido para o nome canônico `Signal Builder`; `Risk Service` (EXEC-003) é Core Domain Service em SPEC-001, não Execution Component — `EXEC-003` é rótulo de sequência de roadmap, não reclassificação de Bounded Context.
 - `EXEC-003-Risk-Service.md` detalha um gate operacional pré-envio de ordem ("Pre-Order Risk Gate"). Divergência real encontrada: seu contrato (Entrada Signal Result/Account Information/Current Exposure, Saída Risk Approved/Rejected + Risk Evaluation Result) é incompatível com o contrato de `Risk Service` já definido em `SPEC-003` (Entrada Opportunity/Market Context, Saída Risk Profile). Registrada em `RFC-006`, não resolvida (SPEC-003 está congelado). `Account Provider` (dependência citada) também não consta em SPEC-001 — incluído na mesma RFC.
+- `EXEC-004-Signal-Builder.md` (renomeado de "Signal Engine" no brief, mesma correção do ADR-009) detalha um mecanismo de sinal que consome Market Context + Indicator Snapshot diretamente e produz SignalResult (BUY/SELL/NO_SIGNAL) para Risk Service (EXEC-003) — **divergência séria**: contorna inteiramente Opportunity (DOMAIN-001) e Decision (DOMAIN-005), e diverge do contrato já existente de Signal Builder em SPEC-002 (Entrada Decision, Saída Signal, Consumidor Order Manager). Registrada em `RFC-007` (severidade alta), não resolvida.
 - Nomenclatura arquitetural estabilizada (ver AGENTS.md — Canonical Naming, e Docs/CHANGELOG.md — Architecture Stabilization): SPEC-001 é a única fonte oficial; SPEC-002/SPEC-003 foram atualizados para reutilizar os mesmos nomes.
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.

@@ -292,6 +292,14 @@ Por instrução explícita do Product Owner, este ADR não será revisitado até
 
 Adicionalmente, `Account Provider` (dependência citada em `EXEC-003`) não consta no Canonical Component Catalog (`SPEC-001`) — registrado na mesma `RFC-006`, pendente de catalogação formal antes de ser tratado como dependência aprovada por qualquer outro documento.
 
+## EXEC-004 — Signal Builder e RFC-007 (divergência séria)
+
+`Docs/03-architecture/EXEC-004-Signal-Builder.md` (renomeado de "Signal Engine" no brief de origem, mesma correção de ADR-009) detalha o quarto item da sequência travada em `ADR-009`. Especifica um mecanismo de geração de sinal a partir de indicadores e regras de negócio: entradas, SignalResult, decisões permitidas (BUY/SELL/NO_SIGNAL), pipeline de 6 estágios, filtros, tratamento de conflitos, eventos, interface conceitual, dependências e casos de teste.
+
+**Divergência arquitetural séria, identificada na Validação Prévia (não introduzida por este documento)**: `ARCH-001` define o fluxo oficial `Indicators → Evidence → Market Context → Opportunity → Decision → Signal → Execution → Order`; `SPEC-002` (congelado) já define `Signal Builder` como Entrada `Decision` → Saída `Signal` → Consumidor `Order Manager`. O pipeline descrito em `EXEC-004` consome `Market Context`/`Indicator Snapshot` **diretamente** e entrega a `Risk Service` (`EXEC-003`) — contornando inteiramente as etapas `Opportunity` (`DOMAIN-001`) e `Decision` (`DOMAIN-005`) do Core Domain. `EXEC-003` e `EXEC-004`, juntos, descrevem um pipeline operacional coerente entre si, mas paralelo ao fluxo oficial da Baseline — não uma variação de nome, um desvio estrutural do uso de `Opportunity`/`Decision`.
+
+Nenhum documento (`ARCH-001`, `SPEC-002`, congelados; `EXEC-004`, recém-criado) foi alterado para forçar compatibilidade. Registrada em `RFC-007` (Signal Builder Pipeline Divergence), severidade alta, com 3 alternativas de reconciliação apresentadas sem decisão: (1) `EXEC-003`/`EXEC-004` são um MVP operacional intencional, mais curto que o fluxo de Core Domain, a ser explicitado como tal; (2) mal-entendido de terminologia — `EXEC-004` deveria consumir `Decision`, não `Market Context` diretamente; (3) o Core Domain é considerado redundante para a Release 1.0, o que revisitaria `ADR-002` e o investimento em `DOMAIN-001`/`DOMAIN-005`/`SPEC-003`. Recomendado resolver via ADR antes de qualquer implementação de `EXEC-003`/`EXEC-004`.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
