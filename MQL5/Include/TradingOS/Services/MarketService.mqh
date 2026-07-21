@@ -90,6 +90,9 @@ public:
       context.CurrentPivot =
          Pivot.Calculate(pivotHigh, pivotLow, pivotClose);
 
+      context.PreviousDayHigh = pivotHigh;
+      context.PreviousDayLow  = pivotLow;
+
       return true;
    }
 };

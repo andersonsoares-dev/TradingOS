@@ -57,6 +57,9 @@ struct MarketContext
 
    PivotLevels CurrentPivot;
 
+   double PreviousDayHigh;
+   double PreviousDayLow;
+
    MarketAssessment Assessment;
 
    void Clear()
@@ -94,6 +97,9 @@ struct MarketContext
       CurrentPivot.S1 = 0.0;
       CurrentPivot.S2 = 0.0;
       CurrentPivot.S3 = 0.0;
+
+      PreviousDayHigh = 0.0;
+      PreviousDayLow  = 0.0;
 
       Assessment.Score = 0;
       Assessment.Bias  = BIAS_NEUTRAL;

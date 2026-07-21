@@ -6,20 +6,21 @@
 
 #include <TradingOS/Models/MarketContext.mqh>
 
-// Desenha e atualiza linhas horizontais (OBJ_HLINE) para os niveis de
-// Pivot ja calculados em MarketContext.CurrentPivot. Nao calcula pivos,
-// nao acessa indicadores - responsabilidade exclusiva de renderizacao.
+// Desenha e atualiza linhas horizontais (OBJ_HLINE) + rotulos (OBJ_TEXT)
+// para os niveis de Pivot e para a maxima/minima do dia anterior, ja
+// disponiveis em MarketContext. Nao calcula pivos, nao acessa indicadores
+// - responsabilidade exclusiva de renderizacao.
 class CPivotRenderer
 {
 private:
 
-   void DrawOrUpdate(const string name, double price, color clr)
+   void DrawLine(const string name, double price, color clr)
    {
       if(ObjectFind(0, name) < 0)
       {
          ObjectCreate(0, name, OBJ_HLINE, 0, 0, price);
          ObjectSetInteger(0, name, OBJPROP_COLOR, clr);
-         ObjectSetInteger(0, name, OBJPROP_STYLE, STYLE_DASH);
+         ObjectSetInteger(0, name, OBJPROP_STYLE, STYLE_SOLID);
          ObjectSetInteger(0, name, OBJPROP_SELECTABLE, false);
       }
       else
@@ -28,17 +29,47 @@ private:
       }
    }
 
+   void DrawLabel(const string name, const string levelName, double price, color clr)
+   {
+      datetime labelTime = TimeCurrent() + PeriodSeconds() * 10;
+
+      if(ObjectFind(0, name) < 0)
+      {
+         ObjectCreate(0, name, OBJ_TEXT, 0, labelTime, price);
+         ObjectSetInteger(0, name, OBJPROP_COLOR, clr);
+         ObjectSetInteger(0, name, OBJPROP_ANCHOR, ANCHOR_LEFT);
+         ObjectSetInteger(0, name, OBJPROP_SELECTABLE, false);
+         ObjectSetInteger(0, name, OBJPROP_FONTSIZE, 8);
+      }
+      else
+      {
+         ObjectMove(0, name, 0, labelTime, price);
+      }
+
+      ObjectSetString(0, name, OBJPROP_TEXT,
+         levelName + " : " + DoubleToString(price, _Digits));
+   }
+
+   void DrawLevel(const string prefix, const string levelName, double price, color clr)
+   {
+      DrawLine(prefix + "_Line", price, clr);
+      DrawLabel(prefix + "_Label", levelName, price, clr);
+   }
+
 public:
 
    void Update(const MarketContext &context)
    {
-      DrawOrUpdate("TradingOS_Pivot_PP", context.CurrentPivot.Pivot, clrYellow);
-      DrawOrUpdate("TradingOS_Pivot_R1", context.CurrentPivot.R1,    clrDodgerBlue);
-      DrawOrUpdate("TradingOS_Pivot_R2", context.CurrentPivot.R2,    clrDodgerBlue);
-      DrawOrUpdate("TradingOS_Pivot_R3", context.CurrentPivot.R3,    clrDodgerBlue);
-      DrawOrUpdate("TradingOS_Pivot_S1", context.CurrentPivot.S1,    clrOrangeRed);
-      DrawOrUpdate("TradingOS_Pivot_S2", context.CurrentPivot.S2,    clrOrangeRed);
-      DrawOrUpdate("TradingOS_Pivot_S3", context.CurrentPivot.S3,    clrOrangeRed);
+      DrawLevel("TradingOS_Pivot_PP", "PP", context.CurrentPivot.Pivot, clrYellow);
+      DrawLevel("TradingOS_Pivot_R1", "R1", context.CurrentPivot.R1,    clrLimeGreen);
+      DrawLevel("TradingOS_Pivot_R2", "R2", context.CurrentPivot.R2,    clrLimeGreen);
+      DrawLevel("TradingOS_Pivot_R3", "R3", context.CurrentPivot.R3,    clrLimeGreen);
+      DrawLevel("TradingOS_Pivot_S1", "S1", context.CurrentPivot.S1,    clrOrangeRed);
+      DrawLevel("TradingOS_Pivot_S2", "S2", context.CurrentPivot.S2,    clrOrangeRed);
+      DrawLevel("TradingOS_Pivot_S3", "S3", context.CurrentPivot.S3,    clrOrangeRed);
+
+      DrawLevel("TradingOS_Pivot_YH", "YH", context.PreviousDayHigh,    clrAqua);
+      DrawLevel("TradingOS_Pivot_YL", "YL", context.PreviousDayLow,     clrMagenta);
    }
 };
 
