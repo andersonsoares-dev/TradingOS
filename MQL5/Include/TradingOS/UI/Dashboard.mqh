@@ -32,7 +32,7 @@ private:
          ObjectCreate(0, name, OBJ_LABEL, 0, 0, 0);
          ObjectSetInteger(0, name, OBJPROP_CORNER,     CORNER_RIGHT_UPPER);
          ObjectSetInteger(0, name, OBJPROP_ANCHOR,     ANCHOR_LEFT_UPPER);
-         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  180);
+         ObjectSetInteger(0, name, OBJPROP_XDISTANCE,  220);
          ObjectSetInteger(0, name, OBJPROP_FONTSIZE,   8);
          ObjectSetString(0,  name, OBJPROP_FONT,       "Consolas");
          ObjectSetInteger(0, name, OBJPROP_COLOR,      clrWhite);
@@ -40,7 +40,7 @@ private:
          ObjectSetInteger(0, name, OBJPROP_HIDDEN,     true);
       }
 
-      ObjectSetInteger(0, name, OBJPROP_YDISTANCE, 15 + m_count * 17);
+      ObjectSetInteger(0, name, OBJPROP_YDISTANCE, 34 + m_count * 17);
 
       // String vazia nao e aceita pela API para OBJPROP_TEXT (mantem o
       // texto padrao "Label"). Usar espaco para linhas em branco.
