@@ -494,6 +494,12 @@ Especifica o `Learning Service`: processa `Outcome` produzido pela Validation, g
 
 No `ROADMAP-006`, `ITEM-01` e `ITEM-02` passaram de `Proposed` para `Implemented`. Nenhum arquivo de código foi alterado.
 
+## ITEM-13 — Strategy Policy
+
+`SPEC-001` foi atualizado para a versão 1.7.0 com o grupo `Strategy Components`, contendo somente `Strategy Policy` como componente `Planned`. A política representa pesos, regras de combinação, thresholds e seleção do modelo ativo, consumindo o `Configuration Provider`.
+
+`Strategy Engine`, `Strategy Configuration` e `Strategy Evaluator` foram rejeitados por duplicarem responsabilidades de `Opportunity Service`, `Decision Service`, `Confidence Service` ou `Configuration Provider`. No `ROADMAP-006`, `ITEM-13` passa de `Proposed` para `Implemented`. Nenhum arquivo de código foi alterado.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService

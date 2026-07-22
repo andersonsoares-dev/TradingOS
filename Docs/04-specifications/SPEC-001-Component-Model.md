@@ -1,7 +1,7 @@
 ---
 id: SPEC-001
 title: Component Model
-version: 1.6.0
+version: 1.7.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -386,6 +386,12 @@ Estados possíveis: **Implemented** (existe na Legacy Baseline, ainda que inform
 | Knowledge Service | Planned | Modelado aqui e detalhado em `LEARN-001`; nenhuma implementação existe ainda. Primeiro componente concreto do Learning Domain (`ADR-010`). |
 | Learning Service | Planned | Modelado aqui e detalhado em `LEARN-002`; nenhuma implementação existe ainda. Consome exclusivamente `Outcome` da Validation, sem acesso direto a Execution/Infrastructure (`ADR-010`). |
 
+## Strategy Components
+
+| Componente | Status | Observação |
+|---|---|---|
+| Strategy Policy | Planned | Representa os parâmetros da estratégia ativa — pesos, regras de combinação, thresholds e modelo selecionado. Consome valores do `Configuration Provider`; não avalia `Market Context`, não produz `Opportunity`/`Decision` e não executa ordens. |
+
 ## Deprecated
 
 Nenhum componente listado neste documento se enquadra nesta categoria hoje. Os módulos órfãos congelados pela Sprint 0.5 (`TrendAnalyzer`, `IAnalyzer`, `MarketSnapshot`, `MarketAnalysis`) nunca fizeram parte deste modelo — seu status é tratado em `Docs/BACKLOG.md` e `ADR-001`, não aqui.
@@ -397,6 +403,12 @@ Nenhum componente listado neste documento se enquadra nesta categoria hoje. Os m
 **v1.5.0**: adicionado o grupo "Learning Domain Components" com o primeiro componente concreto do Learning Domain, `Knowledge Service` (status `Planned`), conforme previsto por `ADR-010` ("registro próprio e posterior" quando uma especificação concreta exigisse). Detalhado em `LEARN-001-Knowledge-Service.md`. Nenhum outro grupo/componente alterado.
 
 **v1.6.0**: adicionado `Learning Service` (status `Planned`) ao grupo "Learning Domain Components", detalhado em `LEARN-002-Learning-Service.md`. Consome exclusivamente `Outcome` da Validation, sem acesso direto a Execution/Infrastructure, conforme `ADR-010`. Nenhum outro grupo/componente alterado.
+
+---
+
+# Alterações
+
+**v1.7.0**: adicionado o grupo `Strategy Components` com `Strategy Policy` (status `Planned`), conforme `ITEM-13` do `ROADMAP-006`. Nenhum componente adicional de Strategy foi criado para evitar duplicidade com `Opportunity Service`, `Decision Service`, `Confidence Service` e `Configuration Provider`.
 
 ---
 

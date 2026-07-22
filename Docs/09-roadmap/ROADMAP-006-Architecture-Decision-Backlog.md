@@ -1,7 +1,7 @@
 ---
 id: ROADMAP-006
 title: Architecture Decision Backlog
-version: 1.4.0
+version: 1.5.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -189,7 +189,7 @@ Divergência entre `SPEC-001` e `SPEC-003` quanto ao mapeamento de `TrendService
 
 ### ITEM-13 — Gap de componentes do Bounded Context Strategy em SPEC-001
 
-Categoria: **2**. Status: **Proposed**.
+Categoria: **2**. Status: **Implemented** — `Strategy Policy` catalogado em `SPEC-001` v1.7.0.
 
 `Strategy` foi confirmado como Bounded Context ativo em `RC-001` (Decisão A, ver `AUDIT-001-CLOSURE`), mas nenhum componente seu está catalogado no Canonical Component Catalog (`SPEC-001`) — gap recorrente, identificado em `AUDIT-001` (Finding #4) e reconfirmado por `AUDIT-002` (NC-02). `SPEC-001` já autoriza essa extensão diretamente (seção "Extensibilidade"), sem exigir ADR — decisão de Product Owner sobre quais componentes catalogar.
 
@@ -220,10 +220,10 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 
 # Resumo
 
-- **Itens por categoria**: Categoria 1 — 1 item implementado (ITEM-01); Categoria 2 — 2 itens, sendo 1 implementado (ITEM-02) e 1 proposto (ITEM-13); Categoria 3 — 10 itens, sendo 3 implementados (ITEM-05, ITEM-06, ITEM-08) e 7 ainda bloqueados (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
+- **Itens por categoria**: Categoria 1 — 1 item implementado (ITEM-01); Categoria 2 — 2 itens implementados (ITEM-02, ITEM-13); Categoria 3 — 10 itens, sendo 3 implementados (ITEM-05, ITEM-06, ITEM-08) e 7 ainda bloqueados (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
 - **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 7 (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14).
-- **Prontos para execução documental direta** (Categoria 1/2, sem ADR/RFC): 1 (ITEM-13).
-- **Implementados**: 5 (ITEM-01, ITEM-02 — propagados para `DOMAIN-003` v2.1.0; ITEM-05, ITEM-06 — formalizados por `ADR-011`; ITEM-08 — formalizado por `ADR-013`; todos propagados aos documentos-alvo).
+- **Prontos para execução documental direta** (Categoria 1/2, sem ADR/RFC): 0.
+- **Implementados**: 6 (ITEM-01, ITEM-02 — propagados para `DOMAIN-003` v2.1.0; ITEM-05, ITEM-06 — formalizados por `ADR-011`; ITEM-08 — formalizado por `ADR-013`; ITEM-13 — `Strategy Policy` catalogado em `SPEC-001` v1.7.0; todos propagados aos documentos-alvo).
 - **Encerrados/Rejeitados**: 1 (ITEM-07 — `Observation` avaliado e rejeitado como conceito de domínio novo).
 - **RFCs abertas consolidadas nesta entrega** (`AUDIT-002`, NC-01): `RFC-001` (ITEM-09), `RFC-002` (ITEM-10), `RFC-003` (ITEM-11), `RFC-004` (ITEM-12) — todas `Open`, nenhuma resolvida por esta consolidação.
 - **Gaps de rastreamento consolidados nesta entrega** (`AUDIT-002`, NC-02/NC-03): gap de componentes de `Strategy` em `SPEC-001` (ITEM-13); dependência `Account Provider` não catalogada (ITEM-14).
@@ -238,3 +238,5 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 **v1.3.0** (`AUDIT-002`, achado NC-01/NC-02/NC-03): adicionados `ITEM-09` a `ITEM-14`, consolidando `RFC-001` a `RFC-004` (Open), o gap de componentes de `Strategy` em `SPEC-001` e a dependência `Account Provider` não catalogada. Nenhuma RFC nova criada; nenhum conteúdo técnico de RFC existente alterado; nenhuma das quatro RFCs (`RFC-001` a `RFC-004`) resolvida por esta entrega.
 
 **v1.4.0** (`ITEM-01`/`ITEM-02`): renomeada `Structure` para `Market Structure` e adicionadas as categorias `Price Action` e `Custom` em `DOMAIN-003`. Ambos os itens passam a `Implemented`.
+
+**v1.5.0** (`ITEM-13`): catalogado `Strategy Policy` em `SPEC-001` v1.7.0. `ITEM-13` passa a `Implemented`; nenhum componente adicional de Strategy foi criado.

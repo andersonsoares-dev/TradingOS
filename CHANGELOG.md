@@ -266,6 +266,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ITEM-08` registrado como implementado em `ROADMAP-006`.
 - Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
 
+### 2026-07-22 — ITEM-13: Strategy Policy
+
+- Catalogado somente `Strategy Policy` no grupo `Strategy Components` do `SPEC-001` v1.7.0.
+- `Strategy Engine`, `Strategy Configuration` e `Strategy Evaluator` não foram catalogados por duplicarem responsabilidades existentes.
+- `ITEM-13` do `ROADMAP-006` passou para `Implemented`.
+- Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
+
 ### 2026-07-22 — DOMAIN-003: Evidence Categories
 
 - `Structure` renomeado para `Market Structure`.
