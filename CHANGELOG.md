@@ -273,6 +273,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ITEM-13` do `ROADMAP-006` passou para `Implemented`.
 - Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
 
+### 2026-07-22 — ADR-014: Account Data Source for Risk Service
+
+- Formalizado `EXEC-005.GetAccount()` como origem de `Account Snapshot` para `EXEC-003`.
+- Nenhum `Account Provider` independente foi criado ou catalogado.
+- `ITEM-14` do `ROADMAP-006` passou para `Implemented`.
+- Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
+
 ### 2026-07-22 — DOMAIN-003: Evidence Categories
 
 - `Structure` renomeado para `Market Structure`.

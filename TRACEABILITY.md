@@ -500,6 +500,12 @@ No `ROADMAP-006`, `ITEM-01` e `ITEM-02` passaram de `Proposed` para `Implemented
 
 `Strategy Engine`, `Strategy Configuration` e `Strategy Evaluator` foram rejeitados por duplicarem responsabilidades de `Opportunity Service`, `Decision Service`, `Confidence Service` ou `Configuration Provider`. No `ROADMAP-006`, `ITEM-13` passa de `Proposed` para `Implemented`. Nenhum arquivo de código foi alterado.
 
+## ADR-014 — Account Data Source for Risk Service
+
+`ADR-014` formaliza que `EXEC-003` consome diretamente o `Account Snapshot` produzido por `EXEC-005.GetAccount()` (`MT5 Adapter`). Nenhum `Account Provider` independente é criado ou catalogado no `SPEC-001`.
+
+`EXEC-003` passa a declarar `EXEC-005` como dependência documental e recebe apenas o esclarecimento de proveniência de `Account Information`; seus contratos permanecem inalterados. `RFC-006` é complementada e `ITEM-14` passa de `Awaiting ADR` para `Implemented`. Nenhum arquivo de código foi alterado.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService

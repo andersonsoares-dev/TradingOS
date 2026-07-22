@@ -76,8 +76,12 @@ O contrato de `Risk Service` como Core Domain Service, definido em `SPEC-003` (E
 
 **Recomendação para Release 2.0** (registrada, não aplicada agora): quando `Opportunity Service`/`Decision Service` forem implementados, avaliar se os dois papéis de "Risk Service" devem receber nomes distintos no Canonical Component Catalog (ex.: manter `Risk Service` para o Core Domain Service de `SPEC-003`, e nomear o gate operacional como `Pre-Order Risk Gate` — nome já usado como subtítulo em `EXEC-003`), evitando a ambiguidade de nome encontrada nesta RFC. Isso exigiria atualização de `SPEC-001`, fora do escopo desta decisão.
 
-**Account Provider**: permanece não catalogado em `SPEC-001`. Observação já registrada em `EXEC-005`: `MT5 Adapter.GetAccount()`/`Account Snapshot` podem ser a origem real do dado — recomendação para Release 2.0 é formalizar essa conexão em vez de introduzir um novo Provider, mas isso não é decidido nesta RFC.
+**Account Provider**: sua resolução foi formalizada por `ADR-014`. Para a Release 1.0, `EXEC-003` consome diretamente o `Account Snapshot` produzido por `EXEC-005.GetAccount()`. Nenhum `Account Provider` independente é catalogado em `SPEC-001`.
+
+### Resolução da dependência Account Provider
+
+O gap de proveniência de `Account Information` foi encerrado sem criação de componente novo. A decisão normativa está no `ADR-014`; a reconciliação do contrato Risk Service Core Domain versus gate operacional permanece conforme já aprovada nesta RFC.
 
 ### Status
 
-**Approved** — decisão normativa para a Release 1.0, alinhada a `RFC-007`.
+**Approved** — decisão normativa para a Release 1.0, alinhada a `RFC-007` e complementada por `ADR-014` quanto à origem de Account Information.

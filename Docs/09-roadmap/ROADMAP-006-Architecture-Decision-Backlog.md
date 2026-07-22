@@ -1,7 +1,7 @@
 ---
 id: ROADMAP-006
 title: Architecture Decision Backlog
-version: 1.5.0
+version: 1.6.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -16,6 +16,7 @@ related:
   - RFC-003
   - RFC-004
   - RFC-005
+  - ADR-014
   - ADR-013
   - ADR-011
 last_updated: 2026-07-22
@@ -195,9 +196,9 @@ Categoria: **2**. Status: **Implemented** — `Strategy Policy` catalogado em `S
 
 ### ITEM-14 — Account Provider não catalogado em SPEC-001
 
-Categoria: **3**. Dependência: **`RFC-006`** (`Approved` — reconciliação do Risk Service; a catalogação do `Account Provider` em si não foi decidida). Status: **Awaiting ADR**.
+Categoria: **3**. Dependência: **`RFC-006`**. Status: **Implemented** — resolvido por `ADR-014`.
 
-Dependência citada em `EXEC-003`/`EXEC-005` e registrada em `RFC-006`, nunca formalmente catalogada em `SPEC-001` (categoria Infrastructure Providers). `RFC-006` já registrou uma pista (`EXEC-005.GetAccount()`/`Account Snapshot` como possível origem real do dado), recomendada para avaliação em Release 2.0 — não decidida aqui. Identificado por `AUDIT-002` (NC-03).
+Dependência citada em `EXEC-003`/`EXEC-005` e registrada em `RFC-006`. A decisão formal utiliza `EXEC-005.GetAccount()` como origem de `Account Snapshot`; nenhum `Account Provider` independente é catalogado em `SPEC-001`. Identificado por `AUDIT-002` (NC-03).
 
 ---
 
@@ -220,10 +221,10 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 
 # Resumo
 
-- **Itens por categoria**: Categoria 1 — 1 item implementado (ITEM-01); Categoria 2 — 2 itens implementados (ITEM-02, ITEM-13); Categoria 3 — 10 itens, sendo 3 implementados (ITEM-05, ITEM-06, ITEM-08) e 7 ainda bloqueados (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
-- **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 7 (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14).
+- **Itens por categoria**: Categoria 1 — 1 item implementado (ITEM-01); Categoria 2 — 2 itens implementados (ITEM-02, ITEM-13); Categoria 3 — 10 itens, sendo 4 implementados (ITEM-05, ITEM-06, ITEM-08, ITEM-14) e 6 ainda bloqueados (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
+- **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 6 (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12).
 - **Prontos para execução documental direta** (Categoria 1/2, sem ADR/RFC): 0.
-- **Implementados**: 6 (ITEM-01, ITEM-02 — propagados para `DOMAIN-003` v2.1.0; ITEM-05, ITEM-06 — formalizados por `ADR-011`; ITEM-08 — formalizado por `ADR-013`; ITEM-13 — `Strategy Policy` catalogado em `SPEC-001` v1.7.0; todos propagados aos documentos-alvo).
+- **Implementados**: 7 (ITEM-01, ITEM-02 — propagados para `DOMAIN-003` v2.1.0; ITEM-05, ITEM-06 — formalizados por `ADR-011`; ITEM-08 — formalizado por `ADR-013`; ITEM-13 — `Strategy Policy` catalogado em `SPEC-001` v1.7.0; ITEM-14 — resolvido por `ADR-014`; todos propagados aos documentos-alvo).
 - **Encerrados/Rejeitados**: 1 (ITEM-07 — `Observation` avaliado e rejeitado como conceito de domínio novo).
 - **RFCs abertas consolidadas nesta entrega** (`AUDIT-002`, NC-01): `RFC-001` (ITEM-09), `RFC-002` (ITEM-10), `RFC-003` (ITEM-11), `RFC-004` (ITEM-12) — todas `Open`, nenhuma resolvida por esta consolidação.
 - **Gaps de rastreamento consolidados nesta entrega** (`AUDIT-002`, NC-02/NC-03): gap de componentes de `Strategy` em `SPEC-001` (ITEM-13); dependência `Account Provider` não catalogada (ITEM-14).
@@ -240,3 +241,5 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 **v1.4.0** (`ITEM-01`/`ITEM-02`): renomeada `Structure` para `Market Structure` e adicionadas as categorias `Price Action` e `Custom` em `DOMAIN-003`. Ambos os itens passam a `Implemented`.
 
 **v1.5.0** (`ITEM-13`): catalogado `Strategy Policy` em `SPEC-001` v1.7.0. `ITEM-13` passa a `Implemented`; nenhum componente adicional de Strategy foi criado.
+
+**v1.6.0** (`ITEM-14`): formalizada por `ADR-014` a origem de `Account Information` em `EXEC-005.GetAccount()` → `Account Snapshot`. Nenhum `Account Provider` independente foi criado.

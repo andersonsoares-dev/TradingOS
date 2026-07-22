@@ -10,10 +10,11 @@ depends_on:
   - SPEC-003
   - EXEC-001
   - EXEC-002
+  - EXEC-005
   - ADR-009
 related:
   - RFC-006
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Risk Service (Pre-Order Risk Gate)
@@ -39,6 +40,12 @@ O brief de origem desta entrega solicita um contrato **diferente**, operando em 
 Estes são dois contratos distintos para o mesmo nome de componente (`Risk Service`), servindo dois propósitos diferentes — um avalia risco no nível do Core Domain (Opportunity → Risk Profile), o outro é um gate operacional pré-envio de ordem (Signal Result + contexto de conta/exposição → aprovação/rejeição). Registrado como `RFC-006` (Requires Architectural Decision). Este documento segue adiante especificando o contrato do brief de origem — o **Pre-Order Risk Gate** — sob o entendimento explícito de que ele **não substitui nem redefine** o `Risk Service` de `SPEC-003`; a reconciliação entre os dois (mesmo componente com dois papéis? dois componentes distintos que precisam de nomes diferentes?) fica pendente de `RFC-006`.
 
 Adicionalmente, a dependência `Account Provider` (ver "Dependências") não consta no Canonical Component Catalog (`SPEC-001`) — registrada na mesma `RFC-006`.
+
+---
+
+# Proveniência de Account Information
+
+Conforme `ADR-014`, a entrada `Account Information` é obtida como `Account Snapshot` por meio de `EXEC-005.GetAccount()` (`MT5 Adapter`). Nenhum `Account Provider` independente é necessário para a Release 1.0. A entrada, saída e demais regras deste contrato permanecem inalteradas.
 
 ---
 
@@ -223,14 +230,15 @@ Não implementa:
 - Canonical Component Catalog (`SPEC-001`) — `Risk Service` catalogado como Core Domain Service; contrato deste documento é adicional, não substitutivo (ver "Validação Prévia").
 - `EXEC-001` (Order Manager — consumidor).
 - `EXEC-002` (Position Manager — origem de Current Exposure).
-- `RFC-006` — divergência de contrato com `SPEC-003` e dependência não catalogada (`Account Provider`).
+- `EXEC-005` (MT5 Adapter — origem de Account Snapshot).
+- `RFC-006`/`ADR-014` — divergência de contrato com `SPEC-003` e proveniência de Account Information.
 - `DOCUMENT_INDEX.md`, `TRACEABILITY.md` — atualizados nesta entrega.
 
 ---
 
 # Definition of Done
 
-O documento estará concluído quando qualquer desenvolvedor puder implementar o componente sem necessidade de decisões adicionais sobre suas responsabilidades, entradas, saídas e comportamento — exceto a resolução de `RFC-006` (reconciliação com `SPEC-003` e catalogação de `Account Provider`), explicitamente sinalizada como pendência externa a este documento.
+O documento estará concluído quando qualquer desenvolvedor puder implementar o componente sem necessidade de decisões adicionais sobre suas responsabilidades, entradas, saídas e comportamento. A proveniência de Account Information foi formalizada por `ADR-014`.
 
 ---
 
