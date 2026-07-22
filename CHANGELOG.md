@@ -266,6 +266,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ITEM-08` registrado como implementado em `ROADMAP-006`.
 - Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
 
+### 2026-07-22 — DOMAIN-003: Evidence Categories
+
+- `Structure` renomeado para `Market Structure`.
+- Adicionadas as categorias `Price Action` e `Custom`.
+- `ITEM-01` e `ITEM-02` do `ROADMAP-006` marcados como `Implemented`.
+- Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
+
 ### 2026-07-21 — ROADMAP-001 (Sprint 1 — Foundation)
 
 - Um brief de origem solicitava criar `Docs/07-implementation/IMPLEMENTATION-001-Sprint-1.md` — identificado conflito com `ADR-009` (Baseline Lock v1.1): `Docs/07-implementation/` não existe na árvore oficial travada (posição `07` é `07-testing/`), e `IMPLEMENTATION-*` não está entre as famílias documentais congeladas. Criado como `Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md`, inaugurando a família `ROADMAP-*` já prevista e congelada em `ADR-009`, sem exigir nova reorganização.

@@ -1,7 +1,7 @@
 ---
 id: DOMAIN-003
 title: Evidence
-version: 2.0.0
+version: 2.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -12,7 +12,7 @@ related:
   - DOMAIN-004
   - DOMAIN-005
   - ARCH-001
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Evidence
@@ -92,8 +92,10 @@ Exemplos:
 - Strength
 - Liquidity
 - Session
-- Structure
+- Market Structure
 - Volume
+- Price Action
+- Custom
 
 ---
 
@@ -388,3 +390,5 @@ ROADMAP-006
 Novas categorias de Evidence poderão ser adicionadas sem alteração do modelo de domínio, desde que respeitem as regras definidas neste documento.
 
 **v2.0.0** (`ADR-011`): adicionado o Ciclo de Vida (`Candidate → Confirmed → Weak → Rejected → Expired`), os atributos `Estado` e `Validade`, e as regras de negócio `BR-006` a `BR-008`. Origem: `ROADMAP-006` (Architecture Decision Backlog), itens `ITEM-05`/`ITEM-06`.
+
+**v2.1.0** (`ROADMAP-006`): renomeada a categoria `Structure` para `Market Structure` e adicionadas as categorias `Price Action` e `Custom`, conforme `ITEM-01` e `ITEM-02`. Nenhuma regra estrutural ou responsabilidade de `Evidence` foi alterada.

@@ -488,6 +488,12 @@ Especifica o `Learning Service`: processa `Outcome` produzido pela Validation, g
 
 ## Legacy Components
 
+## ITEM-01 / ITEM-02 — Evidence Categories
+
+`DOMAIN-003` foi atualizado para a versão 2.1.0: a categoria `Structure` passou a se chamar `Market Structure` e foram adicionadas as categorias `Price Action` e `Custom`. As alterações são compatíveis com o modelo existente e não introduzem novos componentes ou regras de negócio.
+
+No `ROADMAP-006`, `ITEM-01` e `ITEM-02` passaram de `Proposed` para `Implemented`. Nenhum arquivo de código foi alterado.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService
