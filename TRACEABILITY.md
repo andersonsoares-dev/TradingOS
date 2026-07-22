@@ -516,6 +516,17 @@ Decisão fundamentada em: `ARCH-001` enumera exatamente 4 componentes no Core Do
 
 `RFC-001` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.6.0 → v1.7.0): `ITEM-09` passa a `Implemented`; `ITEM-03` desbloqueado (Categoria 3 → 2, dependência resolvida sem colisão de conceito — a categoria "Risk" de `Evidence` descreveria uma observação de mercado, distinta da avaliação de risco da `Opportunity`), pronto para aplicação direta, ainda não propagado a `DOMAIN-003`. Nenhum arquivo de código foi alterado.
 
+## ADR-016 — Event Dispatcher & Scheduler (Deferral Decision)
+
+`ADR-016` formaliza `RFC-002`: nenhum componente é catalogado em `SPEC-001`, e nenhum é rejeitado definitivamente.
+
+- `Event Dispatcher`: **Adiado** — necessidade potencial real (múltiplos componentes já publicam eventos nomeados; `ROADMAP-001` antecipa condicionalmente um "Event Bus"), mas nenhuma dependência bloqueante comprovada na sequência travada (`EXEC-001` a `EXEC-005`); `SPEC-002` não define nenhum Port de eventos.
+- `Scheduler`: **Adiado, com viés mais forte para rejeição futura** — necessidade já coberta informalmente por `OnTimer()` nativo do MQL5 (Legacy Baseline, `SPEC-001` — Component Lifecycle); nenhuma lacuna documental identificada.
+
+Critério de reabertura (`ADR-009 §8`): apenas mediante evidência obtida durante a implementação de `ROADMAP-001` ou sprints subsequentes — não por hipótese.
+
+`RFC-002` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.7.0 → v1.8.0): `ITEM-10` passa de `Awaiting RFC` para `Approved` — decisão de adiamento formalizada, sem propagação a `SPEC-001`/`INFRA-001`/`ARCH-001` por design. Nenhum arquivo de código foi alterado.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService

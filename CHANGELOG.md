@@ -425,3 +425,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `ROADMAP-006` (v1.6.0 → v1.7.0): `ITEM-09` passa a `Implemented`. `ITEM-03` (categoria "Risk" para Evidence) desbloqueado — rebaixado de Categoria 3 para Categoria 2 (dependência resolvida, sem colisão de conceito), pronto para aplicação direta; ainda não propagado a `DOMAIN-003`.
 - Nenhum arquivo `.mq5`/`.mqh` foi alterado.
 - `DOCUMENT_INDEX.md` atualizado com `ADR-015`/`DOMAIN-007`.
+
+### 2026-07-22 — ADR-016: Event Dispatcher & Scheduler (Deferral Decision)
+
+- `RFC-002` (Infrastructure Candidate Components) resolvida: `Event Dispatcher` **adiado** (necessidade potencial real — múltiplos componentes já publicam eventos nomeados, `ROADMAP-001` antecipa condicionalmente um "Event Bus" — mas sem dependência bloqueante comprovada na sequência travada `EXEC-001` a `EXEC-005`); `Scheduler` **adiado, com viés mais forte para rejeição futura** (necessidade já coberta informalmente por `OnTimer()` nativo do MQL5).
+- Nenhum dos dois componentes catalogado em `SPEC-001`. Nenhum dos dois rejeitado definitivamente.
+- Nenhuma alteração a `SPEC-001`, `INFRA-001`, `ARCH-001` ou qualquer arquivo `.mq5`/`.mqh`.
+- Critério de reabertura formalizado (`ADR-009 §8`): apenas mediante evidência obtida durante a implementação de `ROADMAP-001` ou sprints subsequentes.
+- `RFC-002` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
+- `ROADMAP-006` (v1.7.0 → v1.8.0): `ITEM-10` passa de `Awaiting RFC` para `Approved` — decisão de adiamento, sem propagação a `SPEC-001` por design.
+- `DOCUMENT_INDEX.md` atualizado com `ADR-016`.

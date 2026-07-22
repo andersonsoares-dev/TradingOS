@@ -50,6 +50,7 @@
 | ADR-013 | Trading Risk & Exit Strategy — Release 1.0 | Docs/05-decisions/ADR-013-Trading-Risk-Exit-Strategy.md | 1.0.0 | Accepted |
 | ADR-014 | Account Data Source for Risk Service — Release 1.0 | Docs/05-decisions/ADR-014-Account-Data-Source-for-Risk-Service.md | 1.0.0 | Accepted |
 | ADR-015 | Risk Profile Classification | Docs/05-decisions/ADR-015-Risk-Profile-Classification.md | 1.0.0 | Accepted |
+| ADR-016 | Event Dispatcher & Scheduler — Deferral Decision | Docs/05-decisions/ADR-016-Event-Dispatcher-Scheduler-Deferral.md | 1.0.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | AUDIT-002 | Baseline Architecture Certification | Docs/06-validation/AUDIT-002-Baseline-Architecture-Certification.md | 1.0.0 | Approved |
@@ -57,7 +58,7 @@
 | BACKTEST-001 | Backtest Execution Protocol | Docs/06-validation/BACKTEST-001-Backtest-Execution-Protocol.md | 1.0.0 | Approved |
 | DATA-001 | Validation Data & Evidence Repository Standard | Docs/06-validation/DATA-001-Validation-Data-Repository-Standard.md | 1.0.0 | Approved |
 | RFC-001 | Risk Profile Classification | Docs/10-rfc/RFC-001-Risk-Profile-Classification.md | 2.0.0 | Approved |
-| RFC-002 | Infrastructure Candidate Components | Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md | 1.0.0 | Open |
+| RFC-002 | Infrastructure Candidate Components | Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md | 2.0.0 | Approved |
 | RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 1.0.0 | Open |
 | RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
 | RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Approved |
@@ -68,7 +69,7 @@
 | ROADMAP-003 | Sprint 3 — Signal Evaluation & Risk Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md | 1.0.0 | Approved |
 | ROADMAP-004 | Sprint 4 — Order Execution Integration (Release 1.0) | Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md | 1.0.0 | Approved |
 | ROADMAP-005 | Sprint 5 — First Execution & End-to-End Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-005-First-Execution.md | 1.0.0 | Approved |
-| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.7.0 | Approved |
+| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.8.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -145,3 +146,4 @@ knowledge/
 - `ROADMAP-006` v1.3.0 consolida os achados NC-01/NC-02/NC-03 de `AUDIT-002`: `ITEM-09` a `ITEM-12` registram `RFC-001` a `RFC-004` (todas `Open`, nenhuma resolvida nesta entrega); `ITEM-13` registra o gap de componentes de `Strategy` em `SPEC-001`; `ITEM-14` registra a dependência `Account Provider` não catalogada. Nenhuma RFC nova criada; nenhum conteúdo técnico de RFC existente alterado.
 - `INVENTORY.md` (raiz do repositório) — documento **informativo, não normativo**. Finalidade: snapshot pontual da estrutura completa do repositório (árvore de diretórios `Docs/`/`MQL5/`/`knowledge/`), inventário dos 51 documentos governados (id/título/versão/status por categoria), relações de dependência (precedência documental, fluxo oficial do domínio, pipeline da Release 1.0, Bounded Contexts, cadeia de congelamento da Baseline) e estado atual do projeto (Baseline v2.0, pendências abertas, decisões recentes). Não substitui `DOCUMENT_INDEX.md`/`TRACEABILITY.md`/`CHANGELOG.md`/`ROADMAP-006` como fontes vivas — o próprio `INVENTORY.md` as referencia explicitamente como autoritativas para consulta contínua. Não participa da matriz de rastreabilidade (`TRACEABILITY.md`) por não ser documento normativo.
 - `ADR-015` formaliza `RFC-001` (Risk Profile Classification): `Risk Profile` classificado como Value Object, atributo `Risk` de `Opportunity` (`DOMAIN-001` v1.2.0), produzido pelo `Risk Service` (`SPEC-003`, sem alteração de contrato). `DOMAIN-007-Risk-Profile.md` criado — primeiro documento formal do conceito (Estrutura: Risk Score/Risk Level/Rationale/Timestamp). Nenhuma alteração a `ARCH-001` (Core Domain permanece com 4 componentes). `RFC-001` passa a `Approved`; `ROADMAP-006` v1.7.0 registra `ITEM-09` como `Implemented` e `ITEM-03` desbloqueado (Categoria 3 → 2, pronto para aplicação direta, ainda não propagado a `DOMAIN-003`).
+- `ADR-016` formaliza `RFC-002` (Infrastructure Candidate Components): `Event Dispatcher` (Adiado — necessidade potencial, sem dependência bloqueante comprovada) e `Scheduler` (Adiado, viés para rejeição futura — necessidade já coberta por `OnTimer()`) **não catalogados** em `SPEC-001`, por decisão explícita de adiamento — nenhum dos dois rejeitado definitivamente. Nenhuma alteração a `SPEC-001`, `INFRA-001`, `ARCH-001` ou código. Critério de reabertura: evidência de implementação de `ROADMAP-001` (`ADR-009 §8`). `RFC-002` passa a `Approved`; `ROADMAP-006` v1.8.0 registra `ITEM-10` como `Approved` (decisão de adiamento, sem propagação a `SPEC-001` por design).
