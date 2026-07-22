@@ -348,6 +348,34 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Relatório de auditoria apenas — nenhum documento normativo criado ou alterado, conforme escopo do brief.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com AUDIT-002.
 
+### 2026-07-22 — ADR-012: Architecture Baseline v2.0 Freeze
+
+- Adicionado `Docs/05-decisions/ADR-012-Architecture-Baseline-v2.0-Freeze.md` — formaliza o congelamento da Baseline v2.0, autorizado pelo GO de `AUDIT-002` (Readiness Score 88%). Segue o mesmo padrão de `ADR-007` (que formalizou a Baseline v1.0 após `AUDIT-001`/`RC-001`).
+- Escopo do congelamento: estende o de `ADR-007`/`ADR-009` para incluir tudo que foi criado/alterado desde então e já certificado por `AUDIT-002` — `DOMAIN-003` v2.0.0 (Evidence Lifecycle), `DOMAIN-006` (Knowledge Model), `ARCH-001` v1.3.0 (5 Bounded Contexts), `ADR-010`/`ADR-011` (governança do Learning Domain), `ROADMAP-006` (backlog de decisões).
+- A tag git `architecture-baseline-v2` (já existente, criada após o commit `c54e5ad`) é reconhecida formalmente como o marco correspondente a este congelamento.
+- As não conformidades de `AUDIT-002` (RFC-001 a RFC-005 fora do backlog; gap de componentes de Strategy; dependência Account Provider; RFC-005 não formalizada) **não bloqueiam** o congelamento — permanecem como pendências de consolidação, a resolver via `ROADMAP-006` em paralelo ao trabalho de SPEC.
+- Critério de reabertura de `ADR-009 §8` (apenas mediante evidência de implementação/teste/Primeira Execução) permanece em vigor, agora explicitamente estendido ao Learning Domain e ao ciclo de vida de Evidence.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ADR-012.
+
+### 2026-07-22 — LEARN-001 (Knowledge Service) e SPEC-001 v1.5.0
+
+- Um brief de origem solicitava criar `SPEC-004-Knowledge-Service.md` — colisão de id (`SPEC-004` já é `Application Services`, congelado desde `ADR-007`/`ADR-009`/`ADR-012`) e, mesmo com outro número, `SPEC-00X` não se aplica: `ADR-009 §4` reserva essa família para categorias inteiras, não componentes isolados (mesma razão pela qual `Order Manager`/`Position Manager` viraram `EXEC-001`/`EXEC-002`, não `SPEC-006`/`SPEC-007`).
+- Por analogia com `INFRA-*`/`EXEC-*` (componentes individuais de um Bounded Context), criado `Docs/03-architecture/LEARN-001-Knowledge-Service.md`, inaugurando a família `LEARN-*` para componentes do Learning Domain.
+- Especifica tecnicamente o `Knowledge Service` (`DOMAIN-006`): responsabilidades (armazenar/recuperar/versionar/rastrear Knowledge, sem realizar aprendizado/decisões/produção de Evidence), interfaces conceituais (`CreateKnowledge`/`UpdateKnowledge`/`GetKnowledge`/`FindKnowledge`/`ListKnowledge`/`ArchiveKnowledge`), regras (imutabilidade/versionamento/unicidade/rastreabilidade/integridade), dependências permitidas (`DOMAIN-006`/`ARCH-001`/`ADR-010`/`SPEC-001`) e proibidas (Execution/Broker/Infrastructure específica), fluxo (Receber → Validar → Persistir → Versionar → Disponibilizar).
+- `SPEC-001` atualizado (v1.4.0 → v1.5.0): novo grupo "Learning Domain Components" no Canonical Component Catalog, com `Knowledge Service` (status `Planned`) — primeiro componente concreto do Learning Domain, exatamente como `ADR-010` previa ("registro próprio e posterior"). Nenhum outro grupo/componente alterado.
+- Nenhuma arquitetura, ADR, DOMAIN ou Ubiquitous Language alterados além do registro pontual em `SPEC-001` (consequência direta e já prevista de `ADR-010`, não uma nova decisão).
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com LEARN-001/SPEC-001 v1.5.0.
+
+### 2026-07-22 — LEARN-002 (Learning Service) e SPEC-001 v1.6.0
+
+- Um brief de origem solicitava criar `SPEC-005-Learning-Service.md` — mesma colisão de id/família já identificada em `LEARN-001` (`SPEC-005` é `Domain Lifecycle`, congelado; `SPEC-00X` não se aplica a componente isolado, `ADR-009 §4`). Criado como `Docs/03-architecture/LEARN-002-Learning-Service.md`, continuando a família `LEARN-*`.
+- **Correção de conteúdo (não bloqueante, resolvida sem nova RFC)**: a brief listava `Execution Result` como entrada suportada do Learning Service — contraria diretamente `ADR-010` ("o Learning Domain não invoca componentes de Execution", "sem acesso direto a Infrastructure ou Execution") e `DOMAIN-006` (Knowledge só nasce de `Outcome` da Validation). Removida da lista de entradas, mantendo apenas `Outcome`/`Performance Metrics`/`Validation Result`/`Learning Event`, todas sourced exclusivamente da Validation.
+- **Correção de dependência**: a brief listava `SPEC-004` (Application Services) como dependência permitida — sem relação com o fluxo descrito (o serviço encaminha objetos ao Knowledge Service). Substituída por `LEARN-001`.
+- Especifica: responsabilidades (processar `Outcome`, gerar `Knowledge Proposal`, atualizar métricas, encaminhar ao Knowledge Service), interfaces conceituais (`ProcessOutcome`/`GenerateKnowledge`/`EvaluateLearning`/`UpdateMetrics`/`RegisterLearning`/`GetLearningHistory`), regras (rastreabilidade/reprodutibilidade/versionamento/auditabilidade/consistência temporal/não destruição do histórico), fluxo (Receber → Validar → Processar → Gerar proposta → Registrar histórico → Encaminhar).
+- `SPEC-001` atualizado (v1.5.0 → v1.6.0): `Learning Service` (status `Planned`) adicionado ao grupo "Learning Domain Components" — segundo componente concreto do Learning Domain.
+- Nenhuma arquitetura, ADR, DOMAIN ou Ubiquitous Language alterados além do registro pontual em `SPEC-001`, já previsto por `ADR-010`.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com LEARN-002/SPEC-001 v1.6.0.
+
 ### 2026-07-22 — ROADMAP-006 v1.3.0 (Consolidação AUDIT-002)
 
 - Um brief de origem solicitava consolidar em `ROADMAP-006` todas as pendências arquiteturais abertas identificadas em `AUDIT-002` (achado NC-01: o backlog não concentrava `RFC-001` a `RFC-005` nem os gaps de rastreamento).

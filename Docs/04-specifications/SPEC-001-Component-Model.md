@@ -1,7 +1,7 @@
 ---
 id: SPEC-001
 title: Component Model
-version: 1.4.0
+version: 1.6.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -10,7 +10,11 @@ related:
   - SPEC-002
   - SPEC-003
   - SPEC-004
-last_updated: 2026-07-21
+  - ADR-010
+  - DOMAIN-006
+  - LEARN-001
+  - LEARN-002
+last_updated: 2026-07-22
 ---
 
 # Component Model
@@ -74,6 +78,7 @@ O sistema é dividido nos seguintes grupos (Canonical Component Catalog):
 - Application Services
 - Infrastructure Providers
 - Execution Components
+- Learning Domain Components
 
 ---
 
@@ -221,6 +226,26 @@ MT5 Adapter
 
 ---
 
+# Learning Domain Components
+
+Primeiro grupo de componentes concretos do Learning Domain (`ADR-010`), registrado conforme previsto pelo próprio ADR ("por registro próprio e posterior", quando uma especificação concreta exigir). Detalhados em `LEARN-001`.
+
+## Knowledge Service
+
+Responsabilidade:
+
+Armazenar, versionar e disponibilizar objetos de Knowledge (`DOMAIN-006`) para consumidores autorizados. Não realiza aprendizado, não executa decisões, não produz Evidence.
+
+---
+
+## Learning Service
+
+Responsabilidade:
+
+Processar `Outcome` produzido pela Validation, gerar propostas de novo Knowledge e encaminhá-las ao Knowledge Service. Não executa operações, não toma decisões de mercado, não produz Evidence, não acessa Execution/Infrastructure diretamente.
+
+---
+
 # Contratos
 
 Cada componente deverá expor:
@@ -354,9 +379,24 @@ Estados possíveis: **Implemented** (existe na Legacy Baseline, ainda que inform
 | Broker Adapter | Future | Não implementado. |
 | MT5 Adapter | Planned | Modelado em ARCH-001 como camada obrigatória de Infrastructure; hoje o acesso ao MT5 está disperso diretamente em cada serviço, sem adapter isolado — é justamente a dependência proibida que ARCH-001 aponta como violada pela Legacy Baseline. |
 
+## Learning Domain Components
+
+| Componente | Status | Observação |
+|---|---|---|
+| Knowledge Service | Planned | Modelado aqui e detalhado em `LEARN-001`; nenhuma implementação existe ainda. Primeiro componente concreto do Learning Domain (`ADR-010`). |
+| Learning Service | Planned | Modelado aqui e detalhado em `LEARN-002`; nenhuma implementação existe ainda. Consome exclusivamente `Outcome` da Validation, sem acesso direto a Execution/Infrastructure (`ADR-010`). |
+
 ## Deprecated
 
 Nenhum componente listado neste documento se enquadra nesta categoria hoje. Os módulos órfãos congelados pela Sprint 0.5 (`TrendAnalyzer`, `IAnalyzer`, `MarketSnapshot`, `MarketAnalysis`) nunca fizeram parte deste modelo — seu status é tratado em `Docs/BACKLOG.md` e `ADR-001`, não aqui.
+
+---
+
+# Alterações
+
+**v1.5.0**: adicionado o grupo "Learning Domain Components" com o primeiro componente concreto do Learning Domain, `Knowledge Service` (status `Planned`), conforme previsto por `ADR-010` ("registro próprio e posterior" quando uma especificação concreta exigisse). Detalhado em `LEARN-001-Knowledge-Service.md`. Nenhum outro grupo/componente alterado.
+
+**v1.6.0**: adicionado `Learning Service` (status `Planned`) ao grupo "Learning Domain Components", detalhado em `LEARN-002-Learning-Service.md`. Consome exclusivamente `Outcome` da Validation, sem acesso direto a Execution/Infrastructure, conforme `ADR-010`. Nenhum outro grupo/componente alterado.
 
 ---
 
@@ -371,6 +411,14 @@ DOMAIN-003
 DOMAIN-004
 
 DOMAIN-005
+
+DOMAIN-006
+
+ADR-010
+
+LEARN-001
+
+LEARN-002
 
 REQ-001
 
