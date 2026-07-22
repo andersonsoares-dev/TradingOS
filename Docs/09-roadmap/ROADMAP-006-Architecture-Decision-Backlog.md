@@ -1,18 +1,24 @@
 ---
 id: ROADMAP-006
 title: Architecture Decision Backlog
-version: 1.1.0
+version: 1.3.0
 status: Approved
 owner: Product Owner
 depends_on:
   - ADR-007
   - ADR-009
   - ADR-010
+  - AUDIT-002
 related:
   - DOMAIN-003
   - RFC-001
+  - RFC-002
+  - RFC-003
+  - RFC-004
+  - RFC-005
+  - ADR-013
   - ADR-011
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Architecture Decision Backlog
@@ -33,7 +39,7 @@ Registrar, classificar, priorizar e rastrear todas as evoluções arquiteturais 
 
 # Escopo
 
-Cobre propostas de evolução identificadas durante revisões técnicas (ex.: a análise de evolução do `DOMAIN-003` realizada nesta sessão) que ainda não foram formalizadas como ADR ou RFC. Não cobre ADRs/RFCs já formalizados — esses são rastreados diretamente em `DOCUMENT_INDEX.md`/`TRACEABILITY.md`.
+Cobre propostas de evolução identificadas durante revisões técnicas (ex.: a análise de evolução do `DOMAIN-003` realizada nesta sessão; os achados de `AUDIT-002`) que ainda não foram formalizadas como ADR ou RFC aprovada, **e** RFCs abertas que ainda aguardam decisão — consolidadas aqui como itens de backlog para que este documento concentre toda pendência arquitetural, conforme recomendado por `AUDIT-002` (achado NC-01). RFCs/ADRs já resolvidos permanecem rastreados também em `DOCUMENT_INDEX.md`/`TRACEABILITY.md`, sem duplicar conteúdo técnico — este documento apenas referencia seu status.
 
 ---
 
@@ -111,7 +117,7 @@ Implementação
 
 # Backlog Atual
 
-Todos os itens abaixo originam-se da análise de evolução do `DOMAIN-003` (Evidence) realizada nesta sessão.
+`ITEM-01` a `ITEM-07` originam-se da análise de evolução do `DOMAIN-003` (Evidence). `ITEM-08` origina-se da resolução de `RFC-005`. `ITEM-09` a `ITEM-14` originam-se da consolidação de `AUDIT-002` (achado NC-01/NC-02/NC-03).
 
 ### ITEM-01 — Renomear "Structure" para "Market Structure"
 
@@ -145,6 +151,56 @@ Categoria: **5**. Status: **Rejected**.
 
 ---
 
+### ITEM-08 — Trading Risk & Exit Strategy
+
+Categoria: **3**. Dependência: **`RFC-005`**. Status: **Implemented** — formalizado por `ADR-013`.
+
+Para a Release 1.0, foi aprovada a combinação de Stop baseado em ATR, Stop Temporal e Percentual por Risco. Break-even, Stop por Estrutura de Mercado e Trailing Stop permanecem postergados.
+
+---
+
+# Pendências Externas Consolidadas (AUDIT-002)
+
+Itens abaixo originam-se do achado NC-01 de `AUDIT-002` (Baseline Architecture Certification): `ROADMAP-006` não concentrava as RFCs abertas nem os gaps de rastreamento identificados na certificação. Consolidados aqui **sem resolver nenhuma delas** — nenhuma RFC nova foi criada, nenhum conteúdo técnico das RFCs existentes foi alterado.
+
+### ITEM-09 — RFC-001: Risk Profile Classification
+
+Categoria: **3**. Dependência: **`RFC-001`** (`Docs/10-rfc/RFC-001-Risk-Profile-Classification.md`). Status: **Awaiting RFC** — `RFC-001` permanece `Open`.
+
+Já referenciada como dependência de `ITEM-03`. Registrada aqui também como item próprio, para consolidar toda RFC aberta neste backlog (`AUDIT-002`, NC-01).
+
+### ITEM-10 — RFC-002: Infrastructure Candidate Components
+
+Categoria: **3**. Dependência: **`RFC-002`** (`Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md`). Status: **Awaiting RFC** — `RFC-002` permanece `Open`.
+
+`Event Dispatcher`/`Scheduler` (citados em `INFRA-001`) não constam em `SPEC-001`; decisão pendente.
+
+### ITEM-11 — RFC-003: Data Provider Candidate Adapters
+
+Categoria: **3**. Dependência: **`RFC-003`** (`Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md`). Status: **Awaiting RFC** — `RFC-003` permanece `Open`.
+
+`Replay Adapter`/`CSV Provider`/`CSV Adapter`/`Mock Provider`/`REST Adapter`/`FIX Adapter`/`WebSocket Adapter` (citados em `INFRA-002`) não constam em `SPEC-001`; decisão pendente.
+
+### ITEM-12 — RFC-004: Legacy Indicator Mapping Ambiguity
+
+Categoria: **3**. Dependência: **`RFC-004`** (`Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md`). Status: **Awaiting RFC** — `RFC-004` permanece `Open`.
+
+Divergência entre `SPEC-001` e `SPEC-003` quanto ao mapeamento de `TrendService`/`ATRService`/`RSIService`/`ADXService` (Indicator Provider vs. Evidence Builder); decisão pendente.
+
+### ITEM-13 — Gap de componentes do Bounded Context Strategy em SPEC-001
+
+Categoria: **2**. Status: **Proposed**.
+
+`Strategy` foi confirmado como Bounded Context ativo em `RC-001` (Decisão A, ver `AUDIT-001-CLOSURE`), mas nenhum componente seu está catalogado no Canonical Component Catalog (`SPEC-001`) — gap recorrente, identificado em `AUDIT-001` (Finding #4) e reconfirmado por `AUDIT-002` (NC-02). `SPEC-001` já autoriza essa extensão diretamente (seção "Extensibilidade"), sem exigir ADR — decisão de Product Owner sobre quais componentes catalogar.
+
+### ITEM-14 — Account Provider não catalogado em SPEC-001
+
+Categoria: **3**. Dependência: **`RFC-006`** (`Approved` — reconciliação do Risk Service; a catalogação do `Account Provider` em si não foi decidida). Status: **Awaiting ADR**.
+
+Dependência citada em `EXEC-003`/`EXEC-005` e registrada em `RFC-006`, nunca formalmente catalogada em `SPEC-001` (categoria Infrastructure Providers). `RFC-006` já registrou uma pista (`EXEC-005.GetAccount()`/`Account Snapshot` como possível origem real do dado), recomendada para avaliação em Release 2.0 — não decidida aqui. Identificado por `AUDIT-002` (NC-03).
+
+---
+
 # Critérios para Encerramento
 
 Um item é considerado encerrado (`Archived`) quando:
@@ -158,15 +214,25 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 
 # Rastreabilidade
 
-`ADR-007` (Baseline Freeze — motivo pelo qual itens Categoria 3+ exigem decisão formal) · `ADR-009` (Baseline Lock v1.1 — famílias documentais e critério de reabertura) · `ADR-010` (precedente de resolução de Bounded Context, aplicável a ITEM-04/ITEM-07) · `DOMAIN-003` (origem de todos os itens atuais) · `RFC-001` (dependência de ITEM-03).
+`ADR-007` (Baseline Freeze — motivo pelo qual itens Categoria 3+ exigem decisão formal) · `ADR-009` (Baseline Lock v1.1 — famílias documentais e critério de reabertura) · `ADR-010` (precedente de resolução de Bounded Context, aplicável a ITEM-04/ITEM-07) · `ADR-013` (resolve ITEM-08) · `DOMAIN-003` (origem de ITEM-01 a ITEM-07) · `AUDIT-002` (origem de ITEM-09 a ITEM-14, achado NC-01 a NC-03) · `RFC-001` (dependência de ITEM-03/ITEM-09) · `RFC-002` (dependência de ITEM-10) · `RFC-003` (dependência de ITEM-11) · `RFC-004` (dependência de ITEM-12) · `RFC-005` (dependência de ITEM-08, resolvida) · `RFC-006` (dependência de ITEM-14) · `AUDIT-001`/`AUDIT-001-CLOSURE` (origem histórica de ITEM-13).
 
 ---
 
 # Resumo
 
-- **Itens por categoria**: Categoria 1 — 1 item (ITEM-01); Categoria 2 — 1 item (ITEM-02); Categoria 3 — 4 itens, sendo 2 implementados (ITEM-05, ITEM-06) e 2 ainda bloqueados (ITEM-03, ITEM-04); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
-- **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 2 (ITEM-03, ITEM-04).
-- **Prontos para execução documental direta** (Categoria 1/2, sem ADR/RFC): 2 (ITEM-01, ITEM-02).
-- **Implementados**: 2 (ITEM-05, ITEM-06 — formalizados por `ADR-011`, propagados a `DOMAIN-003` v2.0.0).
+- **Itens por categoria**: Categoria 1 — 1 item (ITEM-01); Categoria 2 — 2 itens (ITEM-02, ITEM-13); Categoria 3 — 10 itens, sendo 3 implementados (ITEM-05, ITEM-06, ITEM-08) e 7 ainda bloqueados (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
+- **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 7 (ITEM-03, ITEM-04, ITEM-09, ITEM-10, ITEM-11, ITEM-12, ITEM-14).
+- **Prontos para execução documental direta** (Categoria 1/2, sem ADR/RFC): 3 (ITEM-01, ITEM-02, ITEM-13).
+- **Implementados**: 3 (ITEM-05, ITEM-06 — formalizados por `ADR-011`; ITEM-08 — formalizado por `ADR-013`; todos propagados aos documentos-alvo).
 - **Encerrados/Rejeitados**: 1 (ITEM-07 — `Observation` avaliado e rejeitado como conceito de domínio novo).
-- **Recomendação de priorização para as próximas revisões**: aplicar `ITEM-01`/`ITEM-02` a qualquer momento (baixo risco). `ITEM-03` (categoria Risk) permanece bloqueado até `RFC-001` avançar — não priorizar isoladamente. `ITEM-04` (categoria Execution) segue como `Awaiting ADR`, independente dos demais — próximo candidato natural a ser tratado.
+- **RFCs abertas consolidadas nesta entrega** (`AUDIT-002`, NC-01): `RFC-001` (ITEM-09), `RFC-002` (ITEM-10), `RFC-003` (ITEM-11), `RFC-004` (ITEM-12) — todas `Open`, nenhuma resolvida por esta consolidação.
+- **Gaps de rastreamento consolidados nesta entrega** (`AUDIT-002`, NC-02/NC-03): gap de componentes de `Strategy` em `SPEC-001` (ITEM-13); dependência `Account Provider` não catalogada (ITEM-14).
+- **Recomendação de priorização para as próximas revisões**: aplicar `ITEM-01`/`ITEM-02`/`ITEM-13` a qualquer momento (baixo risco, Categoria 1/2). `ITEM-03`/`ITEM-09` permanecem bloqueados até `RFC-001` avançar — não priorizar isoladamente. `ITEM-04` segue como `Awaiting ADR`, próximo candidato natural. `ITEM-10`/`ITEM-11`/`ITEM-12` (RFC-002/003/004) e `ITEM-14` (Account Provider) seguem sem prazo definido — nenhum bloqueia a Release 1.0.
+
+---
+
+# Alterações
+
+**v1.2.0** (`ADR-013`): adicionado `ITEM-08` (Trading Risk & Exit Strategy), resolvendo `RFC-005`.
+
+**v1.3.0** (`AUDIT-002`, achado NC-01/NC-02/NC-03): adicionados `ITEM-09` a `ITEM-14`, consolidando `RFC-001` a `RFC-004` (Open), o gap de componentes de `Strategy` em `SPEC-001` e a dependência `Account Provider` não catalogada. Nenhuma RFC nova criada; nenhum conteúdo técnico de RFC existente alterado; nenhuma das quatro RFCs (`RFC-001` a `RFC-004`) resolvida por esta entrega.

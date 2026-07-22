@@ -248,6 +248,14 @@ Recomendação registrada (não uma decisão): Stop baseado em ATR + Stop Tempor
 
 A recomendação depende de aprovação via ADR próprio antes de influenciar `DOMAIN`, `SPEC` ou `Risk Service` (`SPEC-001`, status `Planned`). Nenhum documento da Baseline foi alterado por esta RFC.
 
+## ADR-013 — Trading Risk & Exit Strategy — Release 1.0
+
+`Docs/05-decisions/ADR-013-Trading-Risk-Exit-Strategy.md` formaliza a resolução da `RFC-005` para a Release 1.0. A regra aprovada utiliza Stop baseado em ATR como saída primária, Stop Temporal como salvaguarda e Percentual por Risco como position sizing.
+
+Break-even, Stop por Estrutura de Mercado e Trailing Stop permanecem postergados. O ADR não cria componentes, não altera o Core Domain e não resolve `RFC-001`.
+
+`RFC-005` passa a `Approved` e o `ITEM-08` de `ROADMAP-006` passa a `Implemented`. A futura atualização de `VALIDATION-001` deverá substituir a hipótese condicional de risco por referência a este ADR.
+
 ## BACKTEST-001 — Backtest Execution Protocol
 
 `Docs/06-validation/BACKTEST-001-Backtest-Execution-Protocol.md` define exclusivamente o procedimento operacional de execução de Backtests — não registra resultados, não aprova estratégias, não altera regras de negócio. Rastreado contra `VALIDATION-001`: usa o mesmo Universo de Teste, a mesma Hipótese de Risco (via `RFC-005`) e é consistente com o Protocolo de Teste de 7 etapas de `VALIDATION-001` (aqui detalhado em 10 etapas operacionais específicas do MT5, sem contradição — nível de abstração diferente, mesmo processo). Define Entradas, Ambiente, Saídas Obrigatórias, Controle de Qualidade, Critérios de Invalidação, convenção de Armazenamento e Definition of Done. Nenhum documento `DOMAIN`/`ARCH`/`SPEC`/`ADR` foi alterado.
@@ -424,6 +432,23 @@ Restam em `ROADMAP-006`: `ITEM-01`/`ITEM-02` (Categoria 1/2, prontos para aplica
 - `RFC-005` (Trading Risk & Exit Strategy) recebeu recomendação técnica mas nunca foi formalizada como ADR nem registrada no backlog.
 
 **Architecture Readiness Score**: 88%. **Decisão**: **GO** para início de trabalho de SPEC — nenhum achado compromete Core Domain, Learning Domain ou a sequência de entrega travada por `ADR-009`. Relatório de auditoria apenas — nenhum documento normativo alterado por esta entrega.
+
+## ROADMAP-006 v1.3.0 — Consolidação do Architecture Decision Backlog (AUDIT-002)
+
+`Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md` atualizado para concentrar todas as pendências arquiteturais abertas identificadas por `AUDIT-002` (achado NC-01: o backlog não concentrava toda pendência, contrariando seu próprio objetivo), fechando a lacuna sem resolver nenhuma das pendências em si.
+
+**Itens adicionados**:
+
+- `ITEM-09` — `RFC-001` (Risk Profile Classification), `Open`, já referenciada por `ITEM-03`.
+- `ITEM-10` — `RFC-002` (Infrastructure Candidate Components), `Open`.
+- `ITEM-11` — `RFC-003` (Data Provider Candidate Adapters), `Open`.
+- `ITEM-12` — `RFC-004` (Legacy Indicator Mapping Ambiguity), `Open`.
+- `ITEM-13` — gap de componentes do Bounded Context `Strategy` em `SPEC-001` (Categoria 2, `Proposed`) — recorrente desde `AUDIT-001` (Finding #4), reconfirmado por `AUDIT-002` (NC-02).
+- `ITEM-14` — dependência `Account Provider` não catalogada em `SPEC-001` (Categoria 3, `Awaiting ADR`) — citada em `EXEC-003`/`EXEC-005`/`RFC-006`, identificada por `AUDIT-002` (NC-03).
+
+**Regras respeitadas**: nenhuma RFC nova criada; nenhum conteúdo técnico de `RFC-001` a `RFC-004` alterado; nenhuma delas resolvida por esta entrega — apenas referenciadas como itens de backlog. Histórico preservado (`ITEM-01` a `ITEM-08` inalterados em conteúdo, apenas resumo/rastreabilidade recalculados).
+
+`ROADMAP-006`: v1.1.0 → v1.3.0 (v1.2.0 registra `ITEM-08`/`ADR-013`, adicionada retroativamente nesta mesma entrega por ausência de bump de versão anterior; v1.3.0 registra `ITEM-09` a `ITEM-14`).
 
 ## Legacy Components
 

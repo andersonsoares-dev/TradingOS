@@ -2,7 +2,7 @@
 id: RFC-005
 title: Trading Risk & Exit Strategy
 version: 1.0.0
-status: Open
+status: Approved
 owner: Product Owner
 depends_on:
   - VALIDATION-001
@@ -22,7 +22,7 @@ Requires Architectural Decision (análise apenas — nenhuma decisão tomada nes
 
 ## Status
 
-Open — análise para futura aprovação via ADR.
+Approved — decisão formalizada por `ADR-013`.
 
 ---
 
@@ -98,10 +98,21 @@ Justificativa frente aos Critérios de Avaliação: ambas as escolhas reaproveit
 
 ---
 
+## Resolução
+
+Conforme aprovação do Product Owner, a recomendação foi formalizada no `ADR-013`:
+
+- Stop baseado em ATR como saída primária;
+- Stop Temporal como salvaguarda;
+- Percentual por Risco como position sizing;
+- Break-even, Stop por Estrutura de Mercado e Trailing Stop postergados.
+
+Esta RFC permanece preservada como análise histórica. A decisão normativa está no `ADR-013`.
+
 ## Encaminhamento
 
 Esta recomendação, se aceita, deverá gerar um ADR próprio definindo formalmente a regra de saída e de position sizing da Release 1.0, e sua futura formalização em `Risk Service` (`SPEC-001`, hoje `Planned`) e em `DOMAIN` (atributos de risco da `Opportunity`/`Decision`). Nenhuma dessas alterações é feita por este documento.
 
 ## Status
 
-Open — aguardando aprovação do Product Owner / Chief Architect antes de gerar o ADR de formalização.
+Approved — resolvida por `ADR-013`.

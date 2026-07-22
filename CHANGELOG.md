@@ -258,6 +258,14 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `depends_on`/`related` de `ADR-009` atualizados para referenciar `RFC-006`/`RFC-007`.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.
 
+### 2026-07-22 — ADR-013: Trading Risk & Exit Strategy
+
+- `RFC-005` aprovada e formalizada pelo `ADR-013`.
+- Para a Release 1.0, definido Stop baseado em ATR, Stop Temporal e Percentual por Risco.
+- Break-even, Stop por Estrutura de Mercado e Trailing Stop foram postergados.
+- `ITEM-08` registrado como implementado em `ROADMAP-006`.
+- Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
+
 ### 2026-07-21 — ROADMAP-001 (Sprint 1 — Foundation)
 
 - Um brief de origem solicitava criar `Docs/07-implementation/IMPLEMENTATION-001-Sprint-1.md` — identificado conflito com `ADR-009` (Baseline Lock v1.1): `Docs/07-implementation/` não existe na árvore oficial travada (posição `07` é `07-testing/`), e `IMPLEMENTATION-*` não está entre as famílias documentais congeladas. Criado como `Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md`, inaugurando a família `ROADMAP-*` já prevista e congelada em `ADR-009`, sem exigir nova reorganização.
@@ -339,4 +347,14 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Architecture Readiness Score: **88%**. Decisão: **GO** para início de trabalho de SPEC — nenhum achado compromete Core Domain, Learning Domain ou a sequência de entrega travada por `ADR-009`.
 - Relatório de auditoria apenas — nenhum documento normativo criado ou alterado, conforme escopo do brief.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com AUDIT-002.
+
+### 2026-07-22 — ROADMAP-006 v1.3.0 (Consolidação AUDIT-002)
+
+- Um brief de origem solicitava consolidar em `ROADMAP-006` todas as pendências arquiteturais abertas identificadas em `AUDIT-002` (achado NC-01: o backlog não concentrava `RFC-001` a `RFC-005` nem os gaps de rastreamento).
+- Adicionados `ITEM-09` (`RFC-001`, Open), `ITEM-10` (`RFC-002`, Open), `ITEM-11` (`RFC-003`, Open), `ITEM-12` (`RFC-004`, Open), `ITEM-13` (gap de componentes de `Strategy` em `SPEC-001`, Categoria 2, Proposed) e `ITEM-14` (dependência `Account Provider` não catalogada, Categoria 3, Awaiting ADR).
+- `RFC-005` já havia sido registrada como `ITEM-08` (`Implemented`, formalizada por `ADR-013`) na entrega anterior — versão de `ROADMAP-006` corrigida retroativamente para v1.2.0 (essa entrega) e v1.3.0 (esta), já que a adição de `ITEM-08` não havia incrementado a versão do documento.
+- **Nenhuma RFC nova criada. Nenhum conteúdo técnico de `RFC-001` a `RFC-004` alterado. Nenhuma delas resolvida por esta entrega** — apenas referenciadas como itens de backlog, conforme regras explícitas do brief.
+- Resumo/Rastreabilidade de `ROADMAP-006` recalculados: 14 itens totais, 3 Implemented, 7 bloqueados (Awaiting ADR/RFC), 3 prontos para aplicação direta (Categoria 1/2), 1 Rejected.
+- Nenhum arquivo `.mq5`/`.mqh` alterado.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-006 v1.3.0.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.

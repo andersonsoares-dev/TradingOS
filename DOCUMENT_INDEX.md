@@ -43,6 +43,7 @@
 | ADR-009 | Baseline Lock v1.1 — Documentation Stabilization & Delivery Sequence | Docs/05-decisions/ADR-009-Baseline-Lock-v1.1.md | 1.1.0 | Accepted |
 | ADR-010 | Learning Domain — New Bounded Context | Docs/05-decisions/ADR-010-Learning-Domain-Bounded-Context.md | 1.1.0 | Accepted |
 | ADR-011 | Evidence Lifecycle | Docs/05-decisions/ADR-011-Evidence-Lifecycle.md | 1.0.0 | Accepted |
+| ADR-013 | Trading Risk & Exit Strategy — Release 1.0 | Docs/05-decisions/ADR-013-Trading-Risk-Exit-Strategy.md | 1.0.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | AUDIT-002 | Baseline Architecture Certification | Docs/06-validation/AUDIT-002-Baseline-Architecture-Certification.md | 1.0.0 | Approved |
@@ -53,7 +54,7 @@
 | RFC-002 | Infrastructure Candidate Components | Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md | 1.0.0 | Open |
 | RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 1.0.0 | Open |
 | RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
-| RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Open |
+| RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Approved |
 | RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 2.0.0 | Approved |
 | RFC-007 | Signal Builder Pipeline Divergence (ARCH-001/SPEC-002 vs EXEC-004) | Docs/10-rfc/RFC-007-Signal-Builder-Pipeline-Divergence.md | 2.0.0 | Approved |
 | ROADMAP-001 | Sprint 1 — Foundation (Release 1.0) | Docs/09-roadmap/ROADMAP-001-Sprint-1-Foundation.md | 1.0.0 | Approved |
@@ -61,7 +62,7 @@
 | ROADMAP-003 | Sprint 3 — Signal Evaluation & Risk Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md | 1.0.0 | Approved |
 | ROADMAP-004 | Sprint 4 — Order Execution Integration (Release 1.0) | Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md | 1.0.0 | Approved |
 | ROADMAP-005 | Sprint 5 — First Execution & End-to-End Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-005-First-Execution.md | 1.0.0 | Approved |
-| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.1.0 | Approved |
+| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.3.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -128,5 +129,7 @@ knowledge/
 - `Docs/03-architecture/`, `04-specifications/`, `06-validation/`, `07-testing/`, `08-reference/`, `09-roadmap/`, `10-rfc/` e todas as subpastas de `knowledge/` existem mas estão vazias (git não rastreia diretórios vazios).
 - `Docs/CHANGELOG.md`, `Docs/ROADMAP.md`, `Docs/VERSION.md` existem mas continuam vazios — duplicidade com `CHANGELOG.md` (raiz), já registrada em `Docs/TECH_DEBT.md`.
 - `ADR-010` cria o Bounded Context `Learning Domain` (quinto, ao lado de Core Domain/Infrastructure/Strategy/Execution); `ARCH-001` (v1.3.0) e `ADR-008` (v1.2.0) atualizados por propagação. `DOMAIN-006-Knowledge-Model.md` é o primeiro documento formal desse domínio — modela `Knowledge`, sem dependência do Core Domain nem da Platform, sem componente novo em `SPEC-001`. Release 1.0 não afetada.
-- `ROADMAP-006-Architecture-Decision-Backlog.md` (solicitado originalmente como `ADB-001`, família não congelada — reprefixado para `ROADMAP-*`) registra 7 itens de evolução identificados durante a análise de `DOMAIN-003` (Evidence). `ITEM-07` (Observation) avaliado e rejeitado (não é conceito de domínio). `ITEM-05`/`ITEM-06` (ciclo de vida de Evidence + atributos Estado/Validade) formalizados por `ADR-011` e propagados a `DOMAIN-003` (v2.0.0). `ITEM-03` (categoria Risk, bloqueado por RFC-001) e `ITEM-04` (categoria Execution) seguem em aberto. `ITEM-01`/`ITEM-02` seguem prontos para aplicação direta.
+- `ROADMAP-006-Architecture-Decision-Backlog.md` (solicitado originalmente como `ADB-001`, família não congelada — reprefixado para `ROADMAP-*`) registra, agora (v1.3.0), 14 itens: `ITEM-01` a `ITEM-07` da análise de evolução de `DOMAIN-003` (Evidence); `ITEM-08` da resolução de `RFC-005`; `ITEM-09` a `ITEM-14` da consolidação de `AUDIT-002`. `ITEM-07` (Observation) rejeitado. `ITEM-05`/`ITEM-06` (ciclo de vida/atributos de Evidence) e `ITEM-08` (Trading Risk & Exit Strategy) **Implemented** (`ADR-011`/`ADR-013`). `ITEM-03`/`ITEM-04` seguem em aberto; `ITEM-01`/`ITEM-02` prontos para aplicação direta.
 - `AUDIT-002-Baseline-Architecture-Certification.md` (solicitado originalmente como `ACR-002`, família não congelada — reprefixado para `AUDIT-*`, dando continuidade a `AUDIT-001`) recertifica a Baseline após a consolidação de `ADR-010`/`ADR-011`/`ROADMAP-006`. Resultado: Core Domain e isolamento do Learning Domain conformes; achado principal é que `ROADMAP-006` não concentra `RFC-001` a `RFC-005` (todas `Open`) nem os gaps de "Account Provider" e componentes de Strategy em `SPEC-001` — nenhum bloqueador. Score de prontidão: 88%. Decisão: **GO** para SPEC.
+- `ADR-013` formaliza a resolução de `RFC-005` (Trading Risk & Exit Strategy) para a Release 1.0: Stop ATR + Stop Temporal (saída), Percentual por Risco (position sizing). Não implementa `Risk Service`/`EXEC-003`, não altera `DOMAIN-001`/`DOMAIN-005`/`SPEC-003`, não resolve `RFC-001`. `RFC-005` passa a `Approved`; `ROADMAP-006` registra `ITEM-08` como `Implemented`.
+- `ROADMAP-006` v1.3.0 consolida os achados NC-01/NC-02/NC-03 de `AUDIT-002`: `ITEM-09` a `ITEM-12` registram `RFC-001` a `RFC-004` (todas `Open`, nenhuma resolvida nesta entrega); `ITEM-13` registra o gap de componentes de `Strategy` em `SPEC-001`; `ITEM-14` registra a dependência `Account Provider` não catalogada. Nenhuma RFC nova criada; nenhum conteúdo técnico de RFC existente alterado.
