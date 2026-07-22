@@ -400,3 +400,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Nenhum arquivo `.mq5`/`.mqh` alterado.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com ROADMAP-006 v1.3.0.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.
+
+### 2026-07-22 — INVENTORY.md (Repository Inventory)
+
+- Adicionado `INVENTORY.md` (raiz do repositório) — documento informativo, não normativo. Snapshot pontual da estrutura completa do repositório (`Docs/`, `MQL5/`, `knowledge/`), inventário dos 51 documentos governados (id/título/versão/status por categoria), relações de dependência (precedência documental, fluxo oficial do domínio, pipeline da Release 1.0, Bounded Contexts, cadeia de congelamento da Baseline, RFCs resolvidas por ADR) e estado atual do projeto (Baseline v2.0, pendências abertas, decisões recentes `ADR-011` a `ADR-014`, Learning Domain, dívida técnica).
+- Gerado por leitura direta do repositório — nenhum documento normativo criado ou alterado por esta entrega.
+- Não participa da matriz de rastreabilidade (`TRACEABILITY.md`) — o próprio `INVENTORY.md` referencia `DOCUMENT_INDEX.md`/`TRACEABILITY.md`/`CHANGELOG.md`/`ROADMAP-006` como fontes vivas, sem duplicar seu conteúdo.
+- `DOCUMENT_INDEX.md` atualizado com o registro do `INVENTORY.md` (localização, finalidade, natureza informativa).
