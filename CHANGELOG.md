@@ -435,3 +435,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `RFC-002` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
 - `ROADMAP-006` (v1.7.0 → v1.8.0): `ITEM-10` passa de `Awaiting RFC` para `Approved` — decisão de adiamento, sem propagação a `SPEC-001` por design.
 - `DOCUMENT_INDEX.md` atualizado com `ADR-016`.
+
+### 2026-07-22 — ADR-017: Data Provider Candidate Adapters (Deferral Decision)
+
+- `RFC-003` (Data Provider Candidate Adapters) resolvida: `Replay Adapter` e `CSV Provider`/`CSV Adapter` **adiados** (prioridade média-baixa para Release 2.0, ligados à Trilha de Validação/Learning Domain — `VALIDATION-001`/`BACKTEST-001` já usam o Strategy Tester nativo do MT5, sem depender de nenhum dos dois); `Mock Provider` e `FIX Adapter` **adiados, com viés mais forte para rejeição futura** (necessidade mais fraca); `REST Adapter` e `WebSocket Adapter` **adiados** (nenhuma necessidade identificada).
+- Nenhum dos seis componentes catalogado em `SPEC-001`. Nenhum rejeitado definitivamente.
+- Nenhuma alteração a `SPEC-001`, `INFRA-002`, `ARCH-001`, `SPEC-002` ou qualquer arquivo `.mq5`/`.mqh`.
+- Critério de reabertura formalizado (`ADR-009 §8`): apenas mediante evidência obtida durante a implementação, provavelmente originada da Trilha de Validação/Learning Domain.
+- `RFC-003` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
+- `ROADMAP-006` (v1.8.0 → v1.9.0): `ITEM-11` passa de `Awaiting RFC` para `Approved` — decisão de adiamento, sem propagação a `SPEC-001` por design.
+- `DOCUMENT_INDEX.md` atualizado com `ADR-017`.

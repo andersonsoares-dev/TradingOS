@@ -527,6 +527,19 @@ Critério de reabertura (`ADR-009 §8`): apenas mediante evidência obtida duran
 
 `RFC-002` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.7.0 → v1.8.0): `ITEM-10` passa de `Awaiting RFC` para `Approved` — decisão de adiamento formalizada, sem propagação a `SPEC-001`/`INFRA-001`/`ARCH-001` por design. Nenhum arquivo de código foi alterado.
 
+## ADR-017 — Data Provider Candidate Adapters (Deferral Decision)
+
+`ADR-017` formaliza `RFC-003`: nenhum dos seis candidatos é catalogado em `SPEC-001`, e nenhum é rejeitado definitivamente.
+
+- `Replay Adapter` e `CSV Provider`/`CSV Adapter`: **Adiados** — prioridade média-baixa para Release 2.0, ligados à Trilha de Validação/Learning Domain. `VALIDATION-001`/`BACKTEST-001` já usam o Strategy Tester nativo do MT5 para o primeiro Backtest; o CSV citado em `BACKTEST-001` é artefato de saída, não de entrada.
+- `Mock Provider`: **Adiado, com viés mais forte para rejeição futura** — necessidade fraca, `AGENTS.md`/`ADR-004` já estabelecem que MQL5 não usa framework de testes unitários equivalente.
+- `REST Adapter` e `WebSocket Adapter`: **Adiados** — nenhuma necessidade identificada, Release 1.0 é exclusivamente MT5.
+- `FIX Adapter`: **Adiado, com viés mais forte para rejeição futura** — menor prioridade dos seis, nicho institucional sem sinal de necessidade em `REQ-001` ou roadmap.
+
+Critério de reabertura (`ADR-009 §8`): apenas mediante evidência obtida durante a implementação, provavelmente originada da Trilha de Validação/Learning Domain — não por hipótese.
+
+`RFC-003` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.8.0 → v1.9.0): `ITEM-11` passa de `Awaiting RFC` para `Approved` — decisão de adiamento formalizada, sem propagação a `SPEC-001`/`INFRA-002`/`ARCH-001`/`SPEC-002` por design. Nenhum arquivo de código foi alterado.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService

@@ -1,8 +1,8 @@
 ---
 id: RFC-003
 title: Data Provider Candidate Adapters
-version: 1.0.0
-status: Open
+version: 2.0.0
+status: Approved
 owner: Product Owner
 depends_on:
   - SPEC-001
@@ -48,6 +48,16 @@ Esta RFC apenas registra que existe uma necessidade potencial, identificada no r
 
 Caso aprovados, todos deverão ser adicionados formalmente à categoria "Infrastructure Providers" (ou categoria nova, a decidir) do `SPEC-001`, seguindo o Documentation Validation Pipeline (`AGENTS.md`), antes de aparecerem em qualquer especificação técnica futura ou implementação.
 
+## Resolução
+
+Formalizada por `ADR-017`: nenhum dos seis candidatos é catalogado em `SPEC-001` nesta decisão, e nenhum é rejeitado definitivamente.
+
+- `Replay Adapter` e `CSV Provider`/`CSV Adapter`: **Adiados** — prioridade média-baixa para Release 2.0 (Trilha de Validação/Learning Domain).
+- `Mock Provider` e `FIX Adapter`: **Adiados, com viés mais forte para rejeição futura** — necessidade mais fraca.
+- `REST Adapter` e `WebSocket Adapter`: **Adiados** — nenhuma necessidade identificada.
+
+Critério de reabertura (`ADR-009 §8`): apenas mediante evidência obtida durante a implementação, provavelmente originada da Trilha de Validação/Learning Domain.
+
 ## Status
 
-Open — aguardando decisão do Product Owner / Chief Architect.
+**Approved** — decisão de adiamento formalizada por `ADR-017`.

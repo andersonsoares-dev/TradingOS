@@ -1,7 +1,7 @@
 ---
 id: ROADMAP-006
 title: Architecture Decision Backlog
-version: 1.8.0
+version: 1.9.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -21,6 +21,7 @@ related:
   - ADR-011
   - ADR-015
   - ADR-016
+  - ADR-017
 last_updated: 2026-07-22
 ---
 
@@ -180,9 +181,9 @@ Categoria: **3**. Dependência: **`RFC-002`** — **resolvida**. Status: **Appro
 
 ### ITEM-11 — RFC-003: Data Provider Candidate Adapters
 
-Categoria: **3**. Dependência: **`RFC-003`** (`Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md`). Status: **Awaiting RFC** — `RFC-003` permanece `Open`.
+Categoria: **3**. Dependência: **`RFC-003`** — **resolvida**. Status: **Approved** — decisão de adiamento formalizada por `ADR-017`.
 
-`Replay Adapter`/`CSV Provider`/`CSV Adapter`/`Mock Provider`/`REST Adapter`/`FIX Adapter`/`WebSocket Adapter` (citados em `INFRA-002`) não constam em `SPEC-001`; decisão pendente.
+`Replay Adapter`/`CSV Provider`/`CSV Adapter`/`Mock Provider`/`REST Adapter`/`FIX Adapter`/`WebSocket Adapter` (citados em `INFRA-002`) permanecem **não catalogados** em `SPEC-001`, por decisão explícita — não por pendência. `Replay Adapter`/`CSV Provider`: prioridade média-baixa para Release 2.0. `Mock Provider`/`FIX Adapter`: viés para rejeição futura. `REST Adapter`/`WebSocket Adapter`: nenhuma necessidade identificada. Critério de reabertura: evidência de implementação, provavelmente da Trilha de Validação/Learning Domain (`ADR-009 §8`).
 
 ### ITEM-12 — RFC-004: Legacy Indicator Mapping Ambiguity
 
@@ -217,21 +218,21 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 
 # Rastreabilidade
 
-`ADR-007` (Baseline Freeze — motivo pelo qual itens Categoria 3+ exigem decisão formal) · `ADR-009` (Baseline Lock v1.1 — famílias documentais e critério de reabertura) · `ADR-010` (precedente de resolução de Bounded Context, aplicável a ITEM-04/ITEM-07) · `ADR-013` (resolve ITEM-08) · `ADR-015` (resolve ITEM-03/ITEM-09) · `ADR-016` (resolve ITEM-10, decisão de adiamento) · `DOMAIN-003` (origem de ITEM-01 a ITEM-07) · `DOMAIN-007` (formalizada por ITEM-09) · `AUDIT-002` (origem de ITEM-09 a ITEM-14, achado NC-01 a NC-03) · `RFC-001` (dependência de ITEM-03/ITEM-09, resolvida) · `RFC-002` (dependência de ITEM-10, resolvida) · `RFC-003` (dependência de ITEM-11) · `RFC-004` (dependência de ITEM-12) · `RFC-005` (dependência de ITEM-08, resolvida) · `RFC-006` (dependência de ITEM-14) · `AUDIT-001`/`AUDIT-001-CLOSURE` (origem histórica de ITEM-13).
+`ADR-007` (Baseline Freeze — motivo pelo qual itens Categoria 3+ exigem decisão formal) · `ADR-009` (Baseline Lock v1.1 — famílias documentais e critério de reabertura) · `ADR-010` (precedente de resolução de Bounded Context, aplicável a ITEM-04/ITEM-07) · `ADR-013` (resolve ITEM-08) · `ADR-015` (resolve ITEM-03/ITEM-09) · `ADR-016` (resolve ITEM-10, decisão de adiamento) · `ADR-017` (resolve ITEM-11, decisão de adiamento) · `DOMAIN-003` (origem de ITEM-01 a ITEM-07) · `DOMAIN-007` (formalizada por ITEM-09) · `AUDIT-002` (origem de ITEM-09 a ITEM-14, achado NC-01 a NC-03) · `RFC-001` (dependência de ITEM-03/ITEM-09, resolvida) · `RFC-002` (dependência de ITEM-10, resolvida) · `RFC-003` (dependência de ITEM-11, resolvida) · `RFC-004` (dependência de ITEM-12) · `RFC-005` (dependência de ITEM-08, resolvida) · `RFC-006` (dependência de ITEM-14) · `AUDIT-001`/`AUDIT-001-CLOSURE` (origem histórica de ITEM-13).
 
 ---
 
 # Resumo
 
-- **Itens por categoria**: Categoria 1 — 1 item implementado (ITEM-01); Categoria 2 — 3 itens, sendo 2 implementados (ITEM-02, ITEM-13) e 1 pronto para aplicação direta (ITEM-03, rebaixado de Categoria 3); Categoria 3 — 9 itens, sendo 5 implementados (ITEM-05, ITEM-06, ITEM-08, ITEM-09, ITEM-14), 1 aprovado com decisão de adiamento (ITEM-10) e 3 ainda bloqueados (ITEM-04, ITEM-11, ITEM-12); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
-- **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 3 (ITEM-04, ITEM-11, ITEM-12).
+- **Itens por categoria**: Categoria 1 — 1 item implementado (ITEM-01); Categoria 2 — 3 itens, sendo 2 implementados (ITEM-02, ITEM-13) e 1 pronto para aplicação direta (ITEM-03, rebaixado de Categoria 3); Categoria 3 — 9 itens, sendo 5 implementados (ITEM-05, ITEM-06, ITEM-08, ITEM-09, ITEM-14), 2 aprovados com decisão de adiamento (ITEM-10, ITEM-11) e 2 ainda bloqueados (ITEM-04, ITEM-12); Categoria 5 — 0 itens ativos (ITEM-07 avaliado e encerrado). Categoria 4 — 0 itens atualmente.
+- **Bloqueados por decisão arquitetural** (Awaiting ADR/RFC): 2 (ITEM-04, ITEM-12).
 - **Prontos para execução documental direta** (Categoria 1/2, sem ADR/RFC): 1 (ITEM-03 — ainda não propagado a `DOMAIN-003`).
 - **Implementados**: 8 (ITEM-01, ITEM-02 — propagados para `DOMAIN-003` v2.1.0; ITEM-05, ITEM-06 — formalizados por `ADR-011`; ITEM-08 — formalizado por `ADR-013`; ITEM-09 — formalizado por `ADR-015`, `DOMAIN-007` criado; ITEM-13 — `Strategy Policy` catalogado em `SPEC-001` v1.7.0; ITEM-14 — resolvido por `ADR-014`; todos propagados aos documentos-alvo).
-- **Aprovados com decisão de adiamento** (sem propagação a `SPEC-001` por design): 1 (ITEM-10 — `Event Dispatcher`/`Scheduler`, `ADR-016`).
+- **Aprovados com decisão de adiamento** (sem propagação a `SPEC-001` por design): 2 (ITEM-10 — `Event Dispatcher`/`Scheduler`, `ADR-016`; ITEM-11 — 6 candidatos de Data Provider Adapters, `ADR-017`).
 - **Encerrados/Rejeitados**: 1 (ITEM-07 — `Observation` avaliado e rejeitado como conceito de domínio novo).
-- **RFCs abertas consolidadas nesta entrega** (`AUDIT-002`, NC-01): `RFC-003` (ITEM-11), `RFC-004` (ITEM-12) — ambas `Open`. `RFC-001` (ITEM-09) resolvida por `ADR-015`; `RFC-002` (ITEM-10) resolvida (adiamento) por `ADR-016`.
+- **RFCs abertas consolidadas nesta entrega** (`AUDIT-002`, NC-01): `RFC-004` (ITEM-12) — `Open`. `RFC-001` (ITEM-09) resolvida por `ADR-015`; `RFC-002` (ITEM-10) resolvida (adiamento) por `ADR-016`; `RFC-003` (ITEM-11) resolvida (adiamento) por `ADR-017`.
 - **Gaps de rastreamento consolidados nesta entrega** (`AUDIT-002`, NC-02/NC-03): gap de componentes de `Strategy` em `SPEC-001` (ITEM-13, resolvido); dependência `Account Provider` não catalogada (ITEM-14, resolvido).
-- **Recomendação de priorização para as próximas revisões**: aplicar `ITEM-03` a qualquer momento (baixo risco, Categoria 2, dependência já resolvida). `ITEM-04` segue como `Awaiting ADR`, próximo candidato natural. `ITEM-11`/`ITEM-12` (RFC-003/004) seguem sem prazo definido — nenhum bloqueia a Release 1.0. `ITEM-10` só deve ser reaberto mediante evidência de implementação (`ADR-009 §8`).
+- **Recomendação de priorização para as próximas revisões**: aplicar `ITEM-03` a qualquer momento (baixo risco, Categoria 2, dependência já resolvida). `ITEM-04` segue como `Awaiting ADR`, próximo candidato natural. `ITEM-12` (RFC-004) segue sem prazo definido — não bloqueia a Release 1.0. `ITEM-10`/`ITEM-11` só devem ser reabertos mediante evidência de implementação (`ADR-009 §8`).
 
 ---
 
@@ -250,3 +251,5 @@ Nenhum item é removido do histórico — apenas transita para `Archived`, prese
 **v1.7.0** (`ITEM-09`/`ITEM-03`): `RFC-001` resolvida por `ADR-015` — `Risk Profile` classificado como Value Object, atributo `Risk` de `Opportunity` (`DOMAIN-007` criado). `ITEM-09` passa a `Implemented`. `ITEM-03` desbloqueado, rebaixado de Categoria 3 para Categoria 2 (dependência resolvida, sem colisão de conceito), pronto para aplicação direta — ainda não propagado a `DOMAIN-003`.
 
 **v1.8.0** (`ITEM-10`): `RFC-002` resolvida por `ADR-016` — decisão de **adiamento** para `Event Dispatcher` e `Scheduler` (nenhum catalogado em `SPEC-001`, nenhum rejeitado definitivamente). `ITEM-10` passa de `Awaiting RFC` para `Approved`, sem propagação a `SPEC-001` por design. Critério de reabertura: evidência de implementação de `ROADMAP-001`/sprints subsequentes (`ADR-009 §8`).
+
+**v1.9.0** (`ITEM-11`): `RFC-003` resolvida por `ADR-017` — decisão de **adiamento** para os 6 candidatos de Data Provider Adapters (`Replay Adapter`, `CSV Provider`/`CSV Adapter`, `Mock Provider`, `REST Adapter`, `FIX Adapter`, `WebSocket Adapter`), nenhum catalogado em `SPEC-001`, nenhum rejeitado definitivamente. `ITEM-11` passa de `Awaiting RFC` para `Approved`, sem propagação a `SPEC-001` por design. Critério de reabertura: evidência de implementação, provavelmente da Trilha de Validação/Learning Domain (`ADR-009 §8`).
