@@ -411,6 +411,20 @@ Nenhum impacto na Release 1.0: `Evidence` é Core Domain, fora do pipeline de Ex
 
 Restam em `ROADMAP-006`: `ITEM-01`/`ITEM-02` (Categoria 1/2, prontos para aplicação direta, ainda não aplicados) e `ITEM-03`/`ITEM-04` (Categoria 3, ainda bloqueados — `ITEM-03` por `RFC-001`, `ITEM-04` aguardando ADR próprio).
 
+## AUDIT-002 — Baseline Architecture Certification
+
+`Docs/06-validation/AUDIT-002-Baseline-Architecture-Certification.md` (solicitado originalmente como `ACR-002`, família não congelada por `ADR-009` — reprefixado para `AUDIT-*`, continuando a numeração de `AUDIT-001`) recertifica a Architecture Baseline após a consolidação de `ADR-010` (Learning Domain), `ADR-011` (Evidence Lifecycle) e `ROADMAP-006` (Architecture Decision Backlog).
+
+**Pontos conformes**: Core Domain (`Opportunity`/`Market Context`/`Decision`) inalterado desde o freeze (`ADR-007`); `Evidence` (`DOMAIN-003`) evoluiu unicamente por processo formal (`ADR-011`), não em violação do freeze; `Learning Domain` corretamente isolado, sem dependência de Core Domain/Platform (`ADR-010`/`DOMAIN-006`); nenhum documento órfão entre os 46 arquivos governados sob `Docs/0X-*/`; nenhuma duplicação ativa (`RFC-008` corretamente descartada em favor de `ADR-010`); nenhuma regressão terminológica residual (instâncias de "Opportunity/Decision" como estágios de pipeline, encontradas em `ROADMAP-003`/`ROADMAP-005`, já corrigidas); sequência `EXEC-001` a `EXEC-005` completa e íntegra.
+
+**Não conformidades (nenhuma bloqueante)**:
+- `ROADMAP-006` não referencia `RFC-001` a `RFC-005` (todas `Open`), contrariando seu próprio objetivo de concentrar toda pendência arquitetural em um único backlog.
+- Gap de componentes do Bounded Context `Strategy` em `SPEC-001` — identificado desde `AUDIT-001` (Finding #4), nunca registrado como item rastreável em `ROADMAP-006`.
+- Dependência "Account Provider" (`EXEC-003`/`EXEC-005`/`RFC-006`) rastreada apenas narrativamente neste documento, sem item formal em `ROADMAP-006`.
+- `RFC-005` (Trading Risk & Exit Strategy) recebeu recomendação técnica mas nunca foi formalizada como ADR nem registrada no backlog.
+
+**Architecture Readiness Score**: 88%. **Decisão**: **GO** para início de trabalho de SPEC — nenhum achado compromete Core Domain, Learning Domain ou a sequência de entrega travada por `ADR-009`. Relatório de auditoria apenas — nenhum documento normativo alterado por esta entrega.
+
 ## Legacy Components
 
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):

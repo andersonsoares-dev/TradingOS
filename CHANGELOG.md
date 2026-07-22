@@ -330,4 +330,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `DOMAIN-003` (Evidence) atualizado (v1.0.0 → v2.0.0): nova seção "Ciclo de Vida", atributos `Estado`/`Validade` na Estrutura, `BR-006` a `BR-008` adicionadas, seção "Alterações" registrando a origem (`ADR-011`/`ROADMAP-006`).
 - `ROADMAP-006` atualizado (v1.0.0 → v1.1.0): `ITEM-05`/`ITEM-06` de `Awaiting ADR` para `Implemented`; `ITEM-07` de `Under Analysis` para `Rejected`; resumo recalculado (2 itens bloqueados restantes: `ITEM-03`/`ITEM-04`).
 - Nenhum impacto na Release 1.0 — `Evidence`/Core Domain permanece fora do pipeline de Execução decidido pela `RFC-007`.
+
+### 2026-07-22 — AUDIT-002 (Baseline Architecture Certification)
+
+- Um brief de origem solicitava criar `ACR-002` — família não congelada por `ADR-009`. Criado como `Docs/06-validation/AUDIT-002-Baseline-Architecture-Certification.md`, continuando a numeração `AUDIT-*` já existente (`AUDIT-001`).
+- Recertificação da Baseline após a consolidação promovida por `ADR-010`, `ADR-011` e `ROADMAP-006`. Confirmado: Core Domain (`Opportunity`/`Market Context`/`Decision`) inalterado desde `ADR-007`; `Evidence` evoluiu apenas por processo formal (`ADR-011`); Learning Domain corretamente isolado (`ADR-010`/`DOMAIN-006`); nenhum documento órfão entre os 46 arquivos governados; nenhuma duplicação ativa; nenhuma regressão terminológica residual.
+- Não conformidades registradas (nenhuma bloqueante): `ROADMAP-006` não referencia `RFC-001` a `RFC-005` (todas `Open`), quebrando seu próprio objetivo de concentrar toda pendência arquitetural; gap de componentes de `Strategy` em `SPEC-001` (recorrente desde `AUDIT-001`) segue sem item de backlog; dependência "Account Provider" (`EXEC-003`/`EXEC-005`) só rastreada narrativamente em `TRACEABILITY.md`; `RFC-005` nunca formalizada como ADR.
+- Architecture Readiness Score: **88%**. Decisão: **GO** para início de trabalho de SPEC — nenhum achado compromete Core Domain, Learning Domain ou a sequência de entrega travada por `ADR-009`.
+- Relatório de auditoria apenas — nenhum documento normativo criado ou alterado, conforme escopo do brief.
+- `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados com AUDIT-002.
 - `DOCUMENT_INDEX.md` e `TRACEABILITY.md` atualizados.
