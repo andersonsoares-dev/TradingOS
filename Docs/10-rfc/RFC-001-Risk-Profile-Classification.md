@@ -1,8 +1,8 @@
 ---
 id: RFC-001
 title: Risk Profile Classification
-version: 1.0.0
-status: Open
+version: 2.0.0
+status: Approved
 owner: Product Owner
 depends_on:
   - DOMAIN-001
@@ -36,6 +36,12 @@ Esta RFC apenas registra que uma decisão arquitetural é necessária antes de o
 
 Quando esta decisão for tomada, ela deverá seguir o Documentation Validation Pipeline (AGENTS.md: DOMAIN-002 → SPEC-001 → ARCH-001 → TRACEABILITY) e resultar em um documento DOMAIN-00X formal (classificando Risk Profile como Entity, Value Object ou parte de outro Aggregate) — não nesta RFC.
 
+## Resolução
+
+Formalizada por `ADR-015`: `Risk Profile` classificado como **Value Object**, atributo `Risk` de `Opportunity` (`DOMAIN-001`), produzido pelo `Risk Service` (`SPEC-003`). Formalizado em `DOMAIN-007`.
+
+Nenhuma alteração a `ARCH-001` (Core Domain permanece com 4 componentes) nem ao contrato de `SPEC-001`/`SPEC-003`. `ROADMAP-006`: `ITEM-03`/`ITEM-09` passam a `Implemented`.
+
 ## Status
 
-Open — aguardando decisão do Product Owner / Chief Architect.
+**Approved** — resolvida por `ADR-015`.

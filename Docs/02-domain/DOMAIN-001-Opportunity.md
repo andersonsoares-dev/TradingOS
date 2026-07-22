@@ -1,17 +1,19 @@
 ---
 id: DOMAIN-001
 title: Opportunity
-version: 1.1.0
+version: 1.2.0
 status: Approved
 owner: Product Owner
 depends_on:
   - REQ-001
   - ADR-002
+  - ADR-015
 related:
   - DOMAIN-002
   - DOMAIN-003
+  - DOMAIN-007
   - ARCH-001
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Opportunity
@@ -149,7 +151,7 @@ Faixa:
 
 ## Risk
 
-Objeto de domínio próprio.
+Value Object `Risk Profile` (ver `DOMAIN-007`, `ADR-015`). Produzido pelo `Risk Service` (`SPEC-003`) a partir desta Opportunity e do Market Context associado.
 
 ---
 
@@ -289,3 +291,5 @@ REQ-009
 # Alterações
 
 Mudanças estruturais nesta entidade exigem atualização do modelo de domínio e registro em ADR quando alterarem regras fundamentais.
+
+**v1.2.0** (`ADR-015`): atributo `Risk` referenciado explicitamente como Value Object `Risk Profile` (`DOMAIN-007`), resolvendo `RFC-001`. Nenhuma outra alteração à estrutura, regras de negócio ou ciclo de vida de `Opportunity`.

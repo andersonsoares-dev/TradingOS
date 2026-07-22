@@ -414,3 +414,14 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Gerado por leitura direta do repositório — nenhum documento normativo criado ou alterado por esta entrega.
 - Não participa da matriz de rastreabilidade (`TRACEABILITY.md`) — o próprio `INVENTORY.md` referencia `DOCUMENT_INDEX.md`/`TRACEABILITY.md`/`CHANGELOG.md`/`ROADMAP-006` como fontes vivas, sem duplicar seu conteúdo.
 - `DOCUMENT_INDEX.md` atualizado com o registro do `INVENTORY.md` (localização, finalidade, natureza informativa).
+
+### 2026-07-22 — ADR-015: Risk Profile Classification
+
+- `RFC-001` (Risk Profile Classification) resolvida: `Risk Profile` classificado como **Value Object**, sem identidade própria, atributo `Risk` de `Opportunity` (`DOMAIN-001`), produzido pelo `Risk Service` (`SPEC-003`, Domain Service já catalogado, sem alteração de contrato).
+- Adicionado `Docs/02-domain/DOMAIN-007-Risk-Profile.md` — primeiro documento formal do conceito: Estrutura (`Risk Score`/`Risk Level`/`Rationale`/`Timestamp`), Responsabilidades/Não Responsabilidades (explicitamente distinto do Pre-Order Risk Gate, `EXEC-003`/`RFC-006`/`ADR-014`), 4 regras de negócio, invariantes, relacionamentos.
+- `DOMAIN-001` atualizado (v1.1.0 → v1.2.0): atributo `Risk` (antes "Objeto de domínio próprio") passa a referenciar `DOMAIN-007` explicitamente. Nenhuma outra alteração à estrutura/BRs/ciclo de vida.
+- Nenhuma alteração a `ARCH-001` (Core Domain permanece com 4 componentes: `Evidence`/`Market Context`/`Opportunity`/`Decision`) nem ao contrato de `SPEC-001`/`SPEC-003`.
+- `RFC-001` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
+- `ROADMAP-006` (v1.6.0 → v1.7.0): `ITEM-09` passa a `Implemented`. `ITEM-03` (categoria "Risk" para Evidence) desbloqueado — rebaixado de Categoria 3 para Categoria 2 (dependência resolvida, sem colisão de conceito), pronto para aplicação direta; ainda não propagado a `DOMAIN-003`.
+- Nenhum arquivo `.mq5`/`.mqh` foi alterado.
+- `DOCUMENT_INDEX.md` atualizado com `ADR-015`/`DOMAIN-007`.

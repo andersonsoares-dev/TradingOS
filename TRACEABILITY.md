@@ -506,6 +506,16 @@ No `ROADMAP-006`, `ITEM-01` e `ITEM-02` passaram de `Proposed` para `Implemented
 
 `EXEC-003` passa a declarar `EXEC-005` como dependência documental e recebe apenas o esclarecimento de proveniência de `Account Information`; seus contratos permanecem inalterados. `RFC-006` é complementada e `ITEM-14` passa de `Awaiting ADR` para `Implemented`. Nenhum arquivo de código foi alterado.
 
+## ADR-015 — Risk Profile Classification (DOMAIN-007)
+
+`ADR-015` formaliza `RFC-001`: `Risk Profile` classificado como **Value Object**, sem identidade própria, atributo `Risk` de `Opportunity` (`DOMAIN-001`), produzido pelo `Risk Service` (`SPEC-003`) a partir de `Opportunity` + `Market Context`. Estrutura: `Risk Score` (0.0-1.0), `Risk Level` (Low/Medium/High), `Rationale`, `Timestamp`.
+
+Decisão fundamentada em: `ARCH-001` enumera exatamente 4 componentes no Core Domain (`Evidence`/`Market Context`/`Opportunity`/`Decision`) — `Risk Profile` nunca foi um 5º componente; `DOMAIN-001` já posicionava `RiskProfile` em seu diagrama de Relacionamentos como valor interno, antes de `Decision`. Explicitamente distinto do Pre-Order Risk Gate (`EXEC-003`, já reconciliado por `RFC-006`/`ADR-014`).
+
+`Docs/02-domain/DOMAIN-007-Risk-Profile.md` criado — primeiro documento formal do conceito. `DOMAIN-001` atualizado (v1.1.0 → v1.2.0): atributo `Risk` passa a referenciar `DOMAIN-007` explicitamente, sem nenhuma outra alteração estrutural. Nenhuma alteração a `ARCH-001`, `DOMAIN-005` ou ao contrato de `SPEC-001`/`SPEC-003`.
+
+`RFC-001` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.6.0 → v1.7.0): `ITEM-09` passa a `Implemented`; `ITEM-03` desbloqueado (Categoria 3 → 2, dependência resolvida sem colisão de conceito — a categoria "Risk" de `Evidence` descreveria uma observação de mercado, distinta da avaliação de risco da `Opportunity`), pronto para aplicação direta, ainda não propagado a `DOMAIN-003`. Nenhum arquivo de código foi alterado.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService
