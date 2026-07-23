@@ -455,3 +455,10 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `RFC-004` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
 - `ROADMAP-006` (v1.9.0 → v1.10.0): `ITEM-12` passa de `Awaiting ADR` para `Implemented`. Com esta resolução, `RFC-001` a `RFC-004` estão todas encerradas.
 - `DOCUMENT_INDEX.md` atualizado com `ADR-018`.
+
+### 2026-07-23 — ARCH-002 (System Flow and Transition Map) e atualização do INVENTORY.md
+
+- `Docs/03-architecture/ARCH-002-System-Flow-and-Transition-Map.md` criado — consolida em um único documento a Legacy Baseline (fluxo real hoje), a arquitetura-alvo (`ARCH-001`) e o pipeline normativo da Release 1.0 (`RFC-007`, Alternativa B), além de mapear componentes implementados, planejados e as lacunas de transição entre os três.
+- Documento puramente consolidativo: não altera `ARCH-001`, `SPEC-001`, `SPEC-003`, nenhum ADR ou RFC resolvida. Nenhum arquivo `.mq5`/`.mqh` alterado.
+- `INVENTORY.md` atualizado para refletir os commits recentes e o encerramento de `RFC-001` a `RFC-004`: `DOMAIN-007`, `ADR-015` a `ADR-018` e `ARCH-002` adicionados ao inventário; `RFC-001` a `RFC-004` marcadas `Approved`; `ROADMAP-006` atualizado para v1.10.0; `Strategy Policy` refletido no Bounded Context Strategy; contagem de documentos governados recontada (69, corrigindo o valor desatualizado de 51). Registrada nota sobre as pendências de commit ainda em working tree (`AGENTS.md`, `VISION-001`, `REQ-001`).
+- `DOCUMENT_INDEX.md` atualizado com `ARCH-002`.

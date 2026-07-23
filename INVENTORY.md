@@ -4,7 +4,7 @@ Snapshot consolidado do repositório: estrutura completa, todos os documentos ve
 
 Este documento é um **snapshot pontual** — a fonte viva e continuamente atualizada de cada seção permanece nos documentos de origem: `DOCUMENT_INDEX.md` (índice), `TRACEABILITY.md` (rastreabilidade narrativa), `CHANGELOG.md` (histórico cronológico), `Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md` (pendências).
 
-**Gerado em**: 2026-07-22
+**Gerado em**: 2026-07-23 (atualizado para refletir os commits até `9c5ebe8` — encerramento de `RFC-001` a `RFC-004`)
 **Baseline vigente**: v2.0 (`ADR-012`), tag git `architecture-baseline-v2`
 
 ---
@@ -27,9 +27,9 @@ TradingOS/
 │   ├── 00-governance/               Governança e princípios (ENG-000, CONST-001, VISION-001)
 │   ├── 01-requirements/             Requisitos oficiais (REQ-001)
 │   ├── 02-domain/                   Modelo de domínio (DOMAIN-001 a 006)
-│   ├── 03-architecture/             Arquitetura (ARCH-001, INFRA-*, EXEC-*, LEARN-*)
+│   ├── 03-architecture/             Arquitetura (ARCH-001/002, INFRA-*, EXEC-*, LEARN-*)
 │   ├── 04-specifications/           Especificações técnicas (SPEC-001 a 006)
-│   ├── 05-decisions/                Architecture Decision Records (ADR-001 a 014)
+│   ├── 05-decisions/                Architecture Decision Records (ADR-001 a 018)
 │   ├── 06-validation/               Validação (AUDIT-*, VALIDATION-*, BACKTEST-*, DATA-*)
 │   ├── 07-testing/                  (vazio — sem documentos ainda)
 │   ├── 08-reference/                (vazio — sem documentos ainda)
@@ -84,12 +84,14 @@ TradingOS/
 | DOMAIN-004 | Market Context | 1.1.0 | Approved |
 | DOMAIN-005 | Decision | 1.1.0 | Approved |
 | DOMAIN-006 | Knowledge Model (Learning Domain) | 1.0.0 | Approved |
+| DOMAIN-007 | Risk Profile | 1.0.0 | Approved |
 
 ### 2.4 Arquitetura
 
 | ID | Título | Versão | Status |
 |---|---|---|---|
 | ARCH-001 | Architecture Blueprint | 1.3.0 | Approved |
+| ARCH-002 | System Flow and Transition Map | 1.0.0 | Approved |
 | INFRA-001 | Infrastructure Overview | 1.1.0 | Approved |
 | INFRA-002 | Data Provider | 1.0.0 | Approved |
 | INFRA-003 | Indicator Provider | 1.0.0 | Approved |
@@ -107,7 +109,7 @@ TradingOS/
 |---|---|---|---|
 | SPEC-001 | Component Model (Canonical Component Catalog) | 1.7.0 | Approved |
 | SPEC-002 | Interface Contracts | 1.1.0 | Approved |
-| SPEC-003 | Domain Services | 1.1.0 | Approved |
+| SPEC-003 | Domain Services | 1.2.0 | Approved |
 | SPEC-004 | Application Services | 1.0.0 | Approved |
 | SPEC-005 | Domain Lifecycle | 1.0.0 | Approved |
 | SPEC-006 | Business Rules | 1.0.0 | Approved |
@@ -130,6 +132,10 @@ TradingOS/
 | ADR-012 | Architecture Baseline v2.0 Freeze | 1.0.0 | Accepted |
 | ADR-013 | Trading Risk & Exit Strategy — Release 1.0 | 1.0.0 | Accepted |
 | ADR-014 | Account Data Source for Risk Service — Release 1.0 | 1.0.0 | Accepted |
+| ADR-015 | Risk Profile Classification | 1.0.0 | Accepted |
+| ADR-016 | Event Dispatcher & Scheduler — Deferral Decision | 1.0.0 | Accepted |
+| ADR-017 | Data Provider Candidate Adapters — Deferral Decision | 1.0.0 | Accepted |
+| ADR-018 | Legacy Indicator Mapping Correction | 1.0.0 | Accepted |
 
 ### 2.7 Validação
 
@@ -146,10 +152,10 @@ TradingOS/
 
 | ID | Título | Versão | Status |
 |---|---|---|---|
-| RFC-001 | Risk Profile Classification | 1.0.0 | **Open** |
-| RFC-002 | Infrastructure Candidate Components | 1.0.0 | **Open** |
-| RFC-003 | Data Provider Candidate Adapters | 1.0.0 | **Open** |
-| RFC-004 | Legacy Indicator Mapping Ambiguity | 1.0.0 | **Open** |
+| RFC-001 | Risk Profile Classification | 2.0.0 | Approved (`ADR-015`) |
+| RFC-002 | Infrastructure Candidate Components | 2.0.0 | Approved (`ADR-016`, adiamento) |
+| RFC-003 | Data Provider Candidate Adapters | 2.0.0 | Approved (`ADR-017`, adiamento) |
+| RFC-004 | Legacy Indicator Mapping Ambiguity | 2.0.0 | Approved (`ADR-018`, correção) |
 | RFC-005 | Trading Risk & Exit Strategy | 1.0.0 | Approved (`ADR-013`) |
 | RFC-006 | Risk Service Contract Divergence | 2.0.0 | Approved |
 | RFC-007 | Signal Builder Pipeline Divergence | 2.0.0 | Approved |
@@ -163,9 +169,9 @@ TradingOS/
 | ROADMAP-003 | Sprint 3 — Signal Evaluation & Risk Validation | 1.0.0 | Approved |
 | ROADMAP-004 | Sprint 4 — Order Execution Integration | 1.0.0 | Approved |
 | ROADMAP-005 | Sprint 5 — First Execution & End-to-End Validation | 1.0.0 | Approved |
-| ROADMAP-006 | Architecture Decision Backlog | 1.6.0 | Approved |
+| ROADMAP-006 | Architecture Decision Backlog | 1.10.0 | Approved |
 
-**Total**: 51 documentos governados (contando `DOCUMENT_CONTROL.md`/`CLAUDE.md`/`AGENTS.md`).
+**Total**: 69 documentos governados (contando `DOCUMENT_CONTROL.md`/`CLAUDE.md`/`AGENTS.md`; recontado nesta atualização — a contagem anterior de 51 estava desatualizada).
 
 ---
 
@@ -196,7 +202,7 @@ Data Provider (INFRA-002) → Indicator Provider (INFRA-003) → Signal Builder 
 |---|---|---|
 | Core Domain | Evidence, Market Context, Opportunity, Decision | `ARCH-001` (congelado, `ADR-007`) |
 | Infrastructure | Data Provider, Indicator Provider, Configuration Provider, Time Provider, Persistence Provider, Logger | `INFRA-001` a `003` |
-| Strategy | (sem componentes catalogados — ver §4.3) | `RC-001` (Decisão A: permanece ativo) |
+| Strategy | Strategy Policy | `RC-001` (Decisão A: permanece ativo); catalogado em `SPEC-001` v1.7.0 (`ITEM-13`) |
 | Execution | Signal Builder, Order Manager, Position Manager, Broker Adapter, MT5 Adapter, Risk Service (gate operacional) | `EXEC-001` a `005` |
 | Learning Domain | Knowledge Service, Learning Service | `ADR-010`, `DOMAIN-006`, `LEARN-001`/`002` |
 
@@ -218,9 +224,15 @@ ADR-012 (Baseline v2.0 Freeze) ← estado atual
 
 | RFC | Resolvida por | Decisão |
 |---|---|---|
+| RFC-001 | `ADR-015` | `Risk Profile` classificado como Value Object (`DOMAIN-007`), atributo de `Opportunity` |
+| RFC-002 | `ADR-016` | `Event Dispatcher`/`Scheduler` — adiados, não catalogados, nenhum rejeitado |
+| RFC-003 | `ADR-017` | 6 candidatos de Data Provider Adapters — adiados, não catalogados, nenhum rejeitado |
+| RFC-004 | `ADR-018` | Legacy Baseline mapeia exclusivamente para `Indicator Provider`; `SPEC-003` corrigido |
+| RFC-005 | `ADR-013` | Stop ATR + Stop Temporal / Percentual por Risco |
 | RFC-006 | (auto-resolvida, v2.0.0) | Risk Service = Gate Operacional (`EXEC-003`) para R1; `SPEC-003` preservado para o futuro |
 | RFC-007 | (auto-resolvida, v2.0.0) | Pipeline Alternativa B (sem estágio Opportunity) normativo para R1 |
-| RFC-005 | `ADR-013` | Stop ATR + Stop Temporal / Percentual por Risco |
+
+Com esta atualização, **todas as 7 RFCs** já catalogadas (`RFC-001` a `RFC-007`) estão `Approved` — nenhuma permanece `Open`.
 
 ### 3.7 Dependências entre Componentes de Execução
 
@@ -245,18 +257,24 @@ Sequência de entrega travada (`ADR-009`) **completa**: `EXEC-001 → EXEC-002 �
 
 ### 4.3 Pendências Abertas
 
-**RFCs `Open`** (nenhuma resolvida nesta sessão): `RFC-001` (Risk Profile Classification — análise entregue, aguardando aprovação do Product Owner para gerar ADR/`DOMAIN-007`), `RFC-002` (Event Dispatcher/Scheduler), `RFC-003` (Data Provider adapters candidatos), `RFC-004` (mapeamento Legacy Indicator ambíguo).
+**RFCs**: todas as 7 catalogadas (`RFC-001` a `RFC-007`) estão `Approved` — nenhuma `Open`. `RFC-001` a `RFC-004` resolvidas nesta entrega por `ADR-015` a `ADR-018` (ver §3.6).
 
-**`ROADMAP-006` (Architecture Decision Backlog, v1.6.0)** — 14 itens: 3 `Implemented` (`ITEM-05`/`06`/`08`), 1 `Rejected` (`ITEM-07`), 2 prontos para aplicação direta (`ITEM-01`/`02`), 6 bloqueados (`ITEM-03`/`04`/`09`/`10`/`11`/`12`), 1 aguardando ADR (`ITEM-14` — Account Provider, análise entregue via `ADR-014`), 1 aguardando decisão do Product Owner (`ITEM-13` — componentes de Strategy, análise entregue).
+**`ROADMAP-006` (Architecture Decision Backlog, v1.10.0)** — 14 itens: 9 `Implemented` (`ITEM-01`, `ITEM-02`, `ITEM-05`, `ITEM-06`, `ITEM-08`, `ITEM-09`, `ITEM-12`, `ITEM-13`, `ITEM-14`), 2 `Approved` com decisão de adiamento (`ITEM-10`, `ITEM-11` — critério de reabertura: evidência de implementação, `ADR-009 §8`), 1 `Rejected` (`ITEM-07`), 1 pronto para aplicação direta (`ITEM-03`, Categoria 2, ainda não propagado a `DOMAIN-003`), 1 ainda bloqueado (`ITEM-04`, único item `Awaiting ADR`).
 
-**Gaps de catalogação**: Bounded Context `Strategy` sem componentes em `SPEC-001` (recorrente desde `AUDIT-001`, Finding #4; análise de `Strategy Engine`/`Policy`/`Configuration`/`Evaluator` já entregue, aguardando aprovação).
+**Gaps de catalogação**: nenhum gap de Bounded Context em aberto — `Strategy` já tem `Strategy Policy` catalogado (`ITEM-13`, `Implemented`); `Account Provider` resolvido (`ITEM-14`, `ADR-014`).
 
-### 4.4 Decisões Recentes (`ADR-011` a `ADR-014`)
+**Pendências de commit (working tree, fora do escopo desta atualização)**: `AGENTS.md` recebeu a seção "Padrões Operacionais Consolidados"; `VISION-001`/`REQ-001` receberam o realinhamento "Product Scope Alignment" (v1.0.0 → v1.1.0 em ambos, `REQ-013`/`REQ-014` adicionados). Ambas as mudanças já estão propagadas em `CHANGELOG.md`/`DOCUMENT_INDEX.md`/`TRACEABILITY.md`, mas aguardam commit em entrega própria — por isso esta versão do `INVENTORY.md` ainda reflete `VISION-001`/`REQ-001` na versão `1.0.0` (última committada), não a versão em disco.
+
+### 4.4 Decisões Recentes (`ADR-011` a `ADR-018`)
 
 - `ADR-011`: Ciclo de vida de `Evidence` (`Candidate → Confirmed → Weak → Rejected → Expired`).
 - `ADR-012`: Congelamento da Baseline v2.0.
 - `ADR-013`: Regra de saída/sizing da Release 1.0 (Stop ATR + Stop Temporal / Percentual por Risco).
 - `ADR-014`: `Risk Service` consome `Account Snapshot` diretamente de `MT5 Adapter` — nenhum `Account Provider` novo criado.
+- `ADR-015`: `Risk Profile` classificado como Value Object (`DOMAIN-007`), atributo de `Opportunity`, resolve `RFC-001`.
+- `ADR-016`: `Event Dispatcher`/`Scheduler` adiados (não rejeitados), resolve `RFC-002`.
+- `ADR-017`: 6 candidatos de Data Provider Adapters adiados (nenhum rejeitado), resolve `RFC-003`.
+- `ADR-018`: Legacy Baseline mapeia exclusivamente para `Indicator Provider`; `SPEC-003` corrigido (v1.2.0), resolve `RFC-004`.
 
 ### 4.5 Learning Domain
 
@@ -265,6 +283,10 @@ Sequência de entrega travada (`ADR-009`) **completa**: `EXEC-001 → EXEC-002 �
 ### 4.6 Dívida Técnica (Legacy Baseline, `Docs/TECH_DEBT.md`)
 
 9 itens rastreados (3 Alto impacto, 3 Médio, 2 Baixo) — incluem duas cópias do repositório em disco, `PriceService.mqh` vazio, cluster órfão `IAnalyzer`/`TrendAnalyzer` (congelado, não integrado), documentação duplicada vazia (`Docs/CHANGELOG.md`/`ROADMAP.md`/`VERSION.md`).
+
+### 4.7 Mapa de Fluxo e Transição (`ARCH-002`)
+
+`ARCH-002-System-Flow-and-Transition-Map.md` consolida, num único documento, a Legacy Baseline (fluxo real hoje), a arquitetura-alvo (`ARCH-001`) e o pipeline normativo da Release 1.0 (`RFC-007`, Alternativa B), além de mapear componentes implementados, planejados e as lacunas de transição entre os três. Não altera nenhum documento-fonte — puramente consolidativo, no mesmo espírito deste `INVENTORY.md`, mas focado em fluxo arquitetural em vez de inventário documental.
 
 ---
 
@@ -277,3 +299,4 @@ Sequência de entrega travada (`ADR-009`) **completa**: `EXEC-001 → EXEC-002 �
 | Histórico cronológico de mudanças | `CHANGELOG.md` |
 | Backlog de decisões arquiteturais pendentes | `Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md` |
 | Dívida técnica do código Legacy | `Docs/TECH_DEBT.md` |
+| Mapa de fluxo e transição de arquitetura | `Docs/03-architecture/ARCH-002-System-Flow-and-Transition-Map.md` |

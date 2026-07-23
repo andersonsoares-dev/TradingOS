@@ -550,6 +550,14 @@ Nenhuma alteração a `SPEC-001`, `INFRA-001`/`INFRA-003`, `ARCH-001`, `DOMAIN-0
 
 `RFC-004` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.9.0 → v1.10.0): `ITEM-12` passa de `Awaiting ADR` para `Implemented`. Com esta resolução, `RFC-001` a `RFC-004` estão todas encerradas — nenhuma RFC permanece aberta no backlog consolidado por `AUDIT-002`.
 
+## ARCH-002 — System Flow and Transition Map
+
+`ARCH-002` consolida, num único documento, três leituras antes espalhadas por vários documentos: a Legacy Baseline (fluxo real hoje, `ADR-001`), a arquitetura-alvo de longo prazo (`ARCH-001`) e o pipeline normativo da Release 1.0 (`RFC-007`, Alternativa B). Mapeia também os componentes já `Implemented` e `Planned`/`Future` (Component Lifecycle, `SPEC-001`) e as lacunas de transição entre os três estados.
+
+Documento puramente consolidativo: não introduz componente novo, não redefine contrato, não altera `ARCH-001`, `SPEC-001`, `SPEC-003`, nenhum ADR ou RFC resolvida. Nenhum arquivo `.mq5`/`.mqh` foi alterado.
+
+`INVENTORY.md` atualizado na mesma entrega para refletir os commits recentes e o encerramento de `RFC-001` a `RFC-004`: `DOMAIN-007`, `ADR-015` a `ADR-018` e `ARCH-002` adicionados ao inventário; `Strategy Policy` refletido no Bounded Context Strategy (`ITEM-13`); contagem de documentos governados recontada (69, corrigindo o valor desatualizado de 51). `INVENTORY.md` permanece fora desta matriz de rastreabilidade por não ser documento normativo — mantém as pendências de commit ainda em working tree (`AGENTS.md`, `VISION-001`, `REQ-001`) registradas à parte, refletindo a última versão committada (`1.0.0`) de `VISION-001`/`REQ-001`, não a versão em disco.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService
