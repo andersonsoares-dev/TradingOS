@@ -1,7 +1,7 @@
 ---
 id: VISION-001
 title: Product Vision
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -11,7 +11,7 @@ related:
   - REQ-001
   - DOMAIN-001
   - ARCH-001
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Product Vision
@@ -24,7 +24,15 @@ Definir a visão estratégica do TradingOS e orientar todas as decisões de neg�
 
 # Missão
 
-Construir uma plataforma inteligente de apoio à decisão para Swing Trading, capaz de identificar, avaliar e priorizar oportunidades de investimento de forma explicável, consistente e independente de tecnologia.
+Construir uma ferramenta inteligente de leitura de mercado, capaz de transformar dados em insights úteis para o trader através de um Dashboard explicável, consistente e independente de tecnologia, com evolução futura para automação controlada.
+
+---
+
+# Escopo Central do Produto
+
+O TradingOS tem como objetivo principal ler o mercado e gerar insights de trader por meio de um Dashboard.
+
+A automação de operações é uma evolução futura. A prioridade atual é a qualidade da leitura, a explicabilidade das evidências e a utilidade prática para o operador.
 
 ---
 
@@ -188,5 +196,7 @@ Esta visão será considerada implementada quando:
 ---
 
 # Alterações
+
+**v1.1.0**: escopo do produto explicitado como ferramenta de leitura de mercado e geração de insights através do Dashboard, com automação controlada como evolução futura. A visão continua compatível com múltiplas estratégias, incluindo Swing, Position, Intraday e Scalping.
 
 Mudanças estratégicas deverão ser registradas através de ADR e aprovadas pelo Product Owner.

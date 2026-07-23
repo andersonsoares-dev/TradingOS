@@ -1,7 +1,7 @@
 ---
 id: REQ-001
 title: Requirements Specification
-version: 1.0.0
+version: 1.1.0
 status: Approved
 owner: Product Owner
 depends_on:
@@ -11,7 +11,7 @@ depends_on:
 related:
   - DOMAIN-001
   - ARCH-001
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Requirements Specification
@@ -28,11 +28,11 @@ Todo componente de domínio, arquitetura, especificação técnica, implementaç
 
 # Escopo
 
-O TradingOS é uma plataforma de análise de oportunidades de mercado.
+O TradingOS é uma ferramenta de leitura de mercado e geração de insights de trader através de um Dashboard.
 
-Sua responsabilidade é transformar dados de mercado em decisões explicáveis e reproduzíveis.
+Sua responsabilidade é transformar dados de mercado em leituras, insights e decisões assistidas, explicáveis e reproduzíveis.
 
-A execução das ordens é uma responsabilidade externa.
+A execução automática de ordens é uma evolução futura e permanece separada do núcleo de leitura e análise.
 
 ---
 
@@ -132,6 +132,18 @@ O sistema deverá permanecer independente de MT5, brokers e APIs.
 
 ---
 
+## REQ-013
+
+O sistema deverá apresentar a leitura consolidada do mercado e seus insights ao trader através de um Dashboard.
+
+---
+
+## REQ-014
+
+O sistema deverá permitir evolução futura para automação controlada sem misturar leitura de mercado, decisão assistida, gestão de risco e execução de ordens.
+
+---
+
 # Requisitos Não Funcionais
 
 ## NFR-001
@@ -201,5 +213,7 @@ REQ → DOMAIN → ARCH → SPEC → SOURCE → VALIDATION
 ---
 
 # Alterações
+
+**v1.1.0**: escopo atualizado para explicitar a leitura de mercado e a geração de insights através do Dashboard como responsabilidade central. Adicionados `REQ-013` e `REQ-014` para rastrear a apresentação dos insights e a evolução futura para automação controlada.
 
 Novos requisitos deverão ser versionados e registrados em ADR quando alterarem o comportamento arquitetural do sistema.

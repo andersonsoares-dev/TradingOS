@@ -486,6 +486,12 @@ Especifica o `Learning Service`: processa `Outcome` produzido pela Validation, g
 
 `ROADMAP-006`: v1.1.0 → v1.3.0 (v1.2.0 registra `ITEM-08`/`ADR-013`, adicionada retroativamente nesta mesma entrega por ausência de bump de versão anterior; v1.3.0 registra `ITEM-09` a `ITEM-14`).
 
+## Product Scope Alignment — VISION-001 v1.1.0 / REQ-001 v1.1.0
+
+O escopo central do TradingOS foi explicitado como leitura de mercado e geração de insights de trader através do Dashboard. A automação de operações permanece uma evolução futura, separada da leitura, da decisão assistida, do risco e da execução.
+
+Foram adicionados `REQ-013` (apresentação de insights no Dashboard) e `REQ-014` (evolução futura para automação controlada). Nenhum arquivo de código foi alterado.
+
 ## Legacy Components
 
 ## ITEM-01 / ITEM-02 — Evidence Categories

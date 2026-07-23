@@ -437,6 +437,50 @@ Sem duplicação de conhecimento
 
 ---
 
+# Padrões Operacionais Consolidados
+
+Regras extraídas da prática repetida de governança documental do projeto. Nenhuma delas é nova decisão arquitetural — são a formalização de comportamentos já exigidos implicitamente pelas seções anteriores.
+
+## Verificação de id e família
+
+Antes de nomear qualquer documento, consultar `DOCUMENT_INDEX.md` — nunca assumir que um id está livre.
+
+`SPEC-00X` descreve categorias inteiras (Domain Services, Application Services, Business Rules). Nunca um componente isolado — componentes individuais usam a família do seu Bounded Context (`INFRA-*`, `EXEC-*`, `LEARN-*`), em `Docs/03-architecture/`.
+
+Nenhuma família documental nova é criada sem justificativa arquitetural registrada (ADR ou RFC). Ao encontrar uma família não congelada em um brief, propor a família já congelada mais análoga antes de inventar uma nova.
+
+## Resolução de conflitos em briefs
+
+Ao encontrar colisão de id, família não conforme, ou terminologia que contradiz uma decisão já aprovada (ADR/RFC): sinalizar claramente, propor a resolução já estabelecida por precedente, e prosseguir sem bloquear — perguntar ao usuário apenas quando a decisão for genuinamente ambígua ou consequente (ex.: criação de família nova, duplicação de decisão entre RFC e ADR, escopo de commit).
+
+Nunca duplicar uma decisão entre dois documentos (ex.: mesma decisão como RFC e como ADR). Expandir o documento já existente.
+
+Quando um brief contradiz um ADR/RFC já aprovado, corrigir silenciosamente usando os termos já aprovados — não abrir nova RFC para uma pergunta já respondida.
+
+## Core Domain e novos conceitos
+
+Componentes do Core Domain (`Evidence`, `Market Context`, `Opportunity`, `Decision`) são fechados desde o freeze (`ADR-007`). Qualquer conceito novo relacionado a eles deve primeiro responder: é atributo/Value Object de um componente já existente, ou exige um Bounded Context novo? Resolver essa pergunta antes de formalizar um `DOMAIN-00X`.
+
+## Tarefas de análise
+
+Quando o brief instruir explicitamente "não alterar arquivo", "não criar ADR/documento" ou "não commitar": entregar apenas a análise solicitada, nunca tocar em arquivos, e encerrar com uma pergunta de aprovação explícita.
+
+## Staging e commits
+
+Quando o working tree contiver alterações de tarefas diferentes e não relacionadas, usar staging seletivo (`git add` granular ou construção de subset) para que cada commit cubra exatamente um tema — nunca misturar.
+
+Mostrar o diff staged completo antes de qualquer commit, quando solicitado. Nunca commitar ou dar push sem autorização explícita.
+
+## Propagação e histórico
+
+Todo documento novo ou alterado deve ser propagado a `CHANGELOG.md`, `DOCUMENT_INDEX.md` e `TRACEABILITY.md` — exceto documentos informativos/não normativos (ex.: `INVENTORY.md`), que podem ficar fora de `TRACEABILITY.md` por decisão explícita do Product Owner.
+
+RFCs resolvidas permanecem no arquivo original, com seção de resolução adicionada (nunca substituídas ou apagadas) — preserva histórico, conforme Regra 10 do `DOCUMENT_CONTROL`.
+
+Itens de backlog (`ROADMAP-006`) são numerados sequencialmente (`ITEM-NN`) e nunca renumerados, independentemente de qual revisão os originou.
+
+---
+
 # Regra Suprema
 
 O projeto pertence ao repositório.

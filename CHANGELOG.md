@@ -415,6 +415,19 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - Não participa da matriz de rastreabilidade (`TRACEABILITY.md`) — o próprio `INVENTORY.md` referencia `DOCUMENT_INDEX.md`/`TRACEABILITY.md`/`CHANGELOG.md`/`ROADMAP-006` como fontes vivas, sem duplicar seu conteúdo.
 - `DOCUMENT_INDEX.md` atualizado com o registro do `INVENTORY.md` (localização, finalidade, natureza informativa).
 
+### 2026-07-22 — AGENTS.md: Padrões Operacionais Consolidados
+
+- Adicionada a seção "Padrões Operacionais Consolidados" a `AGENTS.md`, formalizando comportamentos já praticados repetidamente ao longo da sessão de governança documental: verificação obrigatória de id/família em `DOCUMENT_INDEX.md` antes de nomear qualquer documento; `SPEC-00X` reservado a categorias, nunca a componente isolado; nenhuma família nova sem justificativa em ADR/RFC; resolução de conflitos em briefs (sinalizar, propor precedente já estabelecido, só perguntar quando genuinamente ambíguo); proibição de duplicar decisão entre RFC e ADR; correção silenciosa de terminologia já resolvida por decisão aprovada; regra de fechamento do Core Domain (`ADR-007`) e critério para decidir Value Object/Entity/novo Bounded Context; tratamento de tarefas de análise (não alterar arquivo/não commitar); staging seletivo quando o working tree mistura temas; obrigatoriedade de mostrar diff staged antes de commit; propagação obrigatória a `CHANGELOG.md`/`DOCUMENT_INDEX.md`/`TRACEABILITY.md` (com exceção documentada para documentos informativos); preservação de histórico em RFCs resolvidas e numeração sequencial nunca reciclada em `ROADMAP-006`.
+- Nenhuma regra nova foi criada — apenas formalização de práticas já exigidas implicitamente pelas seções pré-existentes de `AGENTS.md`/`DOCUMENT_CONTROL.md`. Motivação: preparar o repositório para continuidade por qualquer agente de IA (ex.: migração para outra conta/ferramenta) sem depender do histórico desta conversa.
+- `DOCUMENT_INDEX.md` atualizado com nota sobre a consolidação.
+
+### 2026-07-22 — Product Scope Alignment
+
+- `VISION-001` atualizado para explicitar o TradingOS como ferramenta de leitura de mercado e geração de insights através do Dashboard.
+- `REQ-001` atualizado com `REQ-013` e `REQ-014`.
+- Automação de operações registrada como evolução futura controlada.
+- Nenhum arquivo `.mq5` ou `.mqh` foi alterado.
+
 ### 2026-07-22 — ADR-015: Risk Profile Classification
 
 - `RFC-001` (Risk Profile Classification) resolvida: `Risk Profile` classificado como **Value Object**, sem identidade própria, atributo `Risk` de `Opportunity` (`DOMAIN-001`), produzido pelo `Risk Service` (`SPEC-003`, Domain Service já catalogado, sem alteração de contrato).
