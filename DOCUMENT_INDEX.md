@@ -31,7 +31,7 @@
 | LEARN-002 | Learning Service | Docs/03-architecture/LEARN-002-Learning-Service.md | 1.0.0 | Approved |
 | SPEC-001 | Component Model | Docs/04-specifications/SPEC-001-Component-Model.md | 1.7.0 | Approved |
 | SPEC-002 | Interface Contracts | Docs/04-specifications/SPEC-002-Interface-Contracts.md | 1.1.0 | Approved |
-| SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.1.0 | Approved |
+| SPEC-003 | Domain Services | Docs/04-specifications/SPEC-003-Domain-Services.md | 1.2.0 | Approved |
 | SPEC-004 | Application Services | Docs/04-specifications/SPEC-004-Application-Services.md | 1.0.0 | Approved |
 | SPEC-005 | Domain Lifecycle | Docs/04-specifications/SPEC-005-Domain-Lifecycle.md | 1.0.0 | Approved |
 | SPEC-006 | Business Rules | Docs/04-specifications/SPEC-006-Business-Rules.md | 1.0.0 | Approved |
@@ -52,6 +52,7 @@
 | ADR-015 | Risk Profile Classification | Docs/05-decisions/ADR-015-Risk-Profile-Classification.md | 1.0.0 | Accepted |
 | ADR-016 | Event Dispatcher & Scheduler — Deferral Decision | Docs/05-decisions/ADR-016-Event-Dispatcher-Scheduler-Deferral.md | 1.0.0 | Accepted |
 | ADR-017 | Data Provider Candidate Adapters — Deferral Decision | Docs/05-decisions/ADR-017-Data-Provider-Candidate-Adapters-Deferral.md | 1.0.0 | Accepted |
+| ADR-018 | Legacy Indicator Mapping Correction | Docs/05-decisions/ADR-018-Legacy-Indicator-Mapping-Correction.md | 1.0.0 | Accepted |
 | AUDIT-001 | Architecture Baseline Audit | Docs/06-validation/AUDIT-001-Architecture-Baseline.md | 1.0.0 | Approved |
 | AUDIT-001-CLOSURE | Architecture Baseline Audit — Closure Report (RC-001) | Docs/06-validation/AUDIT-001-CLOSURE.md | 1.0.0 | Approved |
 | AUDIT-002 | Baseline Architecture Certification | Docs/06-validation/AUDIT-002-Baseline-Architecture-Certification.md | 1.0.0 | Approved |
@@ -61,7 +62,7 @@
 | RFC-001 | Risk Profile Classification | Docs/10-rfc/RFC-001-Risk-Profile-Classification.md | 2.0.0 | Approved |
 | RFC-002 | Infrastructure Candidate Components | Docs/10-rfc/RFC-002-Infrastructure-Candidate-Components.md | 2.0.0 | Approved |
 | RFC-003 | Data Provider Candidate Adapters | Docs/10-rfc/RFC-003-Data-Provider-Candidate-Adapters.md | 2.0.0 | Approved |
-| RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 1.0.0 | Open |
+| RFC-004 | Legacy Indicator Mapping Ambiguity | Docs/10-rfc/RFC-004-Legacy-Indicator-Mapping-Ambiguity.md | 2.0.0 | Approved |
 | RFC-005 | Trading Risk & Exit Strategy | Docs/10-rfc/RFC-005-Trading-Risk-Exit-Strategy.md | 1.0.0 | Approved |
 | RFC-006 | Risk Service Contract Divergence (SPEC-003 vs EXEC-003) | Docs/10-rfc/RFC-006-Risk-Service-Contract-Divergence.md | 2.0.0 | Approved |
 | RFC-007 | Signal Builder Pipeline Divergence (ARCH-001/SPEC-002 vs EXEC-004) | Docs/10-rfc/RFC-007-Signal-Builder-Pipeline-Divergence.md | 2.0.0 | Approved |
@@ -70,7 +71,7 @@
 | ROADMAP-003 | Sprint 3 — Signal Evaluation & Risk Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-003-Sprint-3-Signal-Risk.md | 1.0.0 | Approved |
 | ROADMAP-004 | Sprint 4 — Order Execution Integration (Release 1.0) | Docs/09-roadmap/ROADMAP-004-Sprint-4-Order-Execution.md | 1.0.0 | Approved |
 | ROADMAP-005 | Sprint 5 — First Execution & End-to-End Validation (Release 1.0) | Docs/09-roadmap/ROADMAP-005-First-Execution.md | 1.0.0 | Approved |
-| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.9.0 | Approved |
+| ROADMAP-006 | Architecture Decision Backlog | Docs/09-roadmap/ROADMAP-006-Architecture-Decision-Backlog.md | 1.10.0 | Approved |
 | — | Architecture (V1 congelada) | Docs/ARCHITECTURE.md | — | Approved |
 | — | Backlog e Ordem de Sprints | Docs/BACKLOG.md | — | Living document |
 | — | Technical Debt | Docs/TECH_DEBT.md | — | Living document |
@@ -149,3 +150,4 @@ knowledge/
 - `ADR-015` formaliza `RFC-001` (Risk Profile Classification): `Risk Profile` classificado como Value Object, atributo `Risk` de `Opportunity` (`DOMAIN-001` v1.2.0), produzido pelo `Risk Service` (`SPEC-003`, sem alteração de contrato). `DOMAIN-007-Risk-Profile.md` criado — primeiro documento formal do conceito (Estrutura: Risk Score/Risk Level/Rationale/Timestamp). Nenhuma alteração a `ARCH-001` (Core Domain permanece com 4 componentes). `RFC-001` passa a `Approved`; `ROADMAP-006` v1.7.0 registra `ITEM-09` como `Implemented` e `ITEM-03` desbloqueado (Categoria 3 → 2, pronto para aplicação direta, ainda não propagado a `DOMAIN-003`).
 - `ADR-016` formaliza `RFC-002` (Infrastructure Candidate Components): `Event Dispatcher` (Adiado — necessidade potencial, sem dependência bloqueante comprovada) e `Scheduler` (Adiado, viés para rejeição futura — necessidade já coberta por `OnTimer()`) **não catalogados** em `SPEC-001`, por decisão explícita de adiamento — nenhum dos dois rejeitado definitivamente. Nenhuma alteração a `SPEC-001`, `INFRA-001`, `ARCH-001` ou código. Critério de reabertura: evidência de implementação de `ROADMAP-001` (`ADR-009 §8`). `RFC-002` passa a `Approved`; `ROADMAP-006` v1.8.0 registra `ITEM-10` como `Approved` (decisão de adiamento, sem propagação a `SPEC-001` por design).
 - `ADR-017` formaliza `RFC-003` (Data Provider Candidate Adapters): os 6 candidatos (`Replay Adapter`, `CSV Provider`/`CSV Adapter`, `Mock Provider`, `REST Adapter`, `FIX Adapter`, `WebSocket Adapter`) **não catalogados** em `SPEC-001`, por decisão explícita de adiamento — nenhum rejeitado definitivamente. `Replay Adapter`/`CSV Provider`: prioridade média-baixa para Release 2.0. `Mock Provider`/`FIX Adapter`: viés para rejeição futura. `REST Adapter`/`WebSocket Adapter`: nenhuma necessidade identificada. Nenhuma alteração a `SPEC-001`, `INFRA-002`, `ARCH-001`, `SPEC-002` ou código. Critério de reabertura: evidência de implementação, provavelmente da Trilha de Validação/Learning Domain (`ADR-009 §8`). `RFC-003` passa a `Approved`; `ROADMAP-006` v1.9.0 registra `ITEM-11` como `Approved` (decisão de adiamento, sem propagação a `SPEC-001` por design).
+- `ADR-018` formaliza `RFC-004` (Legacy Indicator Mapping Ambiguity): correção factual, fundamentada em leitura direta do código (`MQL5/Include/TradingOS/Indicators/*.mqh`) — `TrendService`/`ATRService`/`RSIService`/`ADXService` mapeiam exclusivamente para `Indicator Provider` (`SPEC-001`, já correto, inalterado). `SPEC-003` corrigido (v1.1.0 → v1.2.0): removida a correspondência incorreta com `Evidence Builder`. Nenhuma alteração a `SPEC-001`, `INFRA-001`/`INFRA-003`, `ARCH-001`, `DOMAIN-003` ou código. `RFC-004` passa a `Approved`; `ROADMAP-006` v1.10.0 registra `ITEM-12` como `Implemented`. Com esta resolução, `RFC-001` a `RFC-004` estão todas encerradas.

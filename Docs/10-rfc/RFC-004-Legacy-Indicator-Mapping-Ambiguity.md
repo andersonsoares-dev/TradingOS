@@ -1,8 +1,8 @@
 ---
 id: RFC-004
 title: Legacy Indicator Mapping Ambiguity (Indicator Provider vs Evidence Builder)
-version: 1.0.0
-status: Open
+version: 2.0.0
+status: Approved
 owner: Product Owner
 depends_on:
   - SPEC-001
@@ -43,6 +43,12 @@ Esta RFC não decide qual mapeamento está correto. Duas leituras são possívei
 
 Uma decisão formal (ADR ou RFC aprovada) deverá esclarecer se a Legacy Baseline migra para `Indicator Provider`, para `Evidence Builder`, ou se divide-se entre os dois — antes que qualquer especificação futura (`INFRA-00X` ou atualização de `SPEC-003`) assuma um dos dois mapeamentos como definitivo.
 
+## Resolução
+
+Formalizada por `ADR-018`, fundamentada em leitura direta do código (`MQL5/Include/TradingOS/Indicators/*.mqh`): `TrendService`, `ATRService`, `RSIService` e `ADXService` são wrappers finos sobre `iMA`/`iATR`/`iRSI`/`iADX`, retornando valor técnico bruto — nenhum produz `Evidence` formal (`Category`/`Confidence`/`Weight`/`Timestamp`, `DOMAIN-003`).
+
+A Legacy Baseline mapeia **exclusivamente** para `Indicator Provider` (`SPEC-001`, já correto, mantido inalterado). `SPEC-003` corrigido: removida a correspondência incorreta com `Evidence Builder`, componente Core Domain sem contraparte implementada na Legacy Baseline.
+
 ## Status
 
-Open — aguardando decisão do Product Owner / Chief Architect.
+**Approved** — resolvida por `ADR-018`.

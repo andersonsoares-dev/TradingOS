@@ -445,3 +445,13 @@ O histórico anterior a 2026-07-21 está disponível integralmente via `git log`
 - `RFC-003` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
 - `ROADMAP-006` (v1.8.0 → v1.9.0): `ITEM-11` passa de `Awaiting RFC` para `Approved` — decisão de adiamento, sem propagação a `SPEC-001` por design.
 - `DOCUMENT_INDEX.md` atualizado com `ADR-017`.
+
+### 2026-07-22 — ADR-018: Legacy Indicator Mapping Correction
+
+- `RFC-004` (Legacy Indicator Mapping Ambiguity) resolvida por leitura direta do código (`MQL5/Include/TradingOS/Indicators/TrendService.mqh`, `ATRService.mqh`, `RSIService.mqh`, `ADXService.mqh`): os quatro serviços são wrappers finos sobre `iMA`/`iATR`/`iRSI`/`iADX`, retornando valor técnico bruto — nenhum produz `Evidence` formal (`Category`/`Confidence`/`Weight`/`Timestamp`, `DOMAIN-003`).
+- Decisão: a Legacy Baseline mapeia exclusivamente para `Indicator Provider` (`SPEC-001`, já correto, mantido inalterado).
+- `SPEC-003` atualizado (v1.1.0 → v1.2.0): removida a linha da seção "Legacy Baseline" que afirmava incorretamente a correspondência com `Evidence Builder`. Nenhuma outra alteração a `SPEC-003`.
+- Nenhuma alteração a `SPEC-001`, `INFRA-001`/`INFRA-003`, `ARCH-001`, `DOMAIN-003` ou qualquer arquivo `.mq5`/`.mqh`.
+- `RFC-004` (v1.0.0 → v2.0.0): status `Open` → `Approved`, seção de resolução adicionada.
+- `ROADMAP-006` (v1.9.0 → v1.10.0): `ITEM-12` passa de `Awaiting ADR` para `Implemented`. Com esta resolução, `RFC-001` a `RFC-004` estão todas encerradas.
+- `DOCUMENT_INDEX.md` atualizado com `ADR-018`.

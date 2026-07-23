@@ -1,16 +1,17 @@
 ---
 id: SPEC-003
 title: Domain Services
-version: 1.1.0
+version: 1.2.0
 status: Approved
 owner: Product Owner
 depends_on:
   - ARCH-001
   - SPEC-001
   - SPEC-002
+  - ADR-018
 related:
   - SPEC-004
-last_updated: 2026-07-21
+last_updated: 2026-07-22
 ---
 
 # Domain Services
@@ -197,7 +198,7 @@ Essas correspondências servem apenas como referência para migração increment
 
 Não representam equivalência direta.
 
-TrendService, RSIService, ATRService e ADXService correspondem a Evidence Builder — ver SPEC-001, não Domain Service.
+**Correção (`ADR-018`)**: TrendService, RSIService, ATRService e ADXService mapeiam exclusivamente para `Indicator Provider` (`SPEC-001`, Infrastructure Providers) — não para `Evidence Builder`. Nenhum dos quatro produz `Evidence` formal (Category/Confidence/Weight/Timestamp, `DOMAIN-003`); todos retornam apenas valor técnico bruto obtido diretamente de `iATR`/`iRSI`/`iADX`/`iMA`. `Evidence Builder` permanece um componente Core Domain sem contraparte implementada na Legacy Baseline.
 
 ---
 
@@ -246,3 +247,9 @@ REQ-008
 REQ-009
 
 REQ-010
+
+---
+
+# Alterações
+
+**v1.2.0** (`ADR-018`): corrigida a seção "Legacy Baseline" — removida a correspondência incorreta entre `TrendService`/`RSIService`/`ATRService`/`ADXService` e `Evidence Builder`. Esses serviços mapeiam exclusivamente para `Indicator Provider` (`SPEC-001`). Nenhuma outra alteração a este documento.

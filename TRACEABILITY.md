@@ -540,6 +540,16 @@ Critério de reabertura (`ADR-009 §8`): apenas mediante evidência obtida duran
 
 `RFC-003` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.8.0 → v1.9.0): `ITEM-11` passa de `Awaiting RFC` para `Approved` — decisão de adiamento formalizada, sem propagação a `SPEC-001`/`INFRA-002`/`ARCH-001`/`SPEC-002` por design. Nenhum arquivo de código foi alterado.
 
+## ADR-018 — Legacy Indicator Mapping Correction
+
+`ADR-018` formaliza `RFC-004`, fundamentada em leitura direta do código (`MQL5/Include/TradingOS/Indicators/TrendService.mqh`, `ATRService.mqh`, `RSIService.mqh`, `ADXService.mqh`): os quatro serviços são wrappers finos sobre `iMA`/`iATR`/`iRSI`/`iADX`, retornando valor técnico bruto (ou, no `TrendService`, uma comparação simples de 3 EMAs). Nenhum produz `EvidenceId`, `Category`, `Confidence`, `Weight` ou os demais atributos obrigatórios de `Evidence` (`DOMAIN-003`).
+
+Decisão: a Legacy Baseline mapeia **exclusivamente** para `Indicator Provider` (`SPEC-001`, já correto, mantido inalterado). `SPEC-003` corrigido (v1.1.0 → v1.2.0): removida a linha da seção "Legacy Baseline" que afirmava incorretamente que os quatro serviços "correspondem a Evidence Builder". `Evidence Builder` permanece componente Core Domain sem contraparte implementada na Legacy Baseline — trabalho futuro, não reclassificação de código existente.
+
+Nenhuma alteração a `SPEC-001`, `INFRA-001`/`INFRA-003`, `ARCH-001`, `DOMAIN-003` ou qualquer arquivo de código.
+
+`RFC-004` (v1.0.0 → v2.0.0): `Open` → `Approved`. `ROADMAP-006` (v1.9.0 → v1.10.0): `ITEM-12` passa de `Awaiting ADR` para `Implemented`. Com esta resolução, `RFC-001` a `RFC-004` estão todas encerradas — nenhuma RFC permanece aberta no backlog consolidado por `AUDIT-002`.
+
 Conforme ADR-001 (Legacy Baseline), os componentes abaixo pertencem à Legacy Baseline (V1) e ainda não possuem rastreabilidade formal (REQ/DOMAIN/SPEC):
 
 - TrendService
